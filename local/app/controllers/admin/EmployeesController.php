@@ -33,6 +33,16 @@ class EmployeesController extends \AdminBaseController {
 		return View::make('admin.employees.index', $this->data);
 	}
 
+
+	public function operations($id){
+		
+		$this->data['employees']         =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['employeesActive'] =   'active';
+		
+		return View::make('admin.employees.operations', $this->data);
+		
+	}
+
 	public function excelview(){
 		$this->data['employeesActive'] =   'active';
 		return View::make('admin.employees.excelupload', $this->data);
@@ -333,8 +343,6 @@ class EmployeesController extends \AdminBaseController {
 		$fullName = $input['firstName'] . ' ' . $input['lastName'];
 		return Redirect::route('admin.employees.index')->with('success',"<strong>{$fullName}</strong> successfully added to the Database");
 	}
-
-
 
 
 	/**

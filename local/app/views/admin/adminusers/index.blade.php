@@ -116,6 +116,7 @@
 								</tr>
 							</thead>
 							<tbody>
+							
 								<tr >
 									<td>{{-- ID --}}</td>
 									<td>{{-- EmployeeID --}}</td>
@@ -123,6 +124,7 @@
 									<td>{{-- created On --}}</td>
 									<td>{{-- Action --}} </td>
 								</tr>
+						
 							</tbody>
 						</table>
 					</div> {{-- end of .portlet-body --}}
@@ -137,7 +139,7 @@
 			<div class="modal-header">
 				<h4 class="modal-title">
 					<span class="icon"><i class="fa fa-plus fa-lg" aria-hidden="true"></i></span>
-					<span>{{trans('core.new')}} Admin  {{Auth::admin()->get()->level}}</span>
+					<span>{{trans('core.new')}} Admin  </span>
 				</h4>
 				
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-fw" aria-hidden="true"></i></button>

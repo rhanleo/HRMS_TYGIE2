@@ -11,10 +11,17 @@ class AdminUsersController extends \AdminBaseController {
 	}
 
 	public function index()
-	{
-		$this->data['admins'] = Admin::all();
+	{	
+		// Check Admin Level Auth
+		if(Auth::admin()->get()->level == 0)
+		{
+			$this->data['admins'] = Admin::all();
 
-		return View::make('admin.adminusers.index', $this->data);
+			return View::make('admin.adminusers.index', $this->data);
+		} else {
+			return Redirect::Route('admin.getlogin');
+		}
+		
 	}
 
 	// Datatable ajax request

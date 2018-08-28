@@ -50,8 +50,22 @@
 
                 <ul class="sub-menu">
                     <li class="{{ $markAttendanceActive or ''}}">
-                        <a href="{{route('admin.employees.index')}}">{{'Employee List'}}</a>
+                        <a href="{{route('admin.employees.index')}}">{{'All Departments'}}</a>
                     </li>
+       
+                    <li class="{{ $markAttendanceActive or ''}}">
+
+                        <?php 
+                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Operations')->get();
+                        foreach($desigId as $id){
+                        ?>
+                            <a href="{{route("admin.employee.operations", $id['id'])}}">{{'Operations Department'}}</a>
+                        <?php
+                        }
+                        ?>
+                       
+                    </li>
+
                     <li class="{{ $markAttendanceActive or ''}}">
                         <a href="{{route('admin.employees.workinghistory')}}">{{'Working History'}}</a>
                     </li>
