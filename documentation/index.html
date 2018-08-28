@@ -1,0 +1,461 @@
+<!doctype html>  
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	
+	<title>HRM - Human Resource Management </title>
+	
+	<meta name="description" content="Description">
+	<meta name="author" content="Ajay">
+	<meta name="copyright" content="ajay138">
+	<meta name="generator" content="Documenter v2.0 http://rxa.li/documenter">
+	<meta name="date" content="2014-05-26T00:00:00+02:00">
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:700italic,400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
+	<link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen">
+		
+	<script src="assets/js/google-code-prettify/prettify.js"></script>	
+	
+	
+	<script src="assets/js/jquery.js"></script>
+	
+	<script src="assets/js/jquery.scrollTo.js"></script>
+	<script src="assets/js/jquery.easing.js"></script>
+		<script src="assets/js/jquery.slimscroll.min.js"></script>
+	
+	<script>document.createElement('section');var duration='500',easing='swing';
+	
+	$(function () {
+		$("#documenter_nav").slimScroll({
+			height: "80%",
+    		alwaysVisible: true,
+			color: '#fff',
+			allowPageScroll: false,
+		});
+	});
+	
+	</script>
+	<script src="assets/js/script.js"></script>
+	
+	<style>
+		html{background-color:#FFFFFF;color:#383838;}
+		::-moz-selection{background:#333636;color:#00DFFC;}
+		::selection{background:#333636;color:#00DFFC;}
+		#documenter_sidebar #documenter_logo{background-image:url(assets/images/logo.png);}
+		a{color:#008C9E;}
+		.btn {
+			border-radius:3px;
+		}
+		.btn-primary {
+			  background-image: -moz-linear-gradient(top, #008C9E, #006673);
+			  background-image: -ms-linear-gradient(top, #008C9E, #006673);
+			  background-image: -webkit-gradient(linear, 0 0, 0 008C9E%, from(#343838), to(#006673));
+			  background-image: -webkit-linear-gradient(top, #008C9E, #006673);
+			  background-image: -o-linear-gradient(top, #008C9E, #006673);
+			  background-image: linear-gradient(top, #008C9E, #006673);
+			  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#008C9E', endColorstr='#006673', GradientType=0);
+			  border-color: #006673 #006673 #bfbfbf;
+			  color:#FFFFFF;
+		}
+		.btn-primary:hover,
+		.btn-primary:active,
+		.btn-primary.active,
+		.btn-primary.disabled,
+		.btn-primary[disabled] {
+		  border-color: #008C9E #008C9E #bfbfbf;
+		  background-color: #006673;
+		}
+		hr{border:1px solid #f05f40;}
+		#documenter_sidebar, #documenter_sidebar ul a{background-color:#f05f40;color:#FFFFFF;}
+/*		#documenter_sidebar ul a{-webkit-text-shadow:1px 1px 0px #494F4F;-moz-text-shadow:1px 1px 0px #494F4F;text-shadow:1px 1px 0px #494F4F;}*/
+/*		#documenter_sidebar ul{border-top:1px solid #212424;}*/
+		#documenter_sidebar ul a{color:#FFFFFF;}
+		#documenter_sidebar ul a:hover{background:#444444;}
+		#documenter_sidebar ul a.current{background:#222222;}
+		#documenter_copyright{display:block !important;visibility:visible !important;}
+		
+.slimScrollBar {
+    z-index: 1000 !important;
+}
+	</style>
+	
+</head>
+<body class="documenter-project-hrm">
+	<div id="documenter_sidebar">
+		<a href="#documenter_cover" id="documenter_logo" style="height:100px"></a>
+		<ul id="documenter_nav">
+			<li><a class="current" href="#documenter_cover">Start</a></li>
+				
+			<li><a href="#getting_started" title="Getting Started">Getting Started</a></li>
+			<li><a href="#feature" title="Getting Started">Feature</a></li>
+			
+			<li><a href="#requirment" title="Compatibility">Requirement</a></li>	
+			<li><a href="#installation" title="Installation">Installation</a></li>
+			<li><a href="#setting"   title="Settings">Settings</a></li>
+
+			<li><a href="#employee_dashboard" title="dashboard">Employee Dashboard</a></li>
+			<li><a href="#dashboard" title="dashboard">Dashboard</a></li>
+			<li><a href="#employees"  title="Employees">Employees</a></li>
+			<li><a href="#department" title="Department">Department</a></li>
+			<li><a href="#awards"     title="Awards">Awards</a></li>
+			<li><a href="#expense" title="Expenses">Expense</a></li>
+			<li><a href="#holidays" title="Holidays">Holidays</a></li>
+			<li><a href="#attendance" title="attendance">Attendance</a></li>
+			<li><a href="#leave" title="leave">Leave Applications</a></li>
+			<li><a href="#notice" title="Notice">Notice Board</a></li>
+			<li><a href="#settings" title="Settings">Settings Page</a></li>
+			<li><a href="#credit" title="credit">Source & Credits</a></li>
+
+		</ul>
+		<div id="documenter_copyright">Copyright &copy; Froiden 2015<br>
+		made with the <a href="http://rxa.li/documenter">Documenter v2.0</a> 
+		</div>
+	</div>
+	<div id="documenter_content">
+	<section id="documenter_cover">
+	<h1>Snap HRM  <small style="font-size:12px;"><br/>Complete Human Resource Management </small> </h1>
+	<div id="documenter_buttons">
+		
+	</div>
+	<hr>
+	<ul>
+	
+	<li>by: <a href="http://www.froiden.com/">Froiden</a></li>
+	<li><a href=""></a></li>
+	<li>Email: <a href="mailto:hrm@froiden.com">hrm@froiden.com</a></li>
+	</ul>
+	</section>
+	
+	<section id="getting_started">
+	<div class="page-header"><h3>Getting Started</h3><hr class="notop"></div>
+		<p>Introducing Snap HRM - a complete HR management solution to manage everything from the employees, 
+			their attendance, office expenses and many other things.</p>
+		
+
+	</section>
+
+	<section id="feature">
+		<div class="page-header"><h3>Features </h3><hr class="notop"></div>
+		<p>Snap HRM is a simple and easy to use software having basic minimal features. You can get started straight away without
+			any training, yet having flexibility to do things your way.
+		</p>
+		
+		<table width="100%" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+				<h4>Snap HRM Features</h4>
+		<ol>
+			<li> Employee Management </li>
+			<li> Expense Management </li>
+			<li> Department Management </li>	
+			<li> Awards Management </li>	
+			<li> Holidays Management </li>	
+			<li> Attendance Management </li>	
+			<li> Leave Types Management </li>	
+			<li> Leave Application Management </li>	
+			<li> Notice Board</li>	
+			<li> General Setting</li>	
+			<li> Profile Setting</li>	
+			<li> Notification Setting</li>	
+			<li> And More Coming Soon... </li>
+				
+		</ol>
+			</td>
+			<td>
+		
+		</td>
+		</tr>
+		</table>
+	</section>
+	
+	
+
+	<section id="requirment">
+		<div class="page-header"><h3>Server & PHP Requirement </h3><hr class="notop"></div>
+		<p> To make HRM running on your server, you need to make sure your server match with minimum requirement: </p>
+	<ol>		
+		<li>Apache 2 web server</li>
+		<li>PHP 5.4 or higher</li>
+		<li>MySQL Database server </li>
+		<li>Apache Modules: Rewrite</li>
+		<li>PHP Modules: Curl, Mcrypt, Fileinfo</li>
+		<li>Realtime Internet Connection ( Emailing )</li>
+	</ol>	
+
+	</section>
+	
+
+	<section id="installation">
+	<div class="page-header"><h3>Installation</h3><hr class="notop"></div>
+	<h4> Preparing Installation  </h4>
+	<ol>
+		<li>Download ZIP package and unzip it. </li>
+		<li>In unzipped folder you will find folder directory like below:
+			<ul>
+				<li> <strong>source</strong> </li>
+				<li> <strong>database</strong> </li>
+				<li> <strong>documentation</strong> </li>	
+			</ul>
+		</li>
+		<li> Create app directory on your web directory server </li>
+		<li> Simply put all files inside directory <strong>source</strong> to your app folder.</li>
+		
+	</ol>
+	<h4>Check Server Requirements  </h4>
+	<code>Open http://localhost/myapp/check.php</code>
+	<h4>Create new database installation  </h4>
+	<p> You need to create new database, you can use phpmyadmin or any mysql database tools such maestro, sqlyog, etc.  <br />
+	---  <br />
+	After new database is created, now import <code>database/database.sql</code> file into your new database</p>
+	
+	<h4>Configuration Installation </h4>
+	<p > 1. <b>Open</b> <code>local/app/config/database.php</code> file using your favorite php editor </p>
+	
+	<p> 2. <b>Setting Database Info</b>  </p>	
+<pre class="prettyprint lang-php linenums">
+'mysql' => array(
+	'driver'    => 'mysql',
+	'host'      => 'localhost',
+	'database'  => 'dbname',
+	'username'  => 'dbuser',
+	'password'  => 'dbpassword',
+	'charset'   => 'utf8',
+	'collation' => 'utf8_unicode_ci',
+	'prefix'    => '',
+),
+</pre>		
+	<p>4. <b>Access your application</b>  </p>
+	<ol>
+		<li> Now access your application via your favorite browser <br>
+			<code>http://localhost/myapp/admin</code>
+		</li>
+		<li> Default Login : <br>
+			Email Address : <code> ajay@froiden.com </code> <br>
+			Password : <code> 123456 </code>
+			
+		</li>
+		<li>Awesome your application is ready now !</li>
+		
+	</ol>	
+	</section>
+	
+	<section id="setting">
+	<div class="page-header"><h3>Setting Up Application</h3><hr class="notop"></div>
+	<p>After your successfull install your application, now you need to setting your app. <br />
+	Log to your application and go to :
+	 </p>
+	<p class="warning">
+		Go to  : Settings &raquo; General Setting 
+	</p>
+	<h4> General Setting </h4>
+	
+	<p><img src="assets/images/HRM_settings.png" style="width:70%"/></p>
+
+	
+	</section>
+
+	<!-- Employee Dashboard    -->
+<section id="employee_dashboard">
+	<div class="page-header"><h3>NoticeBoard</h3><hr class="notop"></div>
+
+  <h4> NoticeBoard view page </h4>
+	
+	<p><img src="assets/images/employee_dashboard.jpg" style="width:70%"/></p>
+
+	</section>
+
+<!-- Employee Dahboard Board  -->
+
+		<section id="dashboard">
+	<div class="page-header"><h3>HRM Dashboard</h3><hr class="notop"></div>
+	
+
+	
+	<h4> Attendance </h4>
+	
+	<p><img src="assets/images/dashboard.jpg" style="width:70%"/></p>
+
+	<h4> Expense Report </h4>
+	
+	<p><img src="assets/images/expense_report.jpg" style="width:70%"/></p>
+	
+	</section>
+
+
+
+
+
+<!-- EMPLOYEES SECTION -->
+
+<section id="employees">
+	<div class="page-header"><h3>Employees Page</h3><hr class="notop"></div>
+		<p class="info">
+		Before Adding employee to the database.You need to add <strong>department </strong>and its <strong>designations</strong>
+	</p>
+
+	<h4> Employees View </h4>
+	
+	<p><img src="assets/images/employees_view.jpg" style="width:70%"/></p>
+
+	<h4> Employees Edit Page </h4>
+	
+	<p><img src="assets/images/employees_edit.jpg" style="width:70%"/></p>
+
+	</section>
+<!-- EMPLOYEES SECTION -->
+
+
+<!-- DEPARTMENT SECTION  -->
+<section id="department">
+	<div class="page-header"><h3>Department</h3><hr class="notop"></div>
+
+
+	<h4> Department View </h4>
+	
+	<p><img src="assets/images/department_view.jpg" style="width:70%"/></p>
+
+	<h4> Department Add Page </h4>
+	
+	<p><img src="assets/images/department_add.jpg" style="width:70%"/></p>
+
+<h4> Department Edit Page </h4>
+	
+	<p><img src="assets/images/department_edit.jpg" style="width:70%"/></p>
+
+	</section>
+
+<!-- DEPARTMENT SECTION  -->
+
+<!-- Awards SECTION  -->
+<section id="awards">
+	<div class="page-header"><h3>Awards</h3><hr class="notop"></div>
+
+  <h4> Awards create Page </h4>
+	
+	<p><img src="assets/images/awards_create.jpg" style="width:70%"/></p>
+
+	</section>
+
+<!-- Awards SECTION  -->
+
+
+<!-- Expense SECTION  -->
+<section id="expense">
+	<div class="page-header"><h3>Expense</h3><hr class="notop"></div>
+
+  <h4> Expense create Page </h4>
+	
+	<p><img src="assets/images/expense_create.jpg" style="width:70%"/></p>
+
+	</section>
+
+<!-- Expense SECTION  -->
+
+<!-- Holdays SECTION  -->
+<section id="holidays">
+	<div class="page-header"><h3>Holidays</h3><hr class="notop"></div>
+
+  <h4> Awards create Page </h4>
+	
+	<p><img src="assets/images/holidays.jpg" style="width:70%"/></p>
+
+	</section>
+
+<!-- Holidays SECTION  -->
+
+<!-- Attendance SECTION  -->
+<section id="attendance">
+	<div class="page-header"><h3>Attendance</h3><hr class="notop"></div>
+
+  <h4> Mark Attendance  Page </h4>
+	
+	<p><img src="assets/images/mark_attendance.jpg" style="width:70%"/></p>
+
+<h4> View Attendance all Page </h4>
+	
+	<p><img src="assets/images/view_attendance.jpg" style="width:70%"/></p>
+
+<h4> View Attendance employee Page </h4>
+	
+	<p><img src="assets/images/show_attendance.jpg" style="width:70%"/></p>
+
+<h4> LeaveTypes pages </h4>
+	
+	<p><img src="assets/images/leavetypes.jpg" style="width:70%"/></p>
+
+	</section>
+
+<!-- Attendance SECTION  -->
+
+
+<!-- Leave Applications   -->
+<section id="leave">
+	<div class="page-header"><h3>Leave Applications</h3><hr class="notop"></div>
+
+  <h4> Leave application Accept Page </h4>
+	
+	<p><img src="assets/images/leave.jpg" style="width:70%"/></p>
+
+	</section>
+
+<!-- Leave Applications  -->
+
+
+<!-- Notice Board    -->
+<section id="notice">
+	<div class="page-header"><h3>NoticeBoard</h3><hr class="notop"></div>
+
+  <h4> NoticeBoard view page </h4>
+	
+	<p><img src="assets/images/notice_board.jpg" style="width:70%"/></p>
+
+	</section>
+
+<!-- Notice Board  -->
+
+
+<!-- Setting Board    -->
+<section id="settings">
+	<div class="page-header"><h3>Setting</h3><hr class="notop"></div>
+
+  <h4> Admin Login Setting </h4>
+	
+	<p><img src="assets/images/profile_setting.jpg" style="width:70%"/></p>
+
+
+  <h4> Email Nofitification Setting</h4>
+	
+	<p><img src="assets/images/email.jpg" style="width:70%"/></p>
+
+	</section>
+
+<!-- Setting Board  -->
+
+
+
+
+
+	<section id="credit">
+	<div class="page-header"><h3>Source and credit </h3><hr class="notop"></div>
+		<p>HRM is using following plugins</p>
+
+		<ul>
+			<li> <a href="http://jquery.com" target="_blank"> Jquery - javascript framework library </a></li>
+			<li> <a href="http://laravel.com" target="_blank"> Laravel - PHP framework library </li>
+			<li> <a href="http://getbootstrap.com" target="_blank"> Bootstrap - CSS framework library </li>
+			<li> <a href="http://www.highcharts.com/" target="_blank"> Highcharts</li>
+		</ul>	
+		
+
+
+	</section>
+
+</div>
+	
+</body>
+</html>
