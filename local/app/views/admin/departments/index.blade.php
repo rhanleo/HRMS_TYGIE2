@@ -50,12 +50,10 @@
                                                 </td>
                                                 <td class=" " style="width: 110px;">
                                                     <div class="btn-actions">
-                                                        @if(strtolower($department->deptName) == 'employee')
-                                                            <span>Default</span>
-                                                        @else
+                                                       
                                                             <a class="btn btn-1"  data-toggle="modal" href="#edit_static" onclick="showEdit({{$department->id}},'{{ $department->deptName }}')"><i class="fa fa-edit fa-fw"></i></a>
                                                             <a class="btn btn-1" href="javascript:;" onclick="del({{$department->id}},'{{ $department->deptName }}')"><i class="fa fa-trash fa-fw"></i></a>
-                                                        @endif()
+                                                      
                                                     </div>
                                                 </td>
                                             </tr>

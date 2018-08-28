@@ -59,13 +59,7 @@
                                         </td>
                                         
                                         <td>
-                                            <p>
-                                            <?php  
-                                            foreach($employee->getWorkingHistory as $history ){
-                                                echo '<span>' . $history['companyName'] . '</span><br/>' ;
-                                            }
-                                            ?>                                            
-                                            </p>
+                                            
                                             <p>Department: <strong>{{ $employee->getDesignation->department->deptName or ''}}</strong></p>
                                             <p>Designation: <strong>{{ $employee->getDesignation->designation or ''}}</strong></p>
                                             <p>Work Pass Type: <strong>{{ $employee->workpass_type }}</strong></p>

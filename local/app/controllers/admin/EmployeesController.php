@@ -33,14 +33,38 @@ class EmployeesController extends \AdminBaseController {
 		return View::make('admin.employees.index', $this->data);
 	}
 
-
+	// operation department
 	public function operations($id){
-		
-		$this->data['employees']         =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['employees']     =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['designations']  =   Designation::Select('designation')
+														->where('designation', '=' ,'Operations')->get();
 		$this->data['employeesActive'] =   'active';
-		
-		return View::make('admin.employees.operations', $this->data);
-		
+		return View::make('admin.employees.departments', $this->data);
+	}
+
+	// Finance department
+	public function finance($id){
+		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['designations']    =   Designation::Select('designation')
+															->where('designation', '=' ,'Finance')->get();
+		$this->data['employeesActive'] =   'active';
+		return View::make('admin.employees.departments', $this->data);
+	}
+	public function admin($id){
+		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['designations']    =   Designation::Select('designation')
+															->where('designation', '=' ,'Administration')->get();
+		$this->data['employeesActive'] =   'active';
+		return View::make('admin.employees.departments', $this->data);
+	}
+
+	// Finance department
+	public function productions($id){
+		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['designations']    =   Designation::Select('designation')
+															->where('designation', '=' ,'Productions')->get();
+		$this->data['employeesActive'] =   'active';
+		return View::make('admin.employees.departments', $this->data);
 	}
 
 	public function excelview(){

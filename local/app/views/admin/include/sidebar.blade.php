@@ -54,7 +54,6 @@
                     </li>
        
                     <li class="{{ $markAttendanceActive or ''}}">
-
                         <?php 
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Operations')->get();
                         foreach($desigId as $id){
@@ -63,7 +62,26 @@
                         <?php
                         }
                         ?>
-                       
+                    </li>
+                    <li class="{{ $markAttendanceActive or ''}}">
+                        <?php 
+                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Finance')->get();
+                        foreach($desigId as $id){
+                        ?>
+                            <a href="{{route("admin.employee.finance", $id['id'])}}">{{'Finance Department'}}</a>
+                        <?php
+                        }
+                        ?>
+                    </li>
+                    <li class="{{ $markAttendanceActive or ''}}">
+                        <?php 
+                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Administration')->get();
+                        foreach($desigId as $id){
+                        ?>
+                            <a href="{{route("admin.employee.finance", $id['id'])}}">{{'Admin Department'}}</a>
+                        <?php
+                        }
+                        ?>
                     </li>
 
                     <li class="{{ $markAttendanceActive or ''}}">

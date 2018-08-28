@@ -12,7 +12,9 @@
                         <div class="portlet-title">
                             <div class="title-left">
                                 <div class="icon"><i class="fa fa-users fa-fw"></i></div>
-                                <span>{{'Operations Department'}}</span>
+                                @foreach($designations as $desig)
+                                <span>{{$desig->designation }} Department</span>
+                                @endforeach
                             </div>
                             <div class="btn-portlet-right">
                             <a href="{{route('admin.employees.excelview')}}">
@@ -36,7 +38,6 @@
                                         <th class="text-center">{{trans('core.eID')}}</th>
                                         <th class="text-center">{{trans('core.image')}}</th>
                                             <th style="text-align: center">{{trans('core.name')}}</th>
-                                        <th class="text-center">{{trans('core.desigDept')}}</th>
                                         <th class="text-center">{{'Position'}}</th>
                                         <th class="text-center">{{trans('core.atWork')}}</th>
                                         <th class="text-center">Leave Credits</th>
@@ -56,19 +57,6 @@
                                         {{ $employee->lastName }}
                                         {{ $employee->middleName }}
                                         {{ $employee->suffix }}
-                                        </td>
-                                        
-                                        <td>
-                                            <p>
-                                            <?php  
-                                            foreach($employee->getWorkingHistory as $history ){
-                                                echo '<span>' . $history['companyName'] . '</span><br/>' ;
-                                            }
-                                            ?>                                            
-                                            </p>
-                                            <p>Department: <strong>{{ $employee->getDesignation->department->deptName or ''}}</strong></p>
-                                            <p>Designation: <strong>{{ $employee->getDesignation->designation or ''}}</strong></p>
-                                            <p>Work Pass Type: <strong>{{ $employee->workpass_type }}</strong></p>
                                         </td>
                                         <td>{{ $employee->jobTitle }}</td>
                                         <td class="text-center">{{ $employee->workDuration($employee->employeeID) }}</td>

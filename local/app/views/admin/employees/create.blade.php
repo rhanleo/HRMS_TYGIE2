@@ -17,6 +17,7 @@
                         <strong>{{trans('core.emailNotification')}}</strong>
                     </div>
                 </div>
+                
             @endif
              @include( 'admin.common.error' )
             {{ Form::open( array( 'route'=>"admin.employees.store", 'class' => 'custom-form', 'method'=>'POST', 'files' => true ) ) }}
