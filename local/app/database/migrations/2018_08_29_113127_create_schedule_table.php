@@ -15,7 +15,6 @@ class CreateScheduleTable extends Migration {
 		Schema::create('schedule', function(Blueprint $table)
 		{
             $table->increments('id');
-
             $table->string('employeeID',20);
             $table->index('employeeID');
             $table->foreign('employeeID')
