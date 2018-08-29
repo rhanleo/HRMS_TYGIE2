@@ -102,6 +102,9 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::get('employees/operations/{id}',['as'=>'admin.employee.operations','uses'=>'EmployeesController@operations']);
     Route::get('employees/finance/{id}',['as'=>'admin.employee.finance','uses'=>'EmployeesController@finance']);
     Route::get('employees/admin/{id}',['as'=>'admin.employee.admin','uses'=>'EmployeesController@admin']);
+    Route::get('employees/hrsales/{id}',['as'=>'admin.employee.hrsales','uses'=>'EmployeesController@hrsales']);
+    Route::get('employees/innovmktg/{id}',['as'=>'admin.employee.innovmktg','uses'=>'EmployeesController@innovmktg']);
+    Route::get('employees/production/{id}',['as'=>'admin.employee.production','uses'=>'EmployeesController@production']);
 
     //  Awards Routing
     Route::get('ajax_awards/',['as'=>'admin.ajax_awards','uses'=> 'AwardsController@ajax_awards']);

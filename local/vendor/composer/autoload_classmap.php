@@ -89,6 +89,7 @@ return array(
     'CreateNoticeboardsTable' => $baseDir . '/app/database/migrations/2015_02_10_044023_create_noticeboards_table.php',
     'CreatePayrollsTable' => $baseDir . '/app/database/migrations/2015_05_23_063217_create_payrolls_table.php',
     'CreateSalaryTable' => $baseDir . '/app/database/migrations/2015_01_20_100417_create_salary_table.php',
+    'CreateScheduleTable' => $baseDir . '/app/database/migrations/2018_08_29_113127_create_schedule_table.php',
     'CreateSettingsTable' => $baseDir . '/app/database/migrations/2015_02_04_073542_create_settings_table.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
     'Crypt_Base' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',

@@ -57,6 +57,27 @@ class EmployeesController extends \AdminBaseController {
 		$this->data['employeesActive'] =   'active';
 		return View::make('admin.employees.departments', $this->data);
 	}
+	public function hrsales($id){
+		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['designations']    =   Designation::Select('designation')
+															->where('designation', '=' ,'Human Resource and Sales')->get();
+		$this->data['employeesActive'] =   'active';
+		return View::make('admin.employees.departments', $this->data);
+	}
+	public function innovmktg($id){
+		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['designations']    =   Designation::Select('designation')
+															->where('designation', '=' ,'Innovation and Marketing')->get();
+		$this->data['employeesActive'] =   'active';
+		return View::make('admin.employees.departments', $this->data);
+	}
+	public function production($id){
+		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['designations']    =   Designation::Select('designation')
+															->where('designation', '=' ,'Production')->get();
+		$this->data['employeesActive'] =   'active';
+		return View::make('admin.employees.departments', $this->data);
+	}
 
 	// Finance department
 	public function productions($id){

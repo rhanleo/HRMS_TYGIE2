@@ -78,7 +78,37 @@
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Administration')->get();
                         foreach($desigId as $id){
                         ?>
-                            <a href="{{route("admin.employee.finance", $id['id'])}}">{{'Admin Department'}}</a>
+                            <a href="{{route("admin.employee.admin", $id['id'])}}">{{'Admin Department'}}</a>
+                        <?php
+                        }
+                        ?>
+                    </li>
+                    <li class="{{ $markAttendanceActive or ''}}">
+                        <?php 
+                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Human Resource and Sales')->get();
+                        foreach($desigId as $id){
+                        ?>
+                            <a href="{{route("admin.employee.hrsales", $id['id'])}}">{{'HR and Sales Department'}}</a>
+                        <?php
+                        }
+                        ?>
+                    </li>
+                    <li class="{{ $markAttendanceActive or ''}}">
+                        <?php 
+                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Innovation and Marketing')->get();
+                        foreach($desigId as $id){
+                        ?>
+                            <a href="{{route("admin.employee.innovmktg", $id['id'])}}">{{'Innovation and Marketing Department'}}</a>
+                        <?php
+                        }
+                        ?>
+                    </li>
+                    <li class="{{ $markAttendanceActive or ''}}">
+                        <?php 
+                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Production')->get();
+                        foreach($desigId as $id){
+                        ?>
+                            <a href="{{route("admin.employee.production", $id['id'])}}">{{'Production Department'}}</a>
                         <?php
                         }
                         ?>
