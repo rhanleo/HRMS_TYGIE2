@@ -15,7 +15,7 @@ class Schedule extends \Eloquent {
     protected $guarded  =   ['id'];
 
 //    Get employee Details
-    public function employeeDetails(){
+    public function getEmployee(){
 
         return $this->belongsTo('Employee','employeeID','employeeID');
     }

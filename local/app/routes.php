@@ -105,6 +105,13 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::get('employees/hrsales/{id}',['as'=>'admin.employee.hrsales','uses'=>'EmployeesController@hrsales']);
     Route::get('employees/innovmktg/{id}',['as'=>'admin.employee.innovmktg','uses'=>'EmployeesController@innovmktg']);
     Route::get('employees/production/{id}',['as'=>'admin.employee.production','uses'=>'EmployeesController@production']);
+    
+    //Schedule routes
+    Route::get('employees/schedule',['as'=>'admin.schedule.index','uses'=>'ScheduleController@index']);
+    Route::get('employees/schedule/create/{id}',['as'=>'admin.schedule.create','uses'=>'ScheduleController@create']);
+    Route::post('employees/schedule/store',['as'=>'admin.schedule.store','uses'=>'ScheduleController@store']);
+    Route::get('employees/schedule/edit/{id}',['as'=>'admin.schedule.edit','uses'=>'ScheduleController@edit']);
+    Route::patch('employees/schedule/update/{id}',['as'=>'admin.schedule.update','uses'=>'ScheduleController@update']);
 
     //  Awards Routing
     Route::get('ajax_awards/',['as'=>'admin.ajax_awards','uses'=> 'AwardsController@ajax_awards']);

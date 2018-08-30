@@ -161,6 +161,14 @@
                 </a>
             </li>
 
+             <li class="{{ $holidayOpen or ''}}">
+                <a href="{{route('admin.schedule.index')}}">
+                <i class="fa fa-calendar fa-fw"></i>
+                    <span class="title">{{'Schedule'}}</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+
 
             <li class="{{ $attendanceOpen or ''}}">
                 <a href="javascript:;">

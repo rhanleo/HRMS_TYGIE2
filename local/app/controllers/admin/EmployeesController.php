@@ -246,7 +246,7 @@ class EmployeesController extends \AdminBaseController {
 
 		DB::beginTransaction();
 		try {
-
+			
 			// $name = explode(' ', $input['fullName']);
 			$firstName = ucfirst($input['firstName']);
 
@@ -276,7 +276,6 @@ class EmployeesController extends \AdminBaseController {
 				'employeeID'    => $input['employeeID'],
 				'designation'   => $input['designation'],
 				'jobTitle'   => $input['jobTitle'],
-				// 'fullName'      => ucwords(strtolower($input['fullName'])),
 				'firstName'      => ucwords(strtolower($input['firstName'])),
 				'lastName'      => ucwords(strtolower($input['lastName'])),
 				'middleName'    => $input['middleName'],

@@ -1886,6 +1886,8 @@ class ComposerStaticInit8f77428bb52c7ba6e61968f64f5861ee
         'SSSController' => __DIR__ . '/../..' . '/app/controllers/SSSController.php',
         'Salary' => __DIR__ . '/../..' . '/app/models/Salary.php',
         'SalaryController' => __DIR__ . '/../..' . '/app/controllers/admin/SalaryController.php',
+        'Schedule' => __DIR__ . '/../..' . '/app/models/Schedule.php',
+        'ScheduleController' => __DIR__ . '/../..' . '/app/controllers/admin/ScheduleController.php',
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
         'Setting' => __DIR__ . '/../..' . '/app/models/Setting.php',
         'SettingTableSeeder' => __DIR__ . '/../..' . '/app/database/seeds/DatabaseSeeder.php',

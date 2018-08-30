@@ -46,11 +46,19 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 			'accountNumber' =>   'required'
 		],
 
-		'personalInfo'=>[
+		'personalInfo' => [
 			'firstName'      =>   $fullNameValidation,
 			'lastName'      =>   $fullNameValidation,
 			'email'         =>   "required|email|unique:employees,email,:id",
 			'profileImage'  =>   $ProfileImageValidation,
+		],
+
+		'schedule' => [
+			'dateTo'      =>   'required',
+			'dateFrom'    =>   'required',
+			'timeFrom'    =>   'required',
+			'timeTo'      =>   'required',
+			'shift'      =>   'required',
 		],
 
 	];
@@ -73,6 +81,12 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $hidden  = ['password'];
 
+
+	public function getSchedule()
+    {
+       // belongs('OtherClass','thisclasskey','otherclasskey')
+       return $this->hasMany('Schedule','employeeID','employeeID');
+    }
     public function getDesignation()
     {
        // belongs('OtherClass','thisclasskey','otherclasskey')

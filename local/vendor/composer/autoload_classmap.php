@@ -1643,6 +1643,8 @@ return array(
     'SSSController' => $baseDir . '/app/controllers/SSSController.php',
     'Salary' => $baseDir . '/app/models/Salary.php',
     'SalaryController' => $baseDir . '/app/controllers/admin/SalaryController.php',
+    'Schedule' => $baseDir . '/app/models/Schedule.php',
+    'ScheduleController' => $baseDir . '/app/controllers/admin/ScheduleController.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'Setting' => $baseDir . '/app/models/Setting.php',
     'SettingTableSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
