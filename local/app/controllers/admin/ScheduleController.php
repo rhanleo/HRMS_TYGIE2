@@ -75,7 +75,7 @@ class ScheduleController extends \AdminBaseController {
 
 		DB::commit();
 		$fullName = $input['name'] ;
-		return Redirect::route('admin.schedule.create')->with('success',"<strong>{$fullName}</strong> successfully added to the Database");
+		return Redirect::route('admin.schedule.index')->with('success',"<strong>{$fullName}</strong> successfully added to the Database");
 	}
 
 
@@ -144,12 +144,9 @@ class ScheduleController extends \AdminBaseController {
 
 	public function destroy($id)
 	{
-		Employee::where('employeeID', '=', $id)->delete();
-		$output['success']  =   'deleted';
-
-		/** REMOVE LEAVE CREDITS */
-		DB::table('leave_credits')->where('employeeID', $id)->delete();
-		return Response::json($output, 200);
+		Schedule::where('id', '=', $id)->delete();
+		return Redirect::route('admin.schedule.index')->with('success',"<strong>schedule</strong> successfully deleted.");
+		
 	}
 
 

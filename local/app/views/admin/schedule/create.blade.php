@@ -21,9 +21,9 @@
                         <div class="form-group">
                             <label>Date</label>
                                 <span>From</span>
-                                <input  type="text" style="margin-right: 60px;" name="dateFrom" class=" date date-picker"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                                <input  type="text"  placeholder="dd-mm-yyyy" style="margin-right: 60px;" name="dateFrom" class=" date date-picker"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                                 <span>To</span>
-                                <input type="text" name="dateTo" class=" date date-picker"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                                <input type="text" placeholder="dd-mm-yyyy" name="dateTo" class=" date date-picker"  data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                                 
                         </div>
                         <div class="form-group">
@@ -47,9 +47,7 @@
                         <div class="form-group">
                             <label>Remarks</label>
                            
-                            <textarea name="remarks" style="width: 90%;">
-                                
-                            </textarea>
+                            <textarea name="remarks" style="width: 90%;"></textarea>
                         </div> 
 
                             <div class="btn-panel btn-add-employee">

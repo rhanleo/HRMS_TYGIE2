@@ -112,6 +112,7 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::post('employees/schedule/store',['as'=>'admin.schedule.store','uses'=>'ScheduleController@store']);
     Route::get('employees/schedule/edit/{id}',['as'=>'admin.schedule.edit','uses'=>'ScheduleController@edit']);
     Route::patch('employees/schedule/update/{id}',['as'=>'admin.schedule.update','uses'=>'ScheduleController@update']);
+    Route::get('employees/schedule/destroy/{id}',['as'=>'admin.schedule.destroy','uses'=>'ScheduleController@destroy']);
 
     //  Awards Routing
     Route::get('ajax_awards/',['as'=>'admin.ajax_awards','uses'=> 'AwardsController@ajax_awards']);

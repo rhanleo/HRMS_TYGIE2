@@ -25,11 +25,12 @@
                                             <th style="text-align: center">{{trans('core.name')}}</th>
                                         <th class="text-center">{{trans('core.desigDept')}}</th>
                                         <th class="text-center">{{'Position'}}</th>
-                                        <th class="text-center">{{'Duration Date'}}</th>
-                                        <th class="text-center">{{'Time'}}</th>
-                                        <th class="text-center">{{'Shift'}}</th>
-                                        <th class="text-center">{{'Remarks'}}</th>
-                                        <th class="text-center">{{trans('core.action')}}</th>
+                                        <th class="text-center" style="width:100px">{{'Duration Date'}}</th>
+                                        <th class="text-center" style="width:100px">{{'Time'}}</th>
+                                        <th class="text-center" style="width:100px">{{'Shift'}}</th>
+                                        <th class="text-center" style="width:100px">{{'Remarks'}}</th>
+                                        <th class="text-center" style="width:100px">{{'Add'}}</th>
+                                        <th class="text-center" style="width:100px">{{trans('core.action')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,9 +55,9 @@
                                         </td>
                                        
                                         <td>{{ $employee->jobTitle }}</td>
-                                        <td class="text-center">
+                                        <td class="text-center" style="width:100px">
                                         @if(count($employee->getSchedule) > 0)
-                                            <p style="border:2px dotted #4a4a4a;">
+                                            
                                                 <?php 
                                                     foreach($employee->getSchedule as $key){
                                                         $dateFrom = date_create($key['dateFrom']);
@@ -64,28 +65,28 @@
                                                         $dFrom = date_format($dateFrom, "F d, Y");
                                                         $dTo = date_format($dateTo, "F d, Y");
                                                     
-                                                    echo $dFrom . "  " .$dTo;
+                                                    echo '<p>' . $dFrom . "  " .$dTo . ' </p>';
                                                     }
                                                 ?>
-                                            </p>
+                                           
                                             @endif
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-center" style="width:100px">
                                         @if(count($employee->getSchedule) > 0)
-                                            <p style="border:2px dotted #4a4a4a;">
+                                            
                                                 <?php 
                                                     foreach($employee->getSchedule as $key){
-                                                    echo $key['timeFrom'] . " " . $key['timeTo'];
+                                                    echo '<p>' . $key['timeFrom'] . " " . $key['timeTo'] .'  </p>';
                                                     }
                 
                                                 ?>
-                                            </p>
+                                          
                                         @endif
                                         </td>
-                                        <td>
+                                        <td style="width:100px">
                                         <?php 
                                                 foreach($employee->getSchedule as $key){
-                                                   echo $key['shift'] ;
+                                                   echo '<p>' . $key['shift'] .'</p>' ;
                                                 }
             
                                             ?>
@@ -93,18 +94,22 @@
                                         <td>
                                         <?php 
                                                 foreach($employee->getSchedule as $key){
-                                                   echo $key['remarks'] ;
+                                                   echo '<p>' . $key['remarks'] .'</p>';
                                                 }
             
                                             ?>
                                         </td>
-                                        <td class="" style="width: 112px;">                                            
+                                        <td>
+                                        <a class="btn btn-success" href="{{ route('admin.schedule.create',$employee->employeeID)  }}" style="width:25px;"><i class="fa fa-plus fa-fw"></i></a>
+                                        </td>
+                                        <td class="" style="width: 100px;">                                            
                                             <div class="btn-actions">
-                                                <a class="btn btn-success" href="{{ route('admin.schedule.create',$employee->employeeID)  }}" style="width:25px;"><i class="fa fa-plus fa-fw"></i></a>
+                                               
                                                 
                                                     @foreach($employee->getSchedule as $key)
                                                     <a class="btn btn-info" href="{{ route('admin.schedule.edit',$key['id'])  }}" style="width:25px;"><i class="fa fa-edit fa-fw"></i></a>
-                                                    <a class="btn btn-danger" href="javascript:;" onclick="del('{{$employee->id}}','{{ addslashes($employee->fullName) }}')"style="width:25px;"><i class="fa fa-trash fa-fw"></i></a>
+                                                    <a class="btn btn-danger" href="{{ route('admin.schedule.destroy',$key['id'])  }}" style="width:25px;"><i class="fa fa-trash fa-fw"></i></a>
+                                                    <p style="color:#fff;">----------</p>
                                                     @endforeach
                                                 
                                                </div>

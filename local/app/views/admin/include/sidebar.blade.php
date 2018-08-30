@@ -53,7 +53,7 @@
                         <a href="{{route('admin.employees.index')}}">{{'All Departments'}}</a>
                     </li>
        
-                    <li class="{{ $markAttendanceActive or ''}}">
+                    <li>
                         <?php 
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Operations')->get();
                         foreach($desigId as $id){
@@ -63,7 +63,7 @@
                         }
                         ?>
                     </li>
-                    <li class="{{ $markAttendanceActive or ''}}">
+                    <li>
                         <?php 
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Finance')->get();
                         foreach($desigId as $id){
@@ -73,7 +73,7 @@
                         }
                         ?>
                     </li>
-                    <li class="{{ $markAttendanceActive or ''}}">
+                    <li>
                         <?php 
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Administration')->get();
                         foreach($desigId as $id){
@@ -83,7 +83,7 @@
                         }
                         ?>
                     </li>
-                    <li class="{{ $markAttendanceActive or ''}}">
+                    <li>
                         <?php 
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Human Resource and Sales')->get();
                         foreach($desigId as $id){
@@ -93,7 +93,7 @@
                         }
                         ?>
                     </li>
-                    <li class="{{ $markAttendanceActive or ''}}">
+                    <li>
                         <?php 
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Innovation and Marketing')->get();
                         foreach($desigId as $id){
@@ -103,7 +103,7 @@
                         }
                         ?>
                     </li>
-                    <li class="{{ $markAttendanceActive or ''}}">
+                    <li>
                         <?php 
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Production')->get();
                         foreach($desigId as $id){
@@ -114,7 +114,7 @@
                         ?>
                     </li>
 
-                    <li class="{{ $markAttendanceActive or ''}}">
+                    <li>
                         <a href="{{route('admin.employees.workinghistory')}}">{{'Working History'}}</a>
                     </li>
                     
