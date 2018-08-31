@@ -1645,6 +1645,7 @@ return array(
     'SalaryController' => $baseDir . '/app/controllers/admin/SalaryController.php',
     'Schedule' => $baseDir . '/app/models/Schedule.php',
     'ScheduleController' => $baseDir . '/app/controllers/admin/ScheduleController.php',
+    'ScheduleFrontController' => $baseDir . '/app/controllers/front/ScheduleFrontController.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'Setting' => $baseDir . '/app/models/Setting.php',
     'SettingTableSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',

@@ -14,8 +14,8 @@
                 <!--Profile Body-->
                 <div class="profile-body">
 
-					<h2>{{trans('core.jobVacancy')}}</h2><hr>
-
+					<h2>{{trans('core.jobVacancy')}} </h2><hr>
+					
 					@if(Session::get('success'))
 						<div class="row">
 								<div class="col-md-12">

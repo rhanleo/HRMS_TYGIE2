@@ -129,13 +129,21 @@ ul li {
                             </a>
                         </li>
                         <!-- Appraisal -->
+                        <!-- Schedule -->
+                        <li class="{{$jobActive or ''}}">
+                            <a href="{{ route('schedule.index',Auth::employees()->get()->employeeID)}}">
+                                {{'Schedule'}}
+                            </a>
+                        </li>
+                        <!-- end Schedule -->
                         <!-- Job -->
                         <li class="{{$jobActive or ''}}">
                             <a href="{{ route('jobs.index')}}">
                                 {{Lang::get('menu.job')}}
                             </a>
                         </li>
-                        <!-- Job -->
+                        <!-- End Job -->
+
 
 						<!-- My Account -->
                         <li class="dropdown {{$accountActive or ''}}">
@@ -278,7 +286,7 @@ ul li {
                                         </div>
                                         <div class="col-sm-8 col-xs-12">
                                             <div class="overflow-h">
-                                                <span><strong>{{$birthday->fullName}}</strong>  {{Lang::get('core.hasBirthDayOn')}}</span>
+                                                <span><strong>{{$birthday->firstName . ' ' . $birthday->lastName }}</strong>  {{Lang::get('core.hasBirthDayOn')}}</span>
                                                 <strong>{{date('d F',strtotime($birthday->date_of_birth))}}</strong>
                                             </div>
                                         </div>

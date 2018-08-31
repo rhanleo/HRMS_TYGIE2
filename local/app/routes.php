@@ -59,7 +59,11 @@ Route::group(array('before' => 'auth.employees'), function()
     Route::resource('dashboard','DashboardController');
 
 	Route::get('ajax_expenses/',['as'=>'front.ajax_expenses','uses'=> 'ExpenseFrontsController@ajax_expenses']);
-	Route::resource('expenses', 'ExpenseFrontsController',['as' => 'front']);
+    Route::resource('expenses', 'ExpenseFrontsController',['as' => 'front']);
+    
+    //Schedule
+    Route::get('schedule/{id}', ['as'=>'schedule.index','uses'=>'ScheduleFrontController@index'] );
+
 });
 
 

@@ -6,6 +6,7 @@
     <div class="col-md-9">
                                 <!--Profile Body-->
                                 <div class="profile-body">
+								
                                     <div class="row margin-bottom-20">
                                         <!--Profile Post-->
                                         <div class="col-sm-6">
