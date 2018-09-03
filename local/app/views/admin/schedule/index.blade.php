@@ -12,7 +12,7 @@
                         <div class="portlet-title">
                             <div class="title-left">
                                 <div class="icon"><i class="fa fa-users fa-fw"></i></div>
-                                <span>{{'Schedule'}}</span>
+                                <span>{{$pageTitle}}</span>
                             </div>
                             
                         </div> {{-- end of .portlet-title --}}

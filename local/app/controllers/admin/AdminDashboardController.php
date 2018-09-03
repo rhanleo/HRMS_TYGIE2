@@ -13,6 +13,24 @@ class AdminDashboardController extends AdminBaseController
 
 // Dashboard view page   controller
 	public function index() {
+		
+		// $effectiveDate = date('Y-m-d', strtotime("+90 days", strtotime($d['joiningDate'])));
+		
+		$probationary = Employee::select('firstName', 'lastName', 'joiningDate','profileImage')
+		// ->where("joiningDate", '=', date('Y-m-d'))
+		->where('status','=','active')
+		->orderBy('joiningDate','asc')
+		->get();
+		
+		foreach($probationary as $pro){
+			$effectiveDate = date('Y-m-d', strtotime("+90 days", strtotime($pro['joiningDate'])));
+			if($effectiveDate == date('Y-m-d')){
+				$this->data['probationary'] = $pro;
+				
+			}
+		}
+		
+
 		$this->data['holidays'] =   Holiday::all();
 		$attendance   = Attendance::where(function($query)
                                     {

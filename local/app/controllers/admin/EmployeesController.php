@@ -36,6 +36,7 @@ class EmployeesController extends \AdminBaseController {
 	// operation department
 	public function operations($id){
 		$this->data['employees']     =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['pageTitle']       =   'Operations';
 		$this->data['designations']  =   Designation::Select('designation')
 														->where('designation', '=' ,'Operations')->get();
 		$this->data['employeesActive'] =   'active';
@@ -45,6 +46,7 @@ class EmployeesController extends \AdminBaseController {
 	// Finance department
 	public function finance($id){
 		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['pageTitle']       =   'Finance';
 		$this->data['designations']    =   Designation::Select('designation')
 															->where('designation', '=' ,'Finance')->get();
 		$this->data['employeesActive'] =   'active';
@@ -52,6 +54,7 @@ class EmployeesController extends \AdminBaseController {
 	}
 	public function admin($id){
 		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['pageTitle']       =   'Admin';
 		$this->data['designations']    =   Designation::Select('designation')
 															->where('designation', '=' ,'Administration')->get();
 		$this->data['employeesActive'] =   'active';
@@ -59,6 +62,7 @@ class EmployeesController extends \AdminBaseController {
 	}
 	public function hrsales($id){
 		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['pageTitle']       =   'HRSales';
 		$this->data['designations']    =   Designation::Select('designation')
 															->where('designation', '=' ,'Human Resource and Sales')->get();
 		$this->data['employeesActive'] =   'active';
@@ -66,6 +70,7 @@ class EmployeesController extends \AdminBaseController {
 	}
 	public function innovmktg($id){
 		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['pageTitle']       =   'Innovmktg';
 		$this->data['designations']    =   Designation::Select('designation')
 															->where('designation', '=' ,'Innovation and Marketing')->get();
 		$this->data['employeesActive'] =   'active';
@@ -73,20 +78,13 @@ class EmployeesController extends \AdminBaseController {
 	}
 	public function production($id){
 		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['pageTitle']       =   'Productions';
 		$this->data['designations']    =   Designation::Select('designation')
 															->where('designation', '=' ,'Production')->get();
 		$this->data['employeesActive'] =   'active';
 		return View::make('admin.employees.departments', $this->data);
 	}
 
-	// Finance department
-	public function productions($id){
-		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
-		$this->data['designations']    =   Designation::Select('designation')
-															->where('designation', '=' ,'Productions')->get();
-		$this->data['employeesActive'] =   'active';
-		return View::make('admin.employees.departments', $this->data);
-	}
 
 	public function excelview(){
 		$this->data['employeesActive'] =   'active';

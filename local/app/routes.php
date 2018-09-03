@@ -103,12 +103,12 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::get('employees/workinghistory/{id}',['as'=>'admin.employee.workinghistory','uses'=>'WorkingHistoryController@view']);
 
     //Internal Departments employees
-    Route::get('employees/operations/{id}',['as'=>'admin.employee.operations','uses'=>'EmployeesController@operations']);
-    Route::get('employees/finance/{id}',['as'=>'admin.employee.finance','uses'=>'EmployeesController@finance']);
-    Route::get('employees/admin/{id}',['as'=>'admin.employee.admin','uses'=>'EmployeesController@admin']);
-    Route::get('employees/hrsales/{id}',['as'=>'admin.employee.hrsales','uses'=>'EmployeesController@hrsales']);
-    Route::get('employees/innovmktg/{id}',['as'=>'admin.employee.innovmktg','uses'=>'EmployeesController@innovmktg']);
-    Route::get('employees/production/{id}',['as'=>'admin.employee.production','uses'=>'EmployeesController@production']);
+    Route::get('employees/operations/{id}',['as'=>'admin.operations.index','uses'=>'EmployeesController@operations']);
+    Route::get('employees/finance/{id}',['as'=>'admin.finance.index','uses'=>'EmployeesController@finance']);
+    Route::get('employees/admin/{id}',['as'=>'admin.admin.index','uses'=>'EmployeesController@admin']);
+    Route::get('employees/hrsales/{id}',['as'=>'admin.hrsales.index','uses'=>'EmployeesController@hrsales']);
+    Route::get('employees/innovmktg/{id}',['as'=>'admin.innovmktg.index','uses'=>'EmployeesController@innovmktg']);
+    Route::get('employees/production/{id}',['as'=>'admin.productions.index','uses'=>'EmployeesController@production']);
     
     //Schedule routes
     Route::get('employees/schedule',['as'=>'admin.schedule.index','uses'=>'ScheduleController@index']);

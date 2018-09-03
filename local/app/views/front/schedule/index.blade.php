@@ -55,7 +55,7 @@
 								</td>
 								<td>{{$sched->timeFrom . ' ' . $sched->timeTo}}</td>
 								<td>{{$sched->shift }}</td>
-								<td>{{$sched->shift}}</td>
+								<td>{{$sched->remarks}}</td>
 								<td>
 									<?php 
 										$update = date_create($sched['updated_at']);

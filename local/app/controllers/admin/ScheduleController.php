@@ -22,7 +22,8 @@ class ScheduleController extends \AdminBaseController {
 	{
 		$this->data['employees']       =    Employee::all()->sortBy('employeeID');
 		$this->data['employeesActive'] =   'active';
-		
+		$this->data['pageTitle'] =   'Schedule';
+				
 		return View::make('admin.schedule.index', $this->data);
 	}
 

@@ -25,14 +25,16 @@ class AdminBaseController extends Controller {
 	    }
 
 	    $this->data['loggedAdmin']  = Auth::admin()->get();
-	    $this->data['pending_applications']   = LeaveApplication::where('application_status','=','pending')->get();
-	    $this->data['languages']   = Language::all();
+		$this->data['pending_applications']   = LeaveApplication::where('application_status','=','pending')->get();
+		$this->data['overtime_applications']  = OvertimeApplication::where('application_status','=','pending')->get();
+		
+		$this->data['languages']   = Language::all();
 	    /** GET SLUG */
 			$current_uri = Route::current()->uri();
      	$current_uri = explode('/', $current_uri);
      	$this->data['slug'] = count($current_uri) > 1 ? $current_uri[1] : $current_uri[0];
 
-
+		 
     }
 
 

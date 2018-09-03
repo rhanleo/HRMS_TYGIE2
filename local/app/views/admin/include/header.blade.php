@@ -10,6 +10,7 @@
                 </li>
                 <?php
                     try {
+                        $slug = strtolower($pageTitle);
                         $main_slug = route('admin.'.$slug.'.index');
                     } catch (Exception $e) {
                         $main_slug = '';
@@ -50,7 +51,7 @@
                                                 <span class="label label-sm label-icon label-success">
                                                     <i class="fa fa-bell-o"></i>
                                                 </span>
-                                                <strong>{{$pending->employeeDetails->fullName}} </strong> has applied for leave on
+                                                <strong>{{$pending->employeeDetails->firstName . ' ' . $pending->employeeDetails->lastName}} </strong> has applied for leave on
 
                                                 @if(isset($pending->end_date) && $pending->end_date != null)
                                                     {{ date('d-M-Y',strtotime($pending->start_date)) }} to {{ date('d-M-Y',strtotime($pending->end_date)) }}

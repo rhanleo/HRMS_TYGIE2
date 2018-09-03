@@ -22,7 +22,7 @@ class OvertimeApplications extends \AdminBaseController {
 		$this->data['employees']       =    Employee::all();
 		$this->data['leavetypes']       =    Leavetype::all();
         $this->data['leaveTypeWithoutHalfDay']   =   Attendance::leaveTypesEmployees('half day');
-
+		
 		return View::make('admin.overtime_applications.index', $this->data);
 	}
 

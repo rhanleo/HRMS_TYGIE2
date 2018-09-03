@@ -126,6 +126,17 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 
                 ->get();
         return $birthdays;
+	}
+	
+	public static function  getProbationary()
+    {
+        $birthdays = Employee::select('firstName', 'lastName', 'joiningDate','profileImage')
+                ->whereRaw("date(date_of_birth) = ?", [date('Y-m-d', strtotime("+87 days"))])
+                ->where('status','=','active')
+	            ->orderBy('joiningDate','asc')
+
+                ->get();
+        return $birthdays;
     }
 	
 	//Function to calculate number of days of work

@@ -27,6 +27,51 @@
             </div> {{-- end of .count-summary --}}
             <div class="row">
                 <div class="col-xs-12 col-md-5">
+                    <div class="portlet box probationay-portlet">
+                        <div class="portlet-title has-pad">
+                            <div class="title-left">
+                                <div class="icon"><img src="{{ URL::asset( 'assets/global/img/icons/customer.png' ) }}" /></div>
+                                <span>{{'Probationary'}}</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+                                <ul class="feeds">
+                                 @if(count($probationary)>0)
+                                   
+                                        <li>
+                                            
+                                            <div class="img-container">
+                                                @if( $probationary->profileImage )
+                                                  
+                                                    <div class="img-user" style="background-image: url( {{ url( 'profileImages/' . $probationary->profileImage ) }} );"></div>
+                                                @else
+                                                    
+                                                    <div class="img-default" style="background-image: url( {{ URL::asset( 'assets/global/img/profile-img/default.png' ) }} );"></div>
+                                                @endif
+                                            </div>
+                                            <h3 class="name">{{ $probationary->firstName . ' ' .$probationary->lastName }}</h3>
+                                            <p style="color: red;">Having 3 Months on</p>
+                                            <h3 class="dob">
+                                                <?php
+                                                echo date('d M Y', strtotime("+93 days", strtotime($probationary['joiningDate'])))
+                                                ?> 
+                                            </h3>
+                                            <p>{{ 'Employed on'}}</p>
+                                            <h3 class="dob">{{ date( 'd M Y',strtotime( $probationary->joiningDate ) ) }}</h3>
+                                            
+
+                                        </li>
+                                  
+                                    @else
+                                        <li class="no-dob">
+                                            {{Lang::get('messages.noBirthdays')}}
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="portlet box birthday-portlet">
                         <div class="portlet-title has-pad">
                             <div class="title-left">

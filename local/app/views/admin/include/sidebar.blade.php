@@ -58,7 +58,7 @@
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Operations')->get();
                         foreach($desigId as $id){
                         ?>
-                            <a href="{{route("admin.employee.operations", $id['id'])}}">{{'Operations Department'}}</a>
+                            <a href="{{route("admin.operations.index", $id['id'])}}">{{'Operations Department'}}</a>
                         <?php
                         }
                         ?>
@@ -68,7 +68,7 @@
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Finance')->get();
                         foreach($desigId as $id){
                         ?>
-                            <a href="{{route("admin.employee.finance", $id['id'])}}">{{'Finance Department'}}</a>
+                            <a href="{{route("admin.finance.index", $id['id'])}}">{{'Finance Department'}}</a>
                         <?php
                         }
                         ?>
@@ -78,7 +78,7 @@
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Administration')->get();
                         foreach($desigId as $id){
                         ?>
-                            <a href="{{route("admin.employee.admin", $id['id'])}}">{{'Admin Department'}}</a>
+                            <a href="{{route("admin.admin.index", $id['id'])}}">{{'Admin Department'}}</a>
                         <?php
                         }
                         ?>
@@ -88,7 +88,7 @@
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Human Resource and Sales')->get();
                         foreach($desigId as $id){
                         ?>
-                            <a href="{{route("admin.employee.hrsales", $id['id'])}}">{{'HR and Sales Department'}}</a>
+                            <a href="{{route("admin.hrsales.index", $id['id'])}}">{{'HR and Sales Department'}}</a>
                         <?php
                         }
                         ?>
@@ -98,7 +98,7 @@
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Innovation and Marketing')->get();
                         foreach($desigId as $id){
                         ?>
-                            <a href="{{route("admin.employee.innovmktg", $id['id'])}}">{{'Innovation and Marketing Department'}}</a>
+                            <a href="{{route("admin.innovmktg.index", $id['id'])}}">{{'Innovation and Marketing Department'}}</a>
                         <?php
                         }
                         ?>
@@ -108,7 +108,7 @@
                         $desigId = Designation::Select('id')->Where('Designation', '=', 'Production')->get();
                         foreach($desigId as $id){
                         ?>
-                            <a href="{{route("admin.employee.production", $id['id'])}}">{{'Production Department'}}</a>
+                            <a href="{{route("admin.productions.index", $id['id'])}}">{{'Production Department'}}</a>
                         <?php
                         }
                         ?>
@@ -185,6 +185,7 @@
                     </li>
                     <li class="{{ $leaveTypeActive or ''}}">
                         <a href="{{route('admin.leavetypes.index')}}">{{Lang::get('menu.leaveTypes')}}</a>
+                       
                     </li>
                 </ul>
             </li>
