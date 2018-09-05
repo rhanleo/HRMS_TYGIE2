@@ -62,7 +62,10 @@
                                             
                                             <p>Department: <strong>{{ $employee->getDesignation->department->deptName or ''}}</strong></p>
                                             <p>Designation: <strong>{{ $employee->getDesignation->designation or ''}}</strong></p>
-                                            <p>Work Pass Type: <strong>{{ $employee->workpass_type }}</strong></p>
+                                            @if(count($employee->getBranch['branch']) > 0 )
+                                            <p>Branch <strong>{{$employee->getBranch['branch']}}</strong></p>
+                                            @endif
+                                           
                                         </td>
                                         <td>{{ $employee->jobTitle }}</td>
                                         <td class="text-center">{{ $employee->workDuration($employee->employeeID) }}</td>

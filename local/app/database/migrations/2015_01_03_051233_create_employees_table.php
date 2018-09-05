@@ -37,7 +37,8 @@ class CreateEmployeesTable extends Migration {
 			$table->foreign('designation')
 			      ->references('id')->on('designation')
 			      ->onUpdate('cascade')
-			      ->onDelete('cascade');
+				  ->onDelete('cascade');
+		
 			$table->timestamps();
 		});
 	}

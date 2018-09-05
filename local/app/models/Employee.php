@@ -81,7 +81,11 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $hidden  = ['password'];
 
-
+	public function getBranch()
+    {
+       // belongs('OtherClass','thisclasskey','otherclasskey')
+       return $this->belongsTo('Branch','branch','id');
+    }
 	public function getSchedule()
     {
        // belongs('OtherClass','thisclasskey','otherclasskey')
@@ -128,16 +132,16 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
         return $birthdays;
 	}
 	
-	public static function  getProbationary()
-    {
-        $birthdays = Employee::select('firstName', 'lastName', 'joiningDate','profileImage')
-                ->whereRaw("date(date_of_birth) = ?", [date('Y-m-d', strtotime("+87 days"))])
-                ->where('status','=','active')
-	            ->orderBy('joiningDate','asc')
+	// public static function  getProbationary()
+    // {
+    //     $probationary = Employee::select('firstName', 'lastName', 'joiningDate','profileImage')
+    //             ->whereRaw("date(date_of_birth) = ?", [date('Y-m-d', strtotime("+87 days"))])
+    //             ->where('status','=','active')
+	//             ->orderBy('joiningDate','asc')
 
-                ->get();
-        return $birthdays;
-    }
+    //             ->get();
+    //     return $probationary;
+    // }
 	
 	//Function to calculate number of days of work
 	public function workDuration($employeeID)

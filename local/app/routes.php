@@ -127,6 +127,7 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
 
     //  Department Routing
     Route::get('departments/ajax_designation/',['as'=>'admin.departments.ajax_designation','uses'=> 'DepartmentsController@ajax_designation']);
+    Route::get('departments/ajax_branch/',['as'=>'admin.departments.ajax_branch','uses'=> 'DepartmentsController@ajax_branch']);
     Route::resource('departments', 'DepartmentsController',['except' => ['show','create'],'as' => 'admin']);
     Route::get('departments/sub/',['as'=>'admin.departments.sub','uses'=> 'DepartmentsController@sub']);
     Route::post('departments/sub/',['as'=>'admin.departments.save','uses'=> 'DepartmentsController@save']);

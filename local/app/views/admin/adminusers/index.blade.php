@@ -193,9 +193,9 @@
 			</label>
 			<div class="col-md-8">
 			<select name="level">
-				<option value="0">0 - Super Admin</option>
-				<option value="1">1 - HRS Admin</option>
-				<option value="2">2 - Finance Admin</option>
+				<option value="0">Super Admin</option>
+				<option value="1">HRS Admin</option>
+				<option value="2">Finance Admin</option>
 				
 			</select>
 			</div>

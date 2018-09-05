@@ -184,5 +184,16 @@ class DepartmentsController extends \AdminBaseController {
 		    return Response::json($designation, 200);
 		}
 	
+	}
+	public function ajax_branch()
+    {
+	    if (Request::ajax()) {
+		    $input = Input::get('deptID');
+		    $designation = Branch::where('designationID', '=', $input)
+		                              ->get();
+			// $designation = array(array('id'=>'1', 'designation'=>'web'),array('id'=>'2', 'designation'=>'web2'));
+		    return Response::json($designation, 200);
+		}
+	
     }
 }
