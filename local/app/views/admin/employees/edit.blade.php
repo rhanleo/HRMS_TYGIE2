@@ -353,6 +353,13 @@
                                                 <label for="designation">{{trans('core.designation')}}<span class="required">* </span></label>
                                                 <select  class="select2me form-control" name="designation" id="designation" ></select>
                                             </div>
+                                            @if(count($designation['designation']) > 0 )
+                                            <div class="col-md-6 branch_wrapper">
+                                                <label for="branch">{{'Branch'}}</label>
+                                                <select  class="select2me form-control" name="branch_id" id="branch" ></select>
+                                               
+                                            </div>
+                                            @endif
                                             <div class="col-md-12">
                                             <br/>
                                            
@@ -631,7 +638,10 @@
 <script>
         jQuery(document).ready(function() {
            ComponentsPickers.init();
+           
             dept();
+          
+            setTimeout(function(){ Branch(); }, 1000);
 
         });
 
@@ -649,25 +659,47 @@
     showToastrMessage('{{ Session::get('successPersonal') }}', '{{Lang::get('messages.success')}}', 'success');
   @endif
 
-      function dept(){
+function dept(){
 
-                  $.getJSON("{{ route('admin.departments.ajax_designation')}}",
-                  { deptID: $('#department').val() },
-                  function(data) {
-                       var model = $('#designation');
-                             model.empty();
-                       var selected='';
-                       var match= {{ $employee->designation}};
-                      $.each(data, function(index, element) {
-                          if(element.id==match)selected='selected';
-                          else selected='';
-                          model.append("<option value='"+element.id+"' "+selected+">" + element.designation + "</option>");
-                      });
+    $.getJSON("{{ route('admin.departments.ajax_designation')}}",
+    { deptID: $('#department').val() },
+    function(data) {
+        var model = $('#designation');
+                // model.empty();
+        var selected='';
+        var match= {{ $employee->designation}};
+        console.log(data);
+        $.each(data, function(index, element) {
+        if(element.id==match){
+            selected='selected';
+        }else{
+            selected='';
+        } 
+            model.append("<option value='"+element.id+"' "+selected+">" + element.designation + "</option>");
+        });
 
-                 });
+    });
+}
 
+function Branch(){
+    $.getJSON("{{route('admin.departments.ajax_branch')}}",
+    { deptID: $('#designation').val() },
+    function(data) {
+        var model = $('#branch');
+        var selected='';
+        var match= {{ $employee->branch}};
+        $.each(data, function(index, element) {
+            if(element.id==match){
+                selected='selected';
+            }else{
+                selected='';
+            } 
 
-            }
+            model.append("<option value='"+element.id+"' "+selected+">" + element.branch + "</option>");
+        });
+
+    });
+}
 
 // Javascript function to update the company info and Bank Info
        function UpdateDetails(id,type){

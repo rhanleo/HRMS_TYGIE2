@@ -195,5 +195,6 @@ class DepartmentsController extends \AdminBaseController {
 		    return Response::json($designation, 200);
 		}
 	
-    }
+	}
+	
 }

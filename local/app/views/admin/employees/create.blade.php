@@ -298,11 +298,12 @@
                                                 <select  class="select2me form-control" name="designation" id="designation" onchange="Branch();return false;" ></select>
                                                
                                             </div>
+                                            @if(count($designation['designation']) > 0 )
                                             <div class="col-md-6 branch_wrapper">
                                                 <label for="branch">{{'Branch'}}</label>
-                                                <select  class="select2me form-control" name="branch" id="branch" ></select>
-                                               
+                                                <select  class="select2me form-control" name="branch_id" id="branch" ></select>
                                             </div>
+                                            @endif
                                             <div class="col-md-12">
                                             <br/>
                                                 <label for="jobTitle">{{'Job Title'}}</label>
@@ -440,7 +441,7 @@ function dept(){
             var model = $('#designation');
            
             model.empty();
-            console.log(data);
+            // console.log(data);
             model.append("<option> Select </option>");
            
             branch.hide();
@@ -456,6 +457,8 @@ function Branch(){
     var model = $('#branch');
     if(model.value != ''){
         branch.show();
+    } else{
+        branch.hide(); 
     }
     $.getJSON("{{ URL::to('admin/departments/ajax_branch/')}}",
     { deptID: $('#designation').val() },

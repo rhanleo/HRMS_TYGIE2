@@ -226,8 +226,11 @@ class EmployeesController extends \AdminBaseController {
 	{
 		$this->data['employeesActive'] =   'active';
 		$this->data['department']      =     Department::lists('deptName','id');
-
-		return View::make('admin.employees.create',$this->data);
+		$designations     =      Designation::all()->sortBy('designation');
+		foreach($designations   as $designation){
+			$this->data['designation'] = $designation;
+		}
+		return View::make('admin.employees.create',$this->data); 
 	}
 
 	/**
@@ -236,7 +239,7 @@ class EmployeesController extends \AdminBaseController {
 	public function store()
 	{
 		$validator = Validator::make($input = Input::all(), Employee::rules('create'));
-
+		
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
@@ -269,11 +272,17 @@ class EmployeesController extends \AdminBaseController {
 
 
 			}
+			if(Input::get('branch_id') != ''){
+				$branch = Input::get('branch_id');
+			}else{
+				$branch = 0;
+			}
 
 			Employee::create([
 				'employeeID'    => $input['employeeID'],
 				'designation'   => $input['designation'],
-				'jobTitle'   => $input['jobTitle'],
+				'branch'  		=> $branch,
+				'jobTitle'   	=> $input['jobTitle'],
 				'firstName'      => ucwords(strtolower($input['firstName'])),
 				'lastName'      => ucwords(strtolower($input['lastName'])),
 				'middleName'    => $input['middleName'],
@@ -378,7 +387,7 @@ class EmployeesController extends \AdminBaseController {
 		}catch(\Exception $e)
 		{
 			DB::rollback();
-			dd($e);
+			return $e;
 		}
 
 		DB::commit();
@@ -395,9 +404,7 @@ class EmployeesController extends \AdminBaseController {
 		$this->data['employeesActive']  =   'active';
 		$this->data['department']       =   Department::lists('deptName','id');
 		$this->data['employee']         =   Employee::where('employeeID', '=' ,$id)->get()->first();
-		// echo '<pre>';
-		// dd($this->data['employee']);
-		// echo '</pre>';
+		
 		if(count($this->data['employee'])==0){
 			return Response::view('admin.errors.500', array(), 404);
 		}
