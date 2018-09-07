@@ -272,16 +272,12 @@ class EmployeesController extends \AdminBaseController {
 
 
 			}
-			if(Input::get('branch_id') != ''){
-				$branch = Input::get('branch_id');
-			}else{
-				$branch = 0;
-			}
-
+				
+			
 			Employee::create([
 				'employeeID'    => $input['employeeID'],
 				'designation'   => $input['designation'],
-				'branch'  		=> $branch,
+				'branch'  		=> ($input['branch_id'] !='')?$input['branch_id']:null,
 				'jobTitle'   	=> $input['jobTitle'],
 				'firstName'      => ucwords(strtolower($input['firstName'])),
 				'lastName'      => ucwords(strtolower($input['lastName'])),

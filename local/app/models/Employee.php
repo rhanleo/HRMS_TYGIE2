@@ -78,7 +78,7 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 
 	// Don't forget to fill this array
     protected $guarded = ['id'];
-	protected $fillable = ['branch'];
+	protected $fillable = [];
 	protected $hidden  = ['password'];
 
 	public function getBranch()

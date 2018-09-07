@@ -296,8 +296,9 @@
                                             <div class="col-md-6">
                                                 <label for="designation">{{trans('core.designation')}}</label>
                                                 <select  class="select2me form-control" name="designation" id="designation" onchange="Branch();return false;" ></select>
-                                               
+                                                <input name="branch_id" type="hidden" value="">
                                             </div>
+                                            
                                             @if(count($designation['designation']) > 0 )
                                             <div class="col-md-6 branch_wrapper">
                                                 <label for="branch">{{'Branch'}}</label>
@@ -426,9 +427,7 @@
 jQuery(document).ready(function() {
 
     ComponentsPickers.init();
-    dept();
-   
-    
+    dept();    
 });
 var branch = $('.branch_wrapper');
 
@@ -438,40 +437,45 @@ function dept(){
         { deptID: $('#department').val() },
         function(data) {
                     
-            var model = $('#designation');
-           
-            model.empty();
+            var modelDesig = $('#designation');
+            
+            modelDesig.empty();
             // console.log(data);
-            model.append("<option> Select </option>");
+            modelDesig.append("<option> Select </option>");
            
             branch.hide();
             $.each(data, function(index, element) {             
-                model.append("<option value='"+element.id+"'>"  + element.designation + "</option>");
+                modelDesig.append("<option value='"+element.id+"'>"  + element.designation + "</option>");
             });
 
         });
-       
+  
 }
 
 function Branch(){
-    var model = $('#branch');
-    if(model.value != ''){
-        branch.show();
-    } else{
-        branch.hide(); 
-    }
+
     $.getJSON("{{ URL::to('admin/departments/ajax_branch/')}}",
     { deptID: $('#designation').val() },
-    function(data) {           
-        
+    function(data) {
+        var modelBranch = $('#branch');
+        var modelDesig = $('#designation').find(":selected").text();
+   
+        modelBranch.empty();
         $.each(data, function(index, element) { 
-                        
-            model.append("<option value='"+element.id+"'>"  + element.branch + "</option>");
-        
+               
+        if(modelDesig == 'NCR' || modelDesig == 'Provincial' ){
+                if(element.id != ''){
+                    branch.show();
+                } else {
+                    branch.hide();
+                }
+            } 
+            modelBranch.append("<option value='"+element.id+"'>"  + element.branch + "</option>");
             
         });
 
     });
+    
 
 }
 
