@@ -110,6 +110,10 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::get('employees/innovmktg/{id}',['as'=>'admin.innovmktg.index','uses'=>'EmployeesController@innovmktg']);
     Route::get('employees/production/{id}',['as'=>'admin.productions.index','uses'=>'EmployeesController@production']);
     
+    //External Departments employees
+    Route::get('employees/ncr/{id}',['as'=>'admin.ncr.index','uses'=>'EmployeesController@ncr']);
+    Route::get('employees/provincial/{id}',['as'=>'admin.provincial.index','uses'=>'EmployeesController@provincial']);
+
     //Schedule routes
     Route::get('employees/schedule',['as'=>'admin.schedule.index','uses'=>'ScheduleController@index']);
     Route::get('employees/schedule/create/{id}',['as'=>'admin.schedule.create','uses'=>'ScheduleController@create']);

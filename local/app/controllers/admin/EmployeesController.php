@@ -84,7 +84,22 @@ class EmployeesController extends \AdminBaseController {
 		$this->data['employeesActive'] =   'active';
 		return View::make('admin.employees.departments', $this->data);
 	}
-
+	public function ncr($id){
+		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['pageTitle']       =   'NCR';
+		$this->data['designations']    =   Designation::Select('designation')
+															->where('designation', '=' ,'NCR')->get();
+		$this->data['employeesActive'] =   'active';
+		return View::make('admin.employees.departments', $this->data);
+	}
+	public function provincial($id){
+		$this->data['employees']       =   Employee::where('designation', '=' ,$id)->get();
+		$this->data['pageTitle']       =   'Provincial';
+		$this->data['designations']    =   Designation::Select('designation')
+															->where('designation', '=' ,'Provincial')->get();
+		$this->data['employeesActive'] =   'active';
+		return View::make('admin.employees.departments', $this->data);
+	}
 
 	public function excelview(){
 		$this->data['employeesActive'] =   'active';

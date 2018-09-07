@@ -50,69 +50,110 @@
 
                 <ul class="sub-menu">
                     <li class="{{ $markAttendanceActive or ''}}">
-                        <a href="{{route('admin.employees.index')}}">{{'All Departments'}}</a>
+                        <a href="{{route('admin.employees.index')}}">{{'All'}}</a>
                     </li>
        
-                    <li>
-                        <?php 
-                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Operations')->get();
-                        foreach($desigId as $id){
-                        ?>
-                            <a href="{{route("admin.operations.index", $id['id'])}}">{{'Operations Department'}}</a>
-                        <?php
-                        }
-                        ?>
+                    <li class="{{ $employeesOpen or ''}}">
+                        <a href="javascript:;">
+                      
+                        <span class="title">{{'Internal'}}</span>
+                        <!-- <span class="selected"></span> -->
+                        <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <?php 
+                                $desigId = Designation::Select('id')->Where('Designation', '=', 'Operations')->get();
+                                foreach($desigId as $id){
+                                ?>
+                                    <a href="{{route("admin.operations.index", $id['id'])}}">{{'Operations Department'}}</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                            <li>
+                                <?php 
+                                $desigId = Designation::Select('id')->Where('Designation', '=', 'Finance')->get();
+                                foreach($desigId as $id){
+                                ?>
+                                    <a href="{{route("admin.finance.index", $id['id'])}}">{{'Finance Department'}}</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                            <li>
+                                <?php 
+                                $desigId = Designation::Select('id')->Where('Designation', '=', 'Administration')->get();
+                                foreach($desigId as $id){
+                                ?>
+                                    <a href="{{route("admin.admin.index", $id['id'])}}">{{'Admin Department'}}</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                            <li>
+                                <?php 
+                                $desigId = Designation::Select('id')->Where('Designation', '=', 'Human Resource and Sales')->get();
+                                foreach($desigId as $id){
+                                ?>
+                                    <a href="{{route("admin.hrsales.index", $id['id'])}}">{{'HR and Sales Department'}}</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                            <li>
+                                <?php 
+                                $desigId = Designation::Select('id')->Where('Designation', '=', 'Innovation and Marketing')->get();
+                                foreach($desigId as $id){
+                                ?>
+                                    <a href="{{route("admin.innovmktg.index", $id['id'])}}">{{'Innovation and Marketing Department'}}</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                            <li>
+                                <?php 
+                                $desigId = Designation::Select('id')->Where('Designation', '=', 'Production')->get();
+                                foreach($desigId as $id){
+                                ?>
+                                    <a href="{{route("admin.productions.index", $id['id'])}}">{{'Production Department'}}</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <?php 
-                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Finance')->get();
-                        foreach($desigId as $id){
-                        ?>
-                            <a href="{{route("admin.finance.index", $id['id'])}}">{{'Finance Department'}}</a>
-                        <?php
-                        }
-                        ?>
-                    </li>
-                    <li>
-                        <?php 
-                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Administration')->get();
-                        foreach($desigId as $id){
-                        ?>
-                            <a href="{{route("admin.admin.index", $id['id'])}}">{{'Admin Department'}}</a>
-                        <?php
-                        }
-                        ?>
-                    </li>
-                    <li>
-                        <?php 
-                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Human Resource and Sales')->get();
-                        foreach($desigId as $id){
-                        ?>
-                            <a href="{{route("admin.hrsales.index", $id['id'])}}">{{'HR and Sales Department'}}</a>
-                        <?php
-                        }
-                        ?>
-                    </li>
-                    <li>
-                        <?php 
-                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Innovation and Marketing')->get();
-                        foreach($desigId as $id){
-                        ?>
-                            <a href="{{route("admin.innovmktg.index", $id['id'])}}">{{'Innovation and Marketing Department'}}</a>
-                        <?php
-                        }
-                        ?>
-                    </li>
-                    <li>
-                        <?php 
-                        $desigId = Designation::Select('id')->Where('Designation', '=', 'Production')->get();
-                        foreach($desigId as $id){
-                        ?>
-                            <a href="{{route("admin.productions.index", $id['id'])}}">{{'Production Department'}}</a>
-                        <?php
-                        }
-                        ?>
-                    </li>
+                    <!-- External -->
+                    <li class="{{ $employeesOpen or ''}}">
+                        <a href="javascript:;">
+                      
+                        <span class="title">{{'External'}}</span>
+                        <!-- <span class="selected"></span> -->
+                        <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <?php 
+                                $desigId = Designation::Select('id')->Where('Designation', '=', 'NCR')->get();
+                                foreach($desigId as $id){
+                                ?>
+                                    <a href="{{route("admin.ncr.index", $id['id'])}}">{{'NCR'}}</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                            <li>
+                                <?php 
+                                $desigId = Designation::Select('id')->Where('Designation', '=', 'Provincial')->get();
+                                foreach($desigId as $id){
+                                ?>
+                                    <a href="{{route("admin.provincial.index", $id['id'])}}">{{'Provincial'}}</a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                        </ul>
+                    </li>                    
 
                     <li>
                         <a href="{{route('admin.employees.workinghistory')}}">{{'Working History'}}</a>

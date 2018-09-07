@@ -38,7 +38,7 @@
                                         <th class="text-center">{{trans('core.eID')}}</th>
                                         <th class="text-center">{{trans('core.image')}}</th>
                                             <th style="text-align: center">{{trans('core.name')}}</th>
-                                        <th class="text-center">{{'Position'}}</th>
+                                        <th class="text-center">{{'Job Title'}}</th>
                                         <th class="text-center">{{trans('core.atWork')}}</th>
                                         <th class="text-center">Leave Credits</th>
                                         <th class="text-center">{{trans('core.status')}}</th>
