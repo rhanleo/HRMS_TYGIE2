@@ -65,7 +65,7 @@
                                   
                                     @else
                                         <li class="no-dob">
-                                            {{Lang::get('messages.noBirthdays')}}
+                                            {{'No Probationary for this day'}}
                                         </li>
                                     @endif
                                 </ul>
@@ -321,5 +321,6 @@ $('.count').each(function () {
     });
 });
 </script>
+
         <!-- END PAGE LEVEL PLUGINS -->
 @stop

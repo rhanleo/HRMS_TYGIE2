@@ -103,17 +103,10 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::get('employees/workinghistory/{id}',['as'=>'admin.employee.workinghistory','uses'=>'WorkingHistoryController@view']);
 
     //Internal Departments employees
-    Route::get('employees/operations/{id}',['as'=>'admin.operations.index','uses'=>'EmployeesController@operations']);
-    Route::get('employees/finance/{id}',['as'=>'admin.finance.index','uses'=>'EmployeesController@finance']);
-    Route::get('employees/admin/{id}',['as'=>'admin.admin.index','uses'=>'EmployeesController@admin']);
-    Route::get('employees/hrsales/{id}',['as'=>'admin.hrsales.index','uses'=>'EmployeesController@hrsales']);
-    Route::get('employees/innovmktg/{id}',['as'=>'admin.innovmktg.index','uses'=>'EmployeesController@innovmktg']);
-    Route::get('employees/production/{id}',['as'=>'admin.productions.index','uses'=>'EmployeesController@production']);
-    
+    Route::get('employees/internal/{id}',['as'=>'admin.internal.index','uses'=>'EmployeesController@internal']);
     //External Departments employees
-    Route::get('employees/ncr/{id}',['as'=>'admin.ncr.index','uses'=>'EmployeesController@ncr']);
-    Route::get('employees/provincial/{id}',['as'=>'admin.provincial.index','uses'=>'EmployeesController@provincial']);
-
+    Route::get('employees/external/{id}',['as'=>'admin.external.index','uses'=>'EmployeesController@external']);
+    
     //Schedule routes
     Route::get('employees/schedule',['as'=>'admin.schedule.index','uses'=>'ScheduleController@index']);
     Route::get('employees/schedule/create/{id}',['as'=>'admin.schedule.create','uses'=>'ScheduleController@create']);

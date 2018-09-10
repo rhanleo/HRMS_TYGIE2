@@ -14,10 +14,8 @@ class AdminDashboardController extends AdminBaseController
 // Dashboard view page   controller
 	public function index() {
 		
-		// $effectiveDate = date('Y-m-d', strtotime("+90 days", strtotime($d['joiningDate'])));
-		
+		//  date('Y-m-d', strtotime(' + 5 days')) plus day on current date
 		$probationary = Employee::select('firstName', 'lastName', 'joiningDate','profileImage')
-		// ->where("joiningDate", '=', date('Y-m-d'))
 		->where('status','=','active')
 		->orderBy('joiningDate','asc')
 		->get();
@@ -27,6 +25,8 @@ class AdminDashboardController extends AdminBaseController
 			if($effectiveDate == date('Y-m-d')){
 				$this->data['probationary'] = $pro;
 				
+			} else {
+				$this->data['probationary'] = [];
 			}
 		}
 		
