@@ -129,7 +129,13 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::get('departments/sub/',['as'=>'admin.departments.sub','uses'=> 'DepartmentsController@sub']);
     Route::post('departments/sub/',['as'=>'admin.departments.save','uses'=> 'DepartmentsController@save']);
     Route::post('departments/sub/{id}',['as'=>'admin.departments.edit','uses'=> 'DepartmentsController@edit']);
-    //    Expense Routing
+     //     Branch Routing
+     Route::get('branches/', ['as'=>'admin.branches.index','uses'=> 'BranchesController@index']);
+     Route::post('branches/', ['as'=>'admin.branches.store','uses'=> 'BranchesController@store']);
+     Route::patch('branches/{id}', ['as'=>'admin.branches.update','uses'=> 'BranchesController@update']);
+     Route::get('branches/{id}', ['as'=>'admin.branches.edit','uses'=> 'BranchesController@edit']);
+    
+     //    Expense Routing
 	Route::post('expense_change_status/',['as'=>'admin.expense.change_status','uses'=> 'ExpensesController@change_status']);
     Route::get('ajax_expenses/',['as'=>'admin.ajax_expenses','uses'=> 'ExpensesController@ajax_expenses']);
     Route::resource('expenses', 'ExpensesController',['except' => ['show'],'as' => 'admin']);

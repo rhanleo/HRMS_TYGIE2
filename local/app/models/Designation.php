@@ -11,7 +11,7 @@ class Designation extends \Eloquent {
         return $this->belongsTo('Department','deptID','id');
     }
 
-    protected function branch()
+    protected function getBranch()
     {
         return $this->hasmany('Branch','designationID','id');
     }

@@ -100,6 +100,13 @@
                                 ?> 
                                
                             </li>
+                            <li class="{{ $markAttendanceActive or ''}}">
+                                <a href="{{route('admin.branches.index')}}">
+                                    <span class="title">{{'Branches'}}</span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                            
                         </ul>
                     </li>                    
                     

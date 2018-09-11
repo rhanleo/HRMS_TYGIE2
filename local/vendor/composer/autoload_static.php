@@ -295,6 +295,7 @@ class ComposerStaticInit8f77428bb52c7ba6e61968f64f5861ee
         'Boris\\ReadlineClient' => __DIR__ . '/..' . '/d11wtq/boris/lib/Boris/ReadlineClient.php',
         'Boris\\ShallowParser' => __DIR__ . '/..' . '/d11wtq/boris/lib/Boris/ShallowParser.php',
         'Branch' => __DIR__ . '/../..' . '/app/models/Branch.php',
+        'BranchesController' => __DIR__ . '/../..' . '/app/controllers/admin/BranchesController.php',
         'CPDF_Adapter' => __DIR__ . '/..' . '/dompdf/dompdf/include/cpdf_adapter.cls.php',
         'CSS_Color' => __DIR__ . '/..' . '/dompdf/dompdf/include/css_color.cls.php',
         'Cached_PDF_Decorator' => __DIR__ . '/..' . '/dompdf/dompdf/include/cached_pdf_decorator.cls.php',

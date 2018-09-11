@@ -52,6 +52,7 @@ return array(
     'Boris\\ReadlineClient' => $vendorDir . '/d11wtq/boris/lib/Boris/ReadlineClient.php',
     'Boris\\ShallowParser' => $vendorDir . '/d11wtq/boris/lib/Boris/ShallowParser.php',
     'Branch' => $baseDir . '/app/models/Branch.php',
+    'BranchesController' => $baseDir . '/app/controllers/admin/BranchesController.php',
     'CPDF_Adapter' => $vendorDir . '/dompdf/dompdf/include/cpdf_adapter.cls.php',
     'CSS_Color' => $vendorDir . '/dompdf/dompdf/include/css_color.cls.php',
     'Cached_PDF_Decorator' => $vendorDir . '/dompdf/dompdf/include/cached_pdf_decorator.cls.php',

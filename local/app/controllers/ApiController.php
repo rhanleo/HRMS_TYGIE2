@@ -233,6 +233,9 @@ class ApiController extends BaseController {
 			if ($table == 'departments') {
 				$table = 'department';
 			}
+			if ($table == 'branches') {
+				$table = 'branch';
+			}
 			
 			$record = DB::table($table)
 								->where('id', $id)
@@ -273,6 +276,7 @@ class ApiController extends BaseController {
 						->where('deptID', $id)
 						->delete();
 				}
+				
 
 				DB::table($table)
 				->where('id', $id)
