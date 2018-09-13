@@ -24,11 +24,12 @@
                                     <span class="icon"><i class="fa fa-plus fa-fw"></i></span>
                                     <span>{{Lang::get('core.btnAddEmployee')}}</span>
                                 </a>
-                                
+                                                                      
                                 <a  href="{{route('admin.employees.export') }}">
                                     <span class="icon"><i class="fa fa-file-excel-o fa-fw"></i></span>
                                     <span>{{trans('core.export')}}</span>
                                 </a>
+                               
                             </div> {{-- end of .btn-portlet-right --}}
                         </div> {{-- end of .portlet-title --}}
                         <div class="portlet-body">

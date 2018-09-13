@@ -89,6 +89,7 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::get('dashboard',['as'=>'admin.dashboard.index','uses'=>'AdminDashboardController@index']);
     //    Employees Routing
 	Route::get('employees/export',['as'=>'admin.employees.export','uses'=>'EmployeesController@export']);
+    Route::get('employees/exportdept/{id}',['as'=>'admin.employees.exportDept','uses'=>'EmployeesController@exportDept']);
     Route::get('employees/employeeLogin/{id}',['as'=>'admin.employees.employeeLogin','uses'=>'EmployeesController@employeesLogin']);
     Route::resource('employees', 'EmployeesController',['except' => ['show'],'as' => 'admin']);
 	Route::post('employees/{id}/update',['uses'=>'EmployeesController@update']);

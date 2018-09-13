@@ -666,6 +666,36 @@ class EmployeesController extends \AdminBaseController {
 
 
 	}
+	public function exportDept($id){
+		$employee   =   Employee::join('designation', 'employees.designation', '=', 'designation.id')
+		                        ->join('department', 'department.id', '=', 'designation.deptID')
+		                        ->leftJoin('bank_details', 'bank_details.employeeID', '=', 'employees.employeeID')
+		                        ->select('employees.id','employees.employeeID',
+									'employees.firstName','employees.lastName','employees.middleName',
+									'employees.suffix','department.deptName as Department',
+			                        'designation.designation as Designation','employees.fatherName','employees.mobileNumber','employees.date_of_birth',
+			                        'employees.joiningDate','employees.localAddress','employees.permanentAddress','employees.status',
+			                        'employees.exit_date','employees.permanentAddress',
+			                        'bank_details.accountName','bank_details.accountNumber','bank_details.bank','bank_details.pan','bank_details.branch',
+			                        'bank_details.ifsc'
+								)->where('employees.designation', '=', $id)
+								->orderBy('id','asc')
+		                        ->get()->toArray();
+
+		$data = $employee;
+
+		Excel::create('employees'.time(), function($excel) use($data) {
+
+			$excel->sheet('Employees', function($sheet) use($data) {
+
+				$sheet->fromArray($data);
+
+			});
+
+		})->store('xls')->download('xls');
+
+
+	}
 	/**
 	 * Remove the specified employee from storage.
 	 */

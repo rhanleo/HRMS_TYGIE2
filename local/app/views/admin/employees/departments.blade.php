@@ -27,7 +27,12 @@
                                     <span>{{Lang::get('core.btnAddEmployee')}}</span>
                                 </a>
                                 @endif
-                                <a  href="{{route('admin.employees.export') }}">
+                                <?php
+                                        foreach($employees as $employee){
+                                            $id = $employee->designation;
+                                        }
+                                    ?>
+                                <a  href="{{route('admin.employees.exportDept', $id) }}">
                                     <span class="icon"><i class="fa fa-file-excel-o fa-fw"></i></span>
                                     <span>{{trans('core.export')}}</span>
                                 </a>
