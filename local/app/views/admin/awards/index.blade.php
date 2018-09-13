@@ -36,7 +36,8 @@
 								<tr>
 									<th>Hidden ID</th>
 									<th>{{trans('core.employeeID')}}</th>
-									<th>{{trans('core.awardeeName')}}</th>
+									<th>{{'First Name'}}</th>
+									<th>{{'Last Name'}}</th>
 									<th>{{trans('core.awards')}}</th>
 									<th>{{trans('core.gift')}}</th>
 									<th>Hidden Month</th>
@@ -48,7 +49,8 @@
 								<tr >
 								<td>{{-- Hidden ID --}}</td>
 								<td>{{-- EmployeeID --}}</td>
-								<td>{{-- Awardee Name --}}</td>
+								<td>{{-- Awardee FName --}}</td>
+								<td>{{-- Awardee LName --}}</td>
 								<td>{{-- Award --}} </td>
 								<td>{{-- Gift --}}</td>
 								<td>{{-- HIdden Month --}}</td>
@@ -99,6 +101,7 @@
                             { 'sClass': 'center', "bSortable": true  },
                             { 'sClass': 'center', "bSortable": true  },
                             { 'sClass': 'center', "bSortable": true },
+							{ 'sClass': 'center', "bSortable": true },
                             { 'sClass': 'center', "bSortable": true },
                             { 'sClass': 'center', "bSortable": true },
                             { 'sClass': 'center', "bSortable": true },
@@ -113,14 +116,14 @@
                                         "visible": false,
                                         "searchable": false
                                     },{
-									  "targets": [ 5 ],
+									  "targets": [ 6 ],
 									  "visible": false,
 									  "searchable": true
 								  }
                                     ],
                         "lengthMenu": [
-										[5, 15, 20, -1],
-										[5, 15, 20, "All"] // change per page values here
+										[6, 15, 20, -1],
+										[6, 15, 20, "All"] // change per page values here
 									],
                         "sPaginationType": "full_numbers",
 

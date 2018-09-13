@@ -16,7 +16,7 @@ class CreateEmployeesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('employeeID', 20)->unique()->nullable();
-			$table->string('fullName', 100);
+			$table->string('fullName', 100)->nullable();
 			$table->string('email', 150)->unique();
 			$table->string('password', 100);
 			$table->enum('gender',['male','female']);

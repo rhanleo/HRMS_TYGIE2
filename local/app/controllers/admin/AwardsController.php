@@ -27,7 +27,7 @@ class AwardsController extends \AdminBaseController {
 
 
 	    $result =
-		    Award::select('awards.id','awards.employeeID','fullName','awardName','gift','forMonth','awards.forYear')
+		    Award::select('awards.id','awards.employeeID', 'firstName', 'lastName', 'awardName','gift','forMonth','awards.forYear')
 		      ->join('employees', 'awards.employeeID', '=', 'employees.employeeID')
 			  ->orderBy('awards.created_at','desc');
 
@@ -50,7 +50,7 @@ class AwardsController extends \AdminBaseController {
 	public function create()
 	{
         $this->data['addAwardsActive'] = 'active';
-        $this->data['employees'] = Employee::selectRaw('CONCAT(fullName, " (EmpID:", employeeID,")") as full_name, employeeID')
+        $this->data['employees'] = Employee::selectRaw('CONCAT(firstName, " ", lastName, " (EmpID:", employeeID,")") as full_name, employeeID')
 	                                        ->where('status','=','active')
 	                                        ->lists('full_name','employeeID');
 
@@ -103,7 +103,9 @@ class AwardsController extends \AdminBaseController {
 
         $this->data['award']    = Award::find($id);
         $this->data['addAwardsActive'] = 'active';
-        $this->data['employees'] = Employee::lists('fullName','employeeID');
+		$this->data['employees'] = Employee::selectRaw('CONCAT(firstName, " ", lastName) as full_name, employeeID')
+										->where('status','=','active')
+										->lists('full_name', 'employeeID');
 		return View::make('admin.awards.edit', $this->data);
 	}
 
@@ -126,7 +128,7 @@ class AwardsController extends \AdminBaseController {
 
 		$award->update($data);
 
-		return Redirect::route('admin.awards.edit',$id)->with('success',"<strong>Success</strong> Updated Successfully");
+		return Redirect::route('admin.awards.index',$id)->with('success',"<strong>Success</strong> Updated Successfully");
 	}
 
 	/**

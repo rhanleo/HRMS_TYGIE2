@@ -13,9 +13,7 @@
 
 			
 			<!-- BEGIN PAGE HEADER-->
-			<h3 class="page-title">
-			<i class="fa fa-edit"></i> {{trans('core.edit')}} {{trans('core.awards')}}
-			</h3>
+			
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>

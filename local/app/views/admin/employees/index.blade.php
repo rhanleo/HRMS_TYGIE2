@@ -15,6 +15,7 @@
                                 <span>{{Lang::get('menu.employees')}}</span>
                             </div>
                             <div class="btn-portlet-right">
+                           
                             <a href="{{route('admin.employees.excelview')}}">
                                     <span class="icon"><i class="fa fa-file-excel-o fa-fw"></i></span>
                                     <span>{{'Import'}}</span>
@@ -23,6 +24,7 @@
                                     <span class="icon"><i class="fa fa-plus fa-fw"></i></span>
                                     <span>{{Lang::get('core.btnAddEmployee')}}</span>
                                 </a>
+                                
                                 <a  href="{{route('admin.employees.export') }}">
                                     <span class="icon"><i class="fa fa-file-excel-o fa-fw"></i></span>
                                     <span>{{trans('core.export')}}</span>

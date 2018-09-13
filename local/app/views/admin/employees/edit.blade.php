@@ -353,7 +353,7 @@
                                                 <label for="designation">{{trans('core.designation')}}<span class="required">* </span></label>
                                                 <select  class="select2me form-control" name="designation" id="designation" ></select>
                                             </div>
-                                            @if(count($designation['designation']) > 0 )
+                                            @if($designation['designation'] ==  "NCR" ||  $designation['designation'] ==  "Provincial")
                                             <div class="col-md-6 branch_wrapper">
                                                 <label for="branch">{{'Branch'}}</label>
                                                 <select  class="select2me form-control" name="branch_id" id="branch" ></select>
@@ -665,9 +665,9 @@ function dept(){
     { deptID: $('#department').val() },
     function(data) {
         var model = $('#designation');
-                // model.empty();
+                model.empty();
         var selected='';
-        var match= {{ $employee->designation}};
+        var match = "{{ $employee->designation}}";
         console.log(data);
         $.each(data, function(index, element) {
         if(element.id==match){
@@ -687,7 +687,7 @@ function Branch(){
     function(data) {
         var model = $('#branch');
         var selected='';
-        var match= {{ $employee->branch}};
+        var match= "{{ $employee->branch}}";
         $.each(data, function(index, element) {
             if(element.id==match){
                 selected='selected';
@@ -733,7 +733,7 @@ function Branch(){
                              data: $(form_id).serialize()
 
                      }).done( function( response ) {
-            console.log(response);       
+                 
                   $(alert_div).html('');
                          if(response.status == "success")
                          {
