@@ -16,20 +16,18 @@ class EmployeesController extends \AdminBaseController {
 		parent::__construct();
 		$this->data['employeesOpen'] =   'active open';
 		$this->data['pageTitle']     =   trans('menu.employees');
+		
 	}
 
 	public function index()
 	{
+		// Check if Super admin level
+		if(Auth::admin()->get()->level != 0){
+			return Redirect::route('admin.dashboard.index');
+		}
+
 		$this->data['employees']       =    Employee::all()->sortBy('employeeID');
 		$this->data['employeesActive'] =   'active';
-		// $this->data['data'] = Employee::select('fullName', 'date_of_birth')
-		// ->where('date_of_birth', '=', '1970-01-01')->get();
-		// $data = Employee::join('designation', 'employees.designation', '=', 'designation.id')
-		// 					->select('designation.designation','employees.employeeID','employees.fullName', 'employees.date_of_birth')->orderBy('employeeID','asc')->get();
-
-		// echo "<pre>";
-		// dd($this->data);exit;
-		// echo "</pre>";
 		return View::make('admin.employees.index', $this->data);
 	}
 
@@ -367,7 +365,7 @@ class EmployeesController extends \AdminBaseController {
 	 * Show the form for editing the specified employee
 	 */
 	public function edit($id)
-	{
+	{	
 		$this->data['employeesActive']  =   'active';
 		$this->data['department']       =   Department::lists('deptName','id');
 		$this->data['employee']         =   Employee::where('employeeID', '=' ,$id)->get()->first();

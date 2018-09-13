@@ -134,7 +134,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label for="deptName" class="text-success">{{trans('core.department')}}</label>
-                                            <input class="form-control form-control-inline " name="designation" id="edit_deptName" type="text" value="" placeholder="{{trans('core.department')}}" />
+                                            <input class="form-control form-control-inline " name="designation" id="edit_deptName" type="text" value="" placeholder="{{trans('core.department')}}" readonly />
                                         </div>
                                     </div>
                                 </div>

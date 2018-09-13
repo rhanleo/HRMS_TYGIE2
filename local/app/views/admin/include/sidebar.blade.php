@@ -40,6 +40,8 @@
                     <span class="selected"></span>
                 </a>
             </li>
+            @if(Auth::admin()->get()->level == 0)
+             <!-- Start Employees -->
             <li class="{{ $employeesOpen or ''}}">
                 <a href="javascript:;">
                     <i class="fa fa-users fa-fw"></i>
@@ -112,6 +114,201 @@
                     
                 </ul>
             </li>
+            @endif
+                <!-- Administration -->
+            @if(Auth::admin()->get()->level == 1)
+            <li class="{{ $employeesOpen or ''}}">
+                 <a href="javascript:;">
+                    <i class="fa fa-users fa-fw"></i>
+                    <span class="title">{{Lang::get('menu.employees')}}</span>
+                    <!-- <span class="selected"></span> -->
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{ $markAttendanceActive or ''}}">  
+                        <?php
+                        
+                            $desigId = Designation::Where('designation', '=', 'Administration')->get();
+                            foreach($desigId as $desig){
+                                ?>
+                                    <a href="{{route('admin.internal.index', $desig['id'])}}">{{$desig['designation']}}</a>
+                                <?php
+                            }
+                        
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            @endif
+            @if(Auth::admin()->get()->level == 2)
+            <li class="{{ $employeesOpen or ''}}">
+                 <a href="javascript:;">
+                    <i class="fa fa-users fa-fw"></i>
+                    <span class="title">{{Lang::get('menu.employees')}}</span>
+                    <!-- <span class="selected"></span> -->
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{ $markAttendanceActive or ''}}">  
+                        <?php
+                        
+                            $desigId = Designation::Where('designation', '=', 'Finance')->get();
+                            foreach($desigId as $desig){
+                                ?>
+                                    <a href="{{route('admin.internal.index', $desig['id'])}}">{{$desig['designation']}}</a>
+                                <?php
+                            }
+                        
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            @endif
+            @if(Auth::admin()->get()->level == 3)
+            <li class="{{ $employeesOpen or ''}}">
+                 <a href="javascript:;">
+                    <i class="fa fa-users fa-fw"></i>
+                    <span class="title">{{Lang::get('menu.employees')}}</span>
+                    <!-- <span class="selected"></span> -->
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{ $markAttendanceActive or ''}}">  
+                        <?php
+                        
+                            $desigId = Designation::Where('designation', '=', 'Human Resource and Sales')->get();
+                            foreach($desigId as $desig){
+                                ?>
+                                    <a href="{{route('admin.internal.index', $desig['id'])}}">{{$desig['designation']}}</a>
+                                <?php
+                            }
+                        
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            @endif
+            @if(Auth::admin()->get()->level == 4)
+            <li class="{{ $employeesOpen or ''}}">
+                 <a href="javascript:;">
+                    <i class="fa fa-users fa-fw"></i>
+                    <span class="title">{{Lang::get('menu.employees')}}</span>
+                    <!-- <span class="selected"></span> -->
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{ $markAttendanceActive or ''}}">  
+                        <?php
+                        
+                            $desigId = Designation::Where('designation', '=', 'Operations')->get();
+                            foreach($desigId as $desig){
+                                ?>
+                                    <a href="{{route('admin.internal.index', $desig['id'])}}">{{$desig['designation']}}</a>
+                                <?php
+                            }
+                        
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            @endif
+            @if(Auth::admin()->get()->level == 5)
+            <li class="{{ $employeesOpen or ''}}">
+                 <a href="javascript:;">
+                    <i class="fa fa-users fa-fw"></i>
+                    <span class="title">{{Lang::get('menu.employees')}}</span>
+                    <!-- <span class="selected"></span> -->
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{ $markAttendanceActive or ''}}">  
+                        <?php
+                        
+                            $desigId = Designation::Where('designation', '=', 'Innovation and Marketing')->get();
+                            foreach($desigId as $desig){
+                                ?>
+                                    <a href="{{route('admin.internal.index', $desig['id'])}}">{{$desig['designation']}}</a>
+                                <?php
+                            }
+                        
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            @endif
+            @if(Auth::admin()->get()->level == 6)
+            <li class="{{ $employeesOpen or ''}}">
+                 <a href="javascript:;">
+                    <i class="fa fa-users fa-fw"></i>
+                    <span class="title">{{Lang::get('menu.employees')}}</span>
+                    <!-- <span class="selected"></span> -->
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{ $markAttendanceActive or ''}}">  
+                        <?php
+                        
+                            $desigId = Designation::Where('designation', '=', 'Production')->get();
+                            foreach($desigId as $desig){
+                                ?>
+                                    <a href="{{route('admin.internal.index', $desig['id'])}}">{{$desig['designation']}}</a>
+                                <?php
+                            }
+                        
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            @endif
+            @if(Auth::admin()->get()->level == 7)
+            <li class="{{ $employeesOpen or ''}}">
+                 <a href="javascript:;">
+                    <i class="fa fa-users fa-fw"></i>
+                    <span class="title">{{Lang::get('menu.employees')}}</span>
+                    <!-- <span class="selected"></span> -->
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{ $markAttendanceActive or ''}}">  
+                        <?php
+                        
+                            $desigId = Designation::Where('designation', '=', 'NCR')->get();
+                            foreach($desigId as $desig){
+                                ?>
+                                    <a href="{{route('admin.internal.index', $desig['id'])}}">{{$desig['designation']}}</a>
+                                <?php
+                            }
+                        
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            @endif
+            @if(Auth::admin()->get()->level == 8)
+            <li class="{{ $employeesOpen or ''}}">
+                 <a href="javascript:;">
+                    <i class="fa fa-users fa-fw"></i>
+                    <span class="title">{{Lang::get('menu.employees')}}</span>
+                    <!-- <span class="selected"></span> -->
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{{ $markAttendanceActive or ''}}">  
+                        <?php
+                        
+                            $desigId = Designation::Where('designation', '=', 'Provincial')->get();
+                            foreach($desigId as $desig){
+                                ?>
+                                    <a href="{{route('admin.internal.index', $desig['id'])}}">{{$desig['designation']}}</a>
+                                <?php
+                            }
+                        
+                        ?>
+                    </li>
+                </ul>
+            </li>
+            @endif
+            <!-- End Employees -->
             <li class="{{ $departmentOpen or ''}}">
                 <a href="{{route('admin.employees.workinghistory')}}">
                     <i class="fa fa-history fa-fw"></i>
@@ -120,6 +317,7 @@
                 </a>
             </li>
 
+            @if(Auth::admin()->get()->level == 0)
             <li class="{{ $departmentOpen or ''}}">
                 <a href="{{route('admin.departments.index')}}">
                     <i class="fa fa-briefcase fa-fw"></i>
@@ -127,6 +325,7 @@
                     <span class="selected"></span>
                 </a>
             </li>
+            @endif
 
             <li class="{{ $awardsOpen or ''}}">
                 <a href="{{route('admin.awards.index')}}">

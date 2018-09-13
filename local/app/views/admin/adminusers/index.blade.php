@@ -4,78 +4,7 @@
 	{{HTML::style("assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css")}}
 @stop
 @section('mainarea')
-	<div class="page-banner" style="background-image: url( {{ URL::asset( 'assets/global/img/banners/attendance.png' ) }} );">
-		<div class="left-banner">
-			<h3 class="page-title">{{$pageTitle}}</h3>
-			<ul class="page-breadcrumb">
-				<li>
-					<i class="fa fa-home fa-fw"></i>
-					<a href="{{route('admin.dashboard.index')}}">{{trans('core.home')}}</a>
-					<i class="fa fa-angle-right fa-fw"></i>
-				</li>
-				<li>
-					<a href="#">admins</a>
-				</li>
-			</ul>
-		</div> {{-- end of .left-banner --}}
-		<div class="right-banner">
-			<ul>
-			    <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-			            <span class="label">Notifications:</span>
-			            @if(count($pending_applications)>0)
-			                <span class="badge badge-default">
-			                    {{count($pending_applications)}}
-			                </span>
-			            @endif
-			        </a>
-			        <div class="dropdown-menu">
-			            <ul>
-			                <li class="external">
-			                    <h3><span class="bold">{{count($pending_applications)}} pending</span> notifications</h3>
-			                </li>
-			                @if( count( $pending_applications ) > 0 )
-			                    <li>
-			                        <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-			                            @foreach($pending_applications as $pending)
-			                            <li>
-			                                <a  data-toggle="modal" href="#static_leave_requests" onclick="show_application_notification({{ $pending->id }});return false;">
-			                                    <span class="time">{{date('d-M-Y',strtotime($pending->created_at))}}</span>
-			                                    <span class="details">
-			                                        <span class="label label-sm label-icon label-success">
-			                                            <i class="fa fa-bell-o"></i>
-			                                        </span>
-			                                        <strong>{{$pending->employeeDetails->fullName}} </strong> has applied for leave on {{date('d-M-Y',strtotime($pending->date))}}
-			                                    </span>
-			                                </a>
-			                            </li>
-			                            @endforeach
-			                        </ul>
-			                    </li>
-			                @endif
-			            </ul>
-			        </div>
-			    </li>
-			    <li class="dropdown dropdown-language">
-			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-			            <span class="label">Language:</span>
-			            <span class="langname">
-			            {{$setting->getLangName->language}} </span>
-			            <i class="fa fa-angle-down"></i>
-			        </a>
-			        <ul class="dropdown-menu dropdown-menu-default">
-			            @foreach($languages as $lang)
-			                @if($lang->locale !=$setting->locale)
-			                    <li>
-			                        <a href="javascript:;" onclick="changeLanguage('{{$lang->locale}}')">{{ $lang->language }}</a>
-			                    </li>
-			                @endif
-			            @endforeach
-			        </ul>
-			    </li>
-			</ul> {{-- end of #header-notification-bar --}}
-		</div> {{-- end of .right-banner --}}
-	</div> {{-- end of .page-banner --}}
+	
 	<div class="content-section">
 		<div id="load">@include('admin.common.error')</div>
 		<div class="row">
@@ -193,9 +122,16 @@
 			</label>
 			<div class="col-md-8">
 			<select name="level">
+				<option value="">Select</option>
 				<option value="0">Super Admin</option>
-				<option value="1">HRS Admin</option>
+				<option value="1">Administration Admin</option>
 				<option value="2">Finance Admin</option>
+				<option value="3">HRS Admin</option>
+				<option value="4">Operation Admin</option>
+				<option value="5">Innovation & Mktg Admin</option>
+				<option value="6">Production Admin</option>
+				<option value="7">NCR Admin</option>
+				<option value="8">Provincial Admin</option>
 				
 			</select>
 			</div>

@@ -15,6 +15,11 @@ class DepartmentsController extends \AdminBaseController {
      * Display a listing of departments
      */
 	public function index() {
+
+		// Check if Super admin level
+		if(Auth::admin()->get()->level != 0){
+			return Redirect::route('admin.dashboard.index');
+		}
 		$this->data['departments'] = Department::all();
 		$this->data['departmentActive'] = 'active';
 		$employeeCount = array();

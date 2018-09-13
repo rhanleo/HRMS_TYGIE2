@@ -13,7 +13,8 @@ class Admin extends Eloquent implements UserInterface, RemindableInterface {
 		'name'                  =>  'required',
 		'email'                 =>  'required|email|unique:admins',
 		'password'              =>  'required|confirmed',
-		'password_confirmation' =>  'required|min:5'
+		'password_confirmation' =>  'required|min:5',
+		'level' 				=>  'required'
 
 	];
 
@@ -27,7 +28,8 @@ class Admin extends Eloquent implements UserInterface, RemindableInterface {
 
     public  static $rules=[
         'name'  =>  'required',
-        'email' =>  'required|email'
+        'email' =>  'required|email',
+		'level' =>  'required'
     ];
 
     public  static $rules_password=[

@@ -16,6 +16,7 @@ class AdminUsersController extends \AdminBaseController {
 		if(Auth::admin()->get()->level == 0)
 		{
 			$this->data['admins'] = Admin::all();
+			$this->data['pageTitle'] = 'Admins';
 
 			return View::make('admin.adminusers.index', $this->data);
 		} else {

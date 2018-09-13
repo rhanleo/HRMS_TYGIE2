@@ -86,7 +86,7 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     //	Dashboard Routing
 
     Route::resource('dashboard', 'AdminDashboardController',['as' => 'admin']);
-
+    Route::get('dashboard',['as'=>'admin.dashboard.index','uses'=>'AdminDashboardController@index']);
     //    Employees Routing
 	Route::get('employees/export',['as'=>'admin.employees.export','uses'=>'EmployeesController@export']);
     Route::get('employees/employeeLogin/{id}',['as'=>'admin.employees.employeeLogin','uses'=>'EmployeesController@employeesLogin']);
