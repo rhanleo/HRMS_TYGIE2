@@ -25,7 +25,9 @@ class EmployeesController extends \AdminBaseController {
 		if(Auth::admin()->get()->level != 0){
 			return Redirect::route('admin.dashboard.index');
 		}
-
+		// $mytime = date('2018-09-15 15:15:12');
+		// $time = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $mytime)->format('h:m A');	
+		
 		$this->data['employees']       =    Employee::all()->sortBy('employeeID');
 		$this->data['employeesActive'] =   'active';
 		return View::make('admin.employees.index', $this->data);

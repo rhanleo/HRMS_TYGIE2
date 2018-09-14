@@ -79,6 +79,7 @@ return array(
     'CreateBankDetailsTable' => $baseDir . '/app/database/migrations/2015_01_15_062941_create_bank_details_table.php',
     'CreateBranch' => $baseDir . '/app/database/migrations/2018_09_04_183340_create_branch.php',
     'CreateCountryTable' => $baseDir . '/app/database/migrations/2015_05_18_041236_create_country_table.php',
+    'CreateDailyTimeRecordTbl' => $baseDir . '/app/database/migrations/2018_09_14_124642_create_daily_time_record_tbl.php',
     'CreateDepartmentTable' => $baseDir . '/app/database/migrations/2015_01_01_113224_create_department_table.php',
     'CreateDesignationTable' => $baseDir . '/app/database/migrations/2015_01_02_113252_create_designation_table.php',
     'CreateEmployeeDocumentsTable' => $baseDir . '/app/database/migrations/2015_01_15_104831_create_employee_documents_table.php',
