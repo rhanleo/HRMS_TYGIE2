@@ -85,6 +85,11 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
     {
        // belongs('OtherClass','thisclasskey','otherclasskey')
        return $this->belongsTo('Branch','branch','id');
+	}
+	public function getDailyTimeRecord()
+    {
+       // belongs('OtherClass','thisclasskey','otherclasskey')
+       return $this->hasMay('DailyTimeRecord','employeeID','employeeID');
     }
 	public function getSchedule()
     {

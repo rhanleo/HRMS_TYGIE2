@@ -309,7 +309,7 @@
             </li>
             @endif
             <!-- End Employees -->
-            <li class="{{ $departmentOpen or ''}}">
+            <li class="{{ $workingHistoryOpen or ''}}">
                 <a href="{{route('admin.employees.workinghistory')}}">
                     <i class="fa fa-history fa-fw"></i>
                     <span class="title">{{'Working History'}}</span>
@@ -326,6 +326,13 @@
                 </a>
             </li>
             @endif
+            <li class="{{ $DailyTimeRecord or ''}}">
+                <a href="{{route('admin.dailytimerecord.index')}}">
+                    <i class="fa fa-clipboard fa-fw"></i>
+                    <span class="title">{{'Daily Time Records'}}</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
 
             <li class="{{ $awardsOpen or ''}}">
                 <a href="{{route('admin.awards.index')}}">
@@ -334,7 +341,7 @@
                     <span class="selected"></span>
                 </a>
             </li>
-
+            
             <li class="{{ $appraisalOpen or ''}}">
                 <a href="{{route('admin.appraisal.index')}}">
                     <i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>
@@ -359,7 +366,7 @@
                 </a>
             </li>
 
-             <li class="{{ $holidayOpen or ''}}">
+             <li class="{{ $schedule or ''}}">
                 <a href="{{route('admin.schedule.index')}}">
                 <i class="fa fa-calendar fa-fw"></i>
                     <span class="title">{{'Schedule'}}</span>

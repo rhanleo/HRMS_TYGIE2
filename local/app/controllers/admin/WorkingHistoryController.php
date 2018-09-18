@@ -14,22 +14,14 @@ class WorkingHistoryController extends \AdminBaseController {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->data['employeesOpen'] =   'active open';
-		$this->data['pageTitle']     =   trans('menu.employees');
+		$this->data['workingHistoryOpen'] =   'active open';
+		$this->data['pageTitle']     =   'Working History';
 	}
 
 	public function index()
 	{
 		$this->data['employees']       =    Employee::all()->sortBy('employeeID');
 		$this->data['employeesActive'] =   'active';
-		// $this->data['data'] = Employee::select('fullName', 'date_of_birth')
-		// ->where('date_of_birth', '=', '1970-01-01')->get();
-		// $data = Employee::join('designation', 'employees.designation', '=', 'designation.id')
-		// 					->select('designation.designation','employees.employeeID','employees.fullName', 'employees.date_of_birth')->orderBy('employeeID','asc')->get();
-
-		// echo "<pre>";
-		// dd($this->data);exit;
-		// echo "</pre>";
 		return View::make('admin.employee_work_history.index', $this->data);
 	}
 

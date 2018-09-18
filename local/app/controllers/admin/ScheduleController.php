@@ -14,7 +14,7 @@ class ScheduleController extends \AdminBaseController {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->data['employeesOpen'] =   'active open';
+		$this->data['schedule'] =   'active open';
 		$this->data['pageTitle']     =   trans('menu.employees');
 	}
 

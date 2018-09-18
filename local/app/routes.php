@@ -107,6 +107,11 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::get('employees/internal/{id}',['as'=>'admin.internal.index','uses'=>'EmployeesController@internal']);
     //External Departments employees
     Route::get('employees/external/{id}',['as'=>'admin.external.index','uses'=>'EmployeesController@external']);
+   
+    //Daily Time Records
+    Route::get('employees/dtr',['as'=>'admin.dailytimerecord.index','uses'=>'DailyTimeRecordController@index']);
+    Route::get('employees/dtr/create',['as'=>'admin.dailytimerecord.create','uses'=>'DailyTimeRecordController@create']);
+    Route::post('employees/dtr/store',['as'=>'admin.dailytimerecord.store','uses'=>'DailyTimeRecordController@store']);
     
     //Schedule routes
     Route::get('employees/schedule',['as'=>'admin.schedule.index','uses'=>'ScheduleController@index']);
