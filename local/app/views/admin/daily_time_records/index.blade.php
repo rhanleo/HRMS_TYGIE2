@@ -44,16 +44,20 @@
                                     @if(count($DailyTimeRecords)>0)
                                         @foreach ($DailyTimeRecords as $dtr)
                                         <?php 
-                                        $timeIn = $dtr->timeIn;
-                                        $times['timeIn'] = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $timeIn)->format('h:m A');
-                                        $timeOut = $dtr->timeOut;
-                                        $times['timeOut'] = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $timeOut)->format('h:m A');
-                                        $breakIn = $dtr->breakIn;
-                                        $times['breakIn'] = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $breakIn)->format('h:m A');
-                                        $breakOut = $dtr->breakOut;
-                                        $times['breakOut'] = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $breakOut)->format('h:m A');
-                                        $times['date'] = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $breakOut)->format('d F Y');
-                                        
+                                        $timeIn = date_create($dtr->timeIn);
+                                        $times['timeIn'] = date_format($timeIn, "H:i A");
+                                        $times['timeInCount'] = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $dtr->timeIn, "Asia/Singapore")->format('h:m A');                                      
+                                        // $times['timeIn'] = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $timeIn, "Asia/Singapore")->format('h:m A');
+                                        // dd($times['timeIn'] );exit;
+                                        $timeOut = date_create($dtr->timeOut);
+                                        $times['timeOut'] = date_format($timeOut, "H:i A");
+                                        $times['timeOutCount'] = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $dtr->timeOut, "Asia/Singapore")->format('h:m A');   
+                                        $breakIn = date_create($dtr->breakIn);
+                                        $times['breakIn'] = date_format($breakIn, "H:i A");
+                                        $breakOut = date_create($dtr->breakOut);
+                                        $times['breakOut'] = date_format($breakOut, "H:i A");
+                                        $times['date'] = date_format($breakOut, 'd F Y');
+                                        $pageTitle = strtolower($pageTitle);
                                         ?>
                                             <tr id="row{{ $dtr->id }}">
                                                 <td>{{ $dtr->employeeID }}</td>
@@ -66,11 +70,11 @@
                                                 <td>{{ $times['breakOut'] }}</td>
                                                 <td>{{ $times['breakIn'] }}</td>
                                                 <td>{{ $times['date'] }}</td>
-                                                <td>{{ $dtr->totalHours($times['timeIn'], $times['timeOut']) }}</td>
+                                                <td>{{ $dtr->totalHours($times['timeInCount'], $times['timeOutCount']) }}</td>
                                                 <td class=" " style="width: 110px;">
                                                     <div class="btn-actions">
                                                        
-                                                            <a class="btn btn-1"  data-toggle="modal" href="#edit_static" onclick="showEdit({{$dtr->id}},'{{ $dtr->employeeID }}')"><i class="fa fa-edit fa-fw"></i></a>
+                                                            <a class="btn btn-1"  data-toggle="modal" href="#edit_static" onclick="showEdit('{{$dtr->id}}','{{ $dtr->employeeID }}')"><i class="fa fa-edit fa-fw"></i></a>
                                                             <a class="btn btn-1" href="javascript:;" onclick="del({{$dtr->id}},'{{ $dtr->employeeID }}')"><i class="fa fa-trash fa-fw"></i></a>
                                                       
                                                     </div>
@@ -144,7 +148,7 @@
                 <div class="modal-header">
                     <h4 class="modal-title">
                         <span class="icon"><i class="fa fa-edit fa-fw"></i></span>
-                        <span>{{ 'Branch'}}</span>
+                        <span>{{ 'Daily Time Records'}}</span>
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-fw" aria-hidden="true"></i></button>
                 </div> {{-- end of .modal-header --}}
@@ -155,23 +159,18 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <label for="deptName" class="text-success">{{trans('core.department')}}</label>
-                                            <input class="form-control form-control-inline " name="designation" id="edit_deptName" type="text" value="" placeholder="{{trans('core.department')}}" readonly />
+                                            <label for="deptName" class="text-success">{{'Daily Time Records'}}</label>
+                                            <input class="form-control form-control-inline " name="employeeID" id="edit_deptName" type="text" value="" placeholder="{{trans('core.department')}}" readonly />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-9">
+                                        <div class="col-md-12">
                                             <div id="deptresponse"></div>
                                             <div id="insertBefore_edit"></div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <button type="button" id="plus_edit_Button" class="btn btn-1 form-control-inline">
-                                                <span class="icon"><i class="fa fa-plus fa-fw"></i></span>
-                                                <span>{{trans('core.more')}}</span>
-                                            </button>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div> {{-- end of .form-body --}}
@@ -213,18 +212,18 @@
 
             });
 
-		function del(id,branch)
+		function del(id,empId)
 		{
 
 			$('#deleteModal').appendTo("body").modal('show');
-			$('#info').html('{{Lang::get('messages.deleteConfirm')}} <strong>'+branch+'</strong> ?<br>' +
+			$('#info').html('{{Lang::get('messages.deleteConfirm')}} <strong>'+empId+'</strong> ?<br>' +
 			 '<br><div class="note note-warning">' +
-			  '{{Lang::get('messages.deleteNoteDepartment')}}'+
+			  "{{'Are you sure to delete this record ? '}}{{$pageTitle}}"+
               '</div>');
 			$("#delete").click(function(){
                 $.ajax({
                     type: "POST",
-                    url : "{{ url('api/delete/' . $slug) }}/" + id,
+                    url : "{{ url('api/delete/' . $pageTitle) }}/" + id,
                     dataType: 'json',
                     })
                     .done(function(response){
@@ -234,7 +233,7 @@
                         $('#row'+id).fadeOut(500);
                         showToastrMessage(' {{Lang::get('messages.successDelete')}} ', '{{Lang::get('messages.success')}}', 'success'); 
                         setTimeout(function() {
-                            window.location.replace('{{ route('admin.'.$slug.'.index') }}')
+                            window.location.replace('{{ route('admin.'.$pageTitle.'.index') }}')
                         }, 1000);           
                     }
                         });
@@ -246,11 +245,11 @@
 			{
 
                     $('div[id^="edit_field"]').remove();
-                    var url = "{{ route('admin.branches.update',':id') }}";
+                    var url = "{{ route('admin.dailytimerecord.update',':id') }}";
                     url = url.replace(':id',id);
                     $('#edit_form').attr('action',url );
 
-					var get_url = "{{ route('admin.branches.edit',':id') }}";
+					var get_url = "{{ route('admin.dailytimerecord.edit',':id') }}";
 					get_url = get_url.replace(':id',id);
 
 			        $("#edit_deptName").val(designation);

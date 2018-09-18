@@ -19,27 +19,28 @@ class DailyTImeRecord extends \Eloquent {
     }
 
     function totalHours($start, $end){
-
+        
         $startDate = new DateTime($start);
         $endDate = new DateTime($end);
+        
         $periodInterval = new DateInterval( "PT1H" );
         
         $period = new DatePeriod( $startDate, $periodInterval, $endDate );
         $count = 0;
-    
+   
         foreach($period as $date){
-    
+   
         $startofday = clone $date;
-        $startofday->setTime(8,30);
-    
+        $startofday->setTime(9,30);
+              
         $endofday = clone $date;
-        $endofday->setTime(17,30);
-    
+        $endofday->setTime(18,30);
+   
             if($date > $startofday && $date <= $endofday && !in_array($date->format('l'), array('Sunday','Saturday'))){
     
                 $count++;
             }
-    
+
         }
        return $count;
     }

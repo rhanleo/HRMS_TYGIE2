@@ -112,6 +112,8 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::get('employees/dtr',['as'=>'admin.dailytimerecord.index','uses'=>'DailyTimeRecordController@index']);
     Route::get('employees/dtr/create',['as'=>'admin.dailytimerecord.create','uses'=>'DailyTimeRecordController@create']);
     Route::post('employees/dtr/store',['as'=>'admin.dailytimerecord.store','uses'=>'DailyTimeRecordController@store']);
+    Route::get('employees/dtr/edit/{id}',['as'=>'admin.dailytimerecord.edit','uses'=>'DailyTimeRecordController@edit']);
+    Route::patch('employees/dtr/update/{id}',['as'=>'admin.dailytimerecord.update','uses'=>'DailyTimeRecordController@update']);
     
     //Schedule routes
     Route::get('employees/schedule',['as'=>'admin.schedule.index','uses'=>'ScheduleController@index']);

@@ -236,6 +236,9 @@ class ApiController extends BaseController {
 			if ($table == 'branches') {
 				$table = 'branch';
 			}
+			if ($table == 'dailytimerecord') {
+				$table = 'daily_time_records';
+			}
 			
 			$record = DB::table($table)
 								->where('id', $id)

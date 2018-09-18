@@ -7,13 +7,13 @@ class DailyTimeRecordController extends \AdminBaseController {
     {
         parent::__construct();
         $this->data['DailyTimeRecord'] ='active open';
-        $this->data['pageTitle']  =  'DailyTimeRecords';
+        $this->data['pageTitle']  =  'DailyTimeRecord';
     }
 
     //    Display a listing of awards
     public function index()
 	{
-		
+		$this->data['pageTitle']  =  'DailyTimeRecord';
 		$this->data['DailyTimeRecords'] = DailyTimeRecord::all();
 		
 		return View::make('admin.daily_time_records.index', $this->data);
@@ -45,7 +45,6 @@ class DailyTimeRecordController extends \AdminBaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-dd($input);exit;
    
 		DailyTimeRecord::create([
 			'employeeID' => $input['employeeID'],
@@ -71,12 +70,9 @@ dd($input);exit;
 	public function edit($id)
 	{
 
-        $this->data['award']    = Award::find($id);
-        $this->data['addAwardsActive'] = 'active';
-		$this->data['employees'] = Employee::selectRaw('CONCAT(firstName, " ", lastName) as full_name, employeeID')
-										->where('status','=','active')
-										->lists('full_name', 'employeeID');
-		return View::make('admin.awards.edit', $this->data);
+        $this->data['dailytimerecords']    = DailyTimeRecord::where('id','=',$id)->get();
+      
+		return View::make('admin.daily_time_records.edit', $this->data);
 	}
 
 	/**
@@ -87,18 +83,18 @@ dd($input);exit;
 	 */
 	public function update($id)
 	{
-		$award = Award::findOrFail($id);
+		$dtr = DailyTimeRecord::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Award::$rules);
+		$validator = Validator::make($data = Input::all(), DailyTimeRecord::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		$award->update($data);
+		$dtr->update($data);
 
-		return Redirect::route('admin.awards.index',$id)->with('success',"<strong>Success</strong> Updated Successfully");
+		return Redirect::route('admin.dailytimerecord.index')->with('success',"<strong>Success</strong> Updated Successfully");
 	}
 
 	/**
@@ -110,7 +106,7 @@ dd($input);exit;
 	public function destroy($id)
 	{
 		if (Request::ajax()) {
-			Award::destroy($id);
+			DailyTimeRecord::destroy($id);
 			$output['success'] = 'deleted';
 
 			return Response::json($output, 200);
