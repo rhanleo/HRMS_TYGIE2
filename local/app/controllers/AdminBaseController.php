@@ -8,7 +8,7 @@ class AdminBaseController extends Controller {
     public function __construct()
     {
 	    $this->data['setting']      = Setting::all()->first();
-
+		
 	    $this->data['datatabble_lang'] ='';
         if (file_exists("assets/global/plugins/datatables/langjson/{$this->data['setting']->locale}.json"))
 	    {
