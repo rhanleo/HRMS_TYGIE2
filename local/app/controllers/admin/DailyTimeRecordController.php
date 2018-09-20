@@ -60,7 +60,68 @@ class DailyTimeRecordController extends \AdminBaseController {
 	}
 
 
+	public function importExcel(){
+		$validator = Validator::make($input = Input::all(), DailyTimeRecord::$rules);
 
+		// if ($validator->fails())
+		// {
+		// 	return Redirect::back()->withErrors($validator)->withInput();
+		// }
+
+		$file = $input['excelFile'];
+		
+		
+		$fileName = date('y-m-d-h-i-s-').$file->getClientOriginalName();
+		
+		$filePath = public_path() . '/excel_file_upload'.'/';
+		if (!is_dir($filePath)) {
+            mkdir($filePath, 0755, true);
+		}
+		$ext = pathinfo($filePath . $fileName, PATHINFO_EXTENSION);
+		// dd($ext);exit;
+		if($ext != 'xlsx' && $ext != 'xls'){
+			$error = '<strong>' . $fileName .'</strong>' . ' file is not valid, please select EXCEL file ';
+			return Redirect::route('admin.dailytimerecord.index')->withErrors($error);
+			exit;
+		}
+
+		$file->move($filePath, $fileName);
+		$this->data['rows'] = Excel::load($filePath. $fileName)->get();
+		// echo "<pre>";
+		// dd($this->data['rows']);
+		// echo "</pre>";
+		// exit;
+		
+			foreach( $this->data['rows'] as $key => $val ) {
+				
+				$employees = Employee::where('employeeID', '=', $val['employee_id'])->get();
+				foreach($employees as $employee){
+					
+					if ( count($employee->employeeID) < 1) {
+						$error = '<strong>' . $val['employee_id'] .'</strong>' . ' No employee found on Emplyee ID: ' . $val['employee_id'];
+						return Redirect::route('admin.dailytimerecord.index')->withErrors($error);
+						
+					}
+				}
+				
+				//insert DTR details
+				DailyTimeRecord::create([
+					'employeeID'    => $val['employee_id'],
+					'timeIn'   		=> $val['time_in'],
+					'timeOut'     	=> $val['time_out'],
+					'breakOut'    	=> $val['break_out'],
+					'breakIn'       => $val['break_in'],
+					'status'        => 1,				
+				]);
+	
+				
+			}
+
+		
+		$totalList = count($this->data['rows']);
+		return Redirect::route('admin.dailytimerecord.index')->with('success',"<strong>{$totalList}</strong> successfully added to the Database");
+		
+	}
 	/**
 	 * Show the form for editing the specified award.
 	 *

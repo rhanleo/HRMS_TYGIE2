@@ -19,6 +19,7 @@
 {{ HTML::style("assets/admin/layout/css/custom.css")}}
 {{ HTML::style('assets/global/plugins/bootstrap-toastr/toastr.min.css') }}
 <link rel="stylesheet" href="{{ url( 'assets/global/css/custom.min.css' ) }}">
+{{HTML::style("assets/global/css/modified.css")}}
 
 
 

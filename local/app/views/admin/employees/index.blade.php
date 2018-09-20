@@ -16,7 +16,7 @@
                             </div>
                             <div class="btn-portlet-right">
                            
-                            <a href="{{route('admin.employees.excelview')}}">
+                            <a href="{{route('admin.employees.excelview')}}" title="Import employee using Excel file">
                                     <span class="icon"><i class="fa fa-file-excel-o fa-fw"></i></span>
                                     <span>{{'Import'}}</span>
                                 </a>
@@ -136,7 +136,7 @@
             // begin first table
         $('#sample_employees').dataTable({
 
-            {{$datatabble_lang}}
+            // {{$datatabble_lang}}
 
                 "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
 

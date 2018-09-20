@@ -53,6 +53,15 @@ class DashboardController extends \FrontBaseController {
 
         return View::make('front.employeeDashboard',$this->data);
 	}
+	public function updatePersonal($id)
+	{
+		$employee   =   Employee::where('employeeID','=',$id)->get()->first();
+	
+		$employee->mobileNumber = Input::get('mobileNumber');
+		$employee->save();
+
+		return Redirect::to('dashboard');
+	}
 
 //	show leave Page
 	public function leave()

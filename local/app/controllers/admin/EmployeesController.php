@@ -66,6 +66,7 @@ class EmployeesController extends \AdminBaseController {
 	public function excelupload(){
 		$this->data['employeesActive'] =   'active';
 		$file = Input::file('excelFile');
+		
 		$fileName = date('y-m-d-h-i-s-').$file->getClientOriginalName();
 		$filePath = public_path() . '/excel_file_upload'.'/';
 		if (!is_dir($filePath)) {
@@ -107,20 +108,24 @@ class EmployeesController extends \AdminBaseController {
 				Employee::create([
 					'employeeID'    => $val['employee_id'],
 					'designation'   => $val['designation_id'],
-					'fullName'      => ucwords(strtolower($val['full_name'])),
+					'branch'   		=> $val['branch'],
+					'firstName'     => ucwords($val['first_name']),
+					'lastName'      => ucwords($val['last_name']),
+					'middleName'    => ucwords($val['middle_name']),
+					'suffix'      	=> ucwords($val['suffix']),
 					'fatherName'    => ucwords(strtolower($val['father_name'])),
 					'gender'        => $val['gender'],
 					'email'         => $val['email'],
 					'password'      => Hash::make($val['password']),
 					'date_of_birth' => date('Y-m-d',strtotime($val['date_of_birth'])),
-					'marital_status' => $val['marital_status'],
-					'dependent' => $val['dependent'],
-					'employment_status' => $val['employment_status'],
+					'marital_status' => ($val['marital_status'])?:'Single',
+					'dependent' 	=> ($val['dependent'])?:0,
+					'employment_status' => ($val['employment_status'])?:'Regular',
 					'mobileNumber'  => $val['mobile_number'],
 					'joiningDate'   => $val['joining_date'],
-					'localAddress'  => $val['local_address'],
+					'localAddress'  => ($val['local_address'])?:'No input',
 					'joiningDate'   =>  date('Y-m-d',strtotime($val['joining_date'])),
-					'permanentAddress' => $val['permanent_address'],				
+					'permanentAddress' => ($val['permanent_address'])?:'No input',				
 				]);
 	
 	

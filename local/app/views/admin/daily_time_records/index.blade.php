@@ -19,14 +19,18 @@
                                 <div class="tools"></div>
                             </div>
                             <div class="btn-portlet-right">
+                            <a class="btn green" data-toggle="modal" href="#import_static" title="Import employee using Excel file">
+								<span class="icon"><i class="fa fa-file-excel-o fa-fw"></i></span>
+								<span>{{'import'}}</span>
+							</a>
                             <a class="btn green" data-toggle="modal" href="{{URL::to('admin/employees/dtr/create')}}">
 								<span class="icon"><i class="fa fa-plus fa-fw"></i></span>
-								<span>{{'add Daily Time Record'}}</span>
+								<span>{{'add'}}</span>
 							</a>
                             </div>
                         </div> {{-- end of .portlet-title --}}
                         <div class="portlet-body">
-                            <table class="table table-striped table-bordered table-hover">
+                        <table class="table table-striped table-bordered table-hover" id="sample_employees">
                                 <thead>
                                     <tr>
                                         <th>{{'Employee ID'}}</th>
@@ -186,12 +190,53 @@
             </div> {{-- end of .modal-content --}}
         </div> {{-- end of .modal-dialog --}}
     </div> {{-- end of .edit-department --}}
+    <div id="import_static" class="modal fade edit-department" tabindex="-1" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span class="icon"><i class="fa fa-edit fa-fw"></i></span>
+                        <span>{{ 'Daily Time Records'}}</span>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-fw" aria-hidden="true"></i></button>
+                </div> {{-- end of .modal-header --}}
+                <div class="modal-body">
+                    <div class="portlet-body form">
+                        {{ Form::open(array( 'method' => 'POST', 'route' => 'admin.dailytimerecord.importexcel', 'enctype'=>'multipart/form-data', 'class' => 'custom-form' , 'id'=>'import_form' ) ) }}
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>{{'Import Daily Time Records'}}</h3>
+                                            <label for="deptName" class="text-success">Select excel file</label>
+                                            <div calss="form-control">
+                                                <input type="file" name="excelFile" required></br>
+                                                <input class="btn btn-info" type="submit" name="upload" value="Upload" >
+                                            </div>
+                                            <div id="load">
+                                                @include('admin.common.error')
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div> {{-- end of .form-body --}}
+                            
+                        {{ Form::close() }}
+                    </div> {{-- end of .portlet-body --}}
+                </div> {{-- end of .modal-body --}}
+            </div> {{-- end of .modal-content --}}
+        </div> {{-- end of .modal-dialog --}}
+    </div> {{-- end of .edit-department --}}
     
     @include('admin.common.delete')
 @stop
 
 @section('footerjs')
-
+    {{ HTML::script("assets/global/plugins/select2/select2.min.js")}}
+	{{ HTML::script("assets/global/plugins/datatables/media/js/jquery.dataTables.min.js")}}
+	{{ HTML::script("assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js")}}
+    {{ HTML::script("assets/admin/pages/scripts/table-managed.js")}}
 <script>
 
              var $insertBefore = $('#insertBefore');
@@ -270,6 +315,45 @@
                              });
 
 			}
+           
 </script>
+<script>
+	jQuery(document).ready(function( $ ) {
+
+
+
+
+            // begin first table
+        $('#sample_employees').dataTable({
+
+            // {{$datatabble_lang}}
+
+                "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
+
+                
+                "lengthMenu": [
+                    [5, 15, 20, -1],
+                    [5, 15, 20, "All"] // change per page values here
+                ],
+                // set the initial value
+                "pageLength": 5,
+                "sPaginationType": "full_numbers",
+                "columnDefs": [{  // set default column settings
+                    'orderable': false,
+                    'targets': [0]
+                }, {
+                    "searchable": false,
+                    "targets": [0]
+                }],
+                "order": [
+                    [1, "asc"]
+                ] // set first column as a default sort by asc
+            });
+
+
+
+	});
+	</script>
+    
 @stop
 	

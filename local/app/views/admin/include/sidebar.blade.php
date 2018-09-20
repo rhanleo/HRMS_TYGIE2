@@ -3,6 +3,7 @@
         <div class="logo-container" style="background: #00aeef">
             <img src="{{ url('assets/admin/layout/img/'.$setting->logo) }}" alt="" width="auto">
         </div> {{-- end of .logo-container --}}
+ 
         <!-- BEGIN SIDEBAR MENU -->
         <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
         <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->

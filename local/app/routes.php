@@ -38,6 +38,8 @@ Route::group(array('before' => 'auth.employees'), function()
     Route::get('overtime/edit/{id}',['as'=>'front.overtime_edit','uses'=>'DashboardController@ot_edit']);
     Route::get('overtime/show/{id}',['as'=>'front.overtime_show','uses'=>'DashboardController@ot_show']);
     Route::post('dashboard/update_overtime/{id}',['as'=>'front.overtime_update','uses'=>'DashboardController@updateOvertime']);
+    // Update Personal 
+    Route::post('dashboard/update/personal/{id}',['as'=>'front.personal.update','uses'=>'DashboardController@updatePersonal']);
     
     Route::get('overtime',['as'=>'front.overtime','uses'=>'DashboardController@overtime']);
     Route::get('overtime/{id}/edit',['as'=>'front.overtime.edit','uses'=>'DashboardController@overtimeEdit']);
@@ -114,6 +116,7 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::post('employees/dtr/store',['as'=>'admin.dailytimerecord.store','uses'=>'DailyTimeRecordController@store']);
     Route::get('employees/dtr/edit/{id}',['as'=>'admin.dailytimerecord.edit','uses'=>'DailyTimeRecordController@edit']);
     Route::patch('employees/dtr/update/{id}',['as'=>'admin.dailytimerecord.update','uses'=>'DailyTimeRecordController@update']);
+    Route::post('employees/dtr/import',['as'=>'admin.dailytimerecord.importexcel','uses'=>'DailyTimeRecordController@importExcel']);
     
     //Schedule routes
     Route::get('employees/schedule',['as'=>'admin.schedule.index','uses'=>'ScheduleController@index']);

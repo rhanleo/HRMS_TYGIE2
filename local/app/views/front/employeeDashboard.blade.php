@@ -11,6 +11,7 @@
                                         <!--Profile Post-->
                                         <div class="col-sm-6">
                                             <div class="panel panel-profile no-bg">
+											
                                                 <div class="panel-heading overflow-h  service-block-u">
                                                     <h2 class="panel-title heading-sm pull-left"><i class="fa fa-pencil"></i>{{Lang::get('core.personalDetails')}}</h2>
                                                 </div>
@@ -63,6 +64,7 @@
                 												</td>
                 												<td>
                 													 {{$employee->mobileNumber}}
+																	 <a class="btn btn-1"  data-toggle="modal" href="#import_static" ><i class="fa fa-edit fa-fw"> edit</i></a>
                 												</td>
                 											</tr>
                 											<tr>
@@ -320,8 +322,49 @@
                                 </div>
                                 <!--End Profile Body-->
                             </div>
-
-
+	{{--------------------------Show Edit phone number MODALS-----------------}}
+			<div id="import_static" class="modal fade edit-department" tabindex="-1" data-backdrop="static" data-keyboard="false">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">
+								<span class="icon"><i class="fa fa-edit fa-fw"></i></span>
+								<span>{{ 'Edit Phone Number'}}</span>
+							</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-fw" aria-hidden="true"></i></button>
+						</div> {{-- end of .modal-header --}}
+						<div class="modal-body">
+							<div class="portlet-body form">
+								{{ Form::open(array( 'method' => 'POST', 'route' => array('front.personal.update', $employee->employeeID), 'enctype'=>'multipart/form-data', 'class' => 'custom-form' , 'id'=>'import_form' ) ) }}
+									<div class="form-body">
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-12">
+													<h3>{{'Phone Number'}}</h3>
+													<label for="deptName" class="text-success">Input your new phone number</label>
+													<div calss="form-control">
+														<input type="text" name="mobileNumber" id="mobileNumber" value="{{$employee->mobileNumber}}"></br>
+													</div>	<br/>
+													<div calss="form-control">
+														<input class="btn btn-info" type="submit" name="update" value="save" >
+												
+													</div>
+													<div id="load">
+														@include('admin.common.error')
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div> {{-- end of .form-body --}}
+									
+								{{ Form::close() }}
+							</div> {{-- end of .portlet-body --}}
+						</div> {{-- end of .modal-body --}}
+					</div> {{-- end of .modal-content --}}
+				</div> {{-- end of .modal-dialog --}}
+			</div> {{-- end of .edit-department --}}
+{{--------------------------END Edit phone number MODALS-----------------}}  
 {{--------------------------Show Notice MODALS-----------------}}
             <div class="modal fade show_notice in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -418,6 +461,6 @@
                 });
 
     	}
-
+	
     </script>
 @stop
