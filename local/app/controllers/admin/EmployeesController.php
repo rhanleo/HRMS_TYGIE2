@@ -203,6 +203,7 @@ class EmployeesController extends \AdminBaseController {
 	{
 		$this->data['employeesActive'] =   'active';
 		$this->data['department']      =     Department::lists('deptName','id');
+	
 		$designations     =      Designation::all()->sortBy('designation');
 		foreach($designations   as $designation){
 			$this->data['designation'] = $designation;

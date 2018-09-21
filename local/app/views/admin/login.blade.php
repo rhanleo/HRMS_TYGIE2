@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="{{ url( 'assets/admin/layout/css/themes/darkblue.css' ) }}">
 	<link rel="stylesheet" href="{{ url( 'assets/global/plugins/nprogress/nprogress.css' ) }}">
 	<link rel="stylesheet" href="{{ url( 'assets/global/css/custom.min.css' ) }}">
+	<link rel="stylesheet" href="{{ url( 'assets/global/css/modified.css' ) }}">
 </head>
 <body>
 	
@@ -20,7 +21,7 @@
 			<div class="form-container">
 				<div class="logo-container flex center">{{HTML::image("assets/admin/layout/img/{$setting->logo}",'Logo',array('class'=>'logo-default','height'=>'60px'))}}</div>
 				{{ Form::open( [ 'url' => '', 'class' => 'login-form' ] ) }}
-					<h3 class="form-title">{{ trans( 'messages.loginPageMessage' ) }}</h3>
+					<h3 class="form-title" style="color:rgb(176, 41, 45);">{{ trans( 'messages.loginPageMessage' ) }}</h3>
 					<div id="alert"></div>
 					<div class="input-panel">
 						<div class="form-group">
@@ -34,7 +35,7 @@
 						<button type="submit" class="btn btn-1" id="submitbutton" onclick="login();return false;">{{trans('core.btnLogin')}}</button>
 					</div> {{-- end of btn-panel --}}
 				{{ Form::close() }}
-				<p class="copyright">{{date( 'Y' ) }} © Skubbs Pte Ltd</p>
+				<p class="copyright">{{date( 'Y' ) }} © Tygie PH</p>
 			</div> {{-- end of .form-container --}}
 		</div> {{-- end of .content --}}
 	</div> {{-- end of #login-page --}}

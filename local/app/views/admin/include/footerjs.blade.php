@@ -18,7 +18,10 @@
 {{ HTML::script('assets/global/plugins/bootstrap-toastr/toastr.min.js') }}
 {{ HTML::script('assets/js/commonjs.js') }}
 
-
+{{ HTML::script("assets/global/plugins/select2/select2.min.js")}}
+{{ HTML::script("assets/global/plugins/datatables/media/js/jquery.dataTables.min.js")}}
+{{ HTML::script("assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js")}}
+{{ HTML::script("assets/admin/pages/scripts/table-managed.js")}}
 
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>

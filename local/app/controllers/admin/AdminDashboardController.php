@@ -105,7 +105,7 @@ ORDER BY month ;"));
 
 		$this->data['employee_count']    =   Employee::all()->count();
 		$this->data['awards_count']      =    Award::all()->count();
-		$this->data['department_count']      =    Department::all()->count();
+		$this->data['department_count']      =    Designation::all()->count();
 		$this->data['current_month_birthdays']   = Employee::currentMonthBirthday();
 		$this->data['awards']      =    Award::select('*')->orderBy('created_at','desc')->get();
 		$this->data['awards_color']=[

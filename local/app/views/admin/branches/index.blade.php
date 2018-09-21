@@ -26,7 +26,7 @@
                             </div>
                         </div> {{-- end of .portlet-title --}}
                         <div class="portlet-body">
-                            <table class="table table-striped table-bordered table-hover">
+                        <table class="table table-striped table-bordered table-hover" id="sample_employees">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -249,6 +249,33 @@
                              });
 
 			}
+
+                // begin first table
+        $('#sample_employees').dataTable({
+
+            {{$datatabble_lang}}
+
+                "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
+
+                
+                "lengthMenu": [
+                    [5, 15, 20, -1],
+                    [5, 15, 20, "All"] // change per page values here
+                ],
+                // set the initial value
+                "pageLength": 5,
+                "sPaginationType": "full_numbers",
+                "columnDefs": [{  // set default column settings
+                    'orderable': false,
+                    'targets': [0]
+                }, {
+                    "searchable": false,
+                    "targets": [0]
+                }],
+                "order": [
+                    [1, "asc"]
+                ] // set first column as a default sort by asc
+            });
 </script>
 @stop
 	

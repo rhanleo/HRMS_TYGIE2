@@ -28,14 +28,17 @@
                                 </a>
                                 @endif
                                 <?php
-                                        foreach($employees as $employee){
-                                            $id = $employee->designation;
-                                        }
-                                    ?>
+                                    foreach($employees as $employee){
+                                        $id = $employee->designation;
+                                    
+                                ?>
                                 <a  href="{{route('admin.employees.exportDept', $id) }}">
                                     <span class="icon"><i class="fa fa-file-excel-o fa-fw"></i></span>
                                     <span>{{trans('core.export')}}</span>
                                 </a>
+                                <?php
+                                  } 
+                                ?>
                             </div> {{-- end of .btn-portlet-right --}}
                         </div> {{-- end of .portlet-title --}}
                         <div class="portlet-body">

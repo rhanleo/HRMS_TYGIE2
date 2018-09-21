@@ -31,7 +31,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>{{trans('core.department')}} {{trans('core.name')}}</th>
-                                        <th>{{trans('core.designation')}}</th>
+                                        <th>{{'Sub Department'}}</th>
                                         <th style="width: 110px;">{{trans('core.action')}}</th>
                                     </tr>
                                 </thead>

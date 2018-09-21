@@ -1,9 +1,11 @@
 <div class="page-sidebar-wrapper">
     <div class="page-sidebar navbar-collapse collapse">
         <div class="logo-container" style="background: #00aeef">
-            <img src="{{ url('assets/admin/layout/img/'.$setting->logo) }}" alt="" width="auto">
+            <a href="{{ url('admin/dashboard') }}">
+                <img src="{{ url('assets/admin/layout/img/'.$setting->logo) }}" alt="" width="auto">
+            </a>
         </div> {{-- end of .logo-container --}}
- 
+
         <!-- BEGIN SIDEBAR MENU -->
         <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
         <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
@@ -41,7 +43,7 @@
                     <span class="selected"></span>
                 </a>
             </li>
-            @if(Auth::admin()->get()->level == 0)
+            @if(Auth::admin()->get()->level == 0 )
              <!-- Start Employees -->
             <li class="{{ $employeesOpen or ''}}">
                 <a href="javascript:;">
@@ -411,7 +413,7 @@
                     <span class="selected"></span>
                 </a>
             </li>
-
+            @if(Auth::admin()->get()->level == 3 || Auth::admin()->get()->level == 0)
             <li class="{{ $payrollOpen or ''}}{{ $sssSettingsOpen or ''}}{{ $philHealthOpen or ''}}">
                 <a href="javascript:void();">
                     <i class="fa fa-usd"></i>
@@ -437,7 +439,7 @@
                     </li>
                 </ul>
             </li>       
-
+            @endif
 
 
             <li class="{{ $noticeBoardOpen or ''}}">

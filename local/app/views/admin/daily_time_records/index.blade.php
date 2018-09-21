@@ -326,7 +326,7 @@
             // begin first table
         $('#sample_employees').dataTable({
 
-            // {{$datatabble_lang}}
+            {{$datatabble_lang}}
 
                 "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
 
