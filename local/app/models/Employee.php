@@ -81,6 +81,11 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 	protected $fillable = [];
 	protected $hidden  = ['password'];
 
+	public function getCashAdvance()
+    {
+       // belongs('OtherClass','thisclasskey','otherclasskey')
+       return $this->hasMay('CashAdvance','employeeID','employeeID');
+	}
 	public function getBranch()
     {
        // belongs('OtherClass','thisclasskey','otherclasskey')

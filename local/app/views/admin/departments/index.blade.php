@@ -33,6 +33,7 @@
                                         <th>{{trans('core.department')}} {{trans('core.name')}}</th>
                                         <th>{{'Sub Department'}}</th>
                                         <th style="width: 110px;">{{trans('core.action')}}</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
