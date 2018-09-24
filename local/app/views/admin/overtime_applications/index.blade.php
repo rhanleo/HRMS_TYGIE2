@@ -273,113 +273,115 @@ label.error{
 
 <script>
   jQuery(document).ready(function() {
-    ComponentsPickers.init();
-    $(document).on('change', '#type_of_leave', function(){
-      selected = $(this).val();
-      if(selected == 'half day'){
-        $('.half_day_container').slideDown('fast');
-      }
-      else{
-        $('.half_day_container').slideUp('fast');
-      }
-    });
+            ComponentsPickers.init();
+            $(document).on('change', '#type_of_leave', function(){
+            selected = $(this).val();
+            if(selected == 'half day'){
+                $('.half_day_container').slideDown('fast');
+            }
+            else{
+                $('.half_day_container').slideUp('fast');
+            }
+            });
 
-    $('#create_leave_application').validate({
-      errorPlacement: function (error, element) {
-        if (element.attr( 'name' ) == 'start_date' ) {
-          $( '.start_date_error' ).append( error );
-        }
-        else if (element.attr( 'name' ) == 'end_date' ) {
-          $( '.end_date_error' ).append( error );
-        }
-        else {
-          error.insertAfter(element);
-        }
-      }
-    });
+            $('#create_leave_application').validate({
+            errorPlacement: function (error, element) {
+                if (element.attr( 'name' ) == 'start_date' ) {
+                $( '.start_date_error' ).append( error );
+                }
+                else if (element.attr( 'name' ) == 'end_date' ) {
+                $( '.end_date_error' ).append( error );
+                }
+                else {
+                error.insertAfter(element);
+                }
+            }
+            });
 
-    // OVERTIME TYPE 
-    $(document).on("change", "input[name=type]", function(e) {
-        // var type = $(this).val();
-        // var percentage = 1;
-        
-        // var multiplier = 1.25;
-        // var rphLabel = "";
+            // OVERTIME TYPE 
+            $(document).on("change", "input[name=type]", function(e) {
+                // var type = $(this).val();
+                // var percentage = 1;
+                
+                // var multiplier = 1.25;
+                // var rphLabel = "";
 
-        // switch (type) {
-        //     case "restday":
-        //         multiplier = 1.30;
-        //         rphLabel = "(Hourly Rate x " + (multiplier * 100) + "%)";
-        //         break;
-        //     case "regular_holiday":
-        //         multiplier = 1.30 * 2.00;
-        //         rphLabel = "(Hourly Rate x 200% x 130%)";
-        //         break;
-        //     case "regular_holiday_restday":
-        //         multiplier = parseFloat(2.60 * 1.30).toFixed(2);
-        //         rphLabel = "(Hourly Rate x 260% x 130%)";
-        //         break;
-        //     default:
-        //         multiplier = 1.25;
-        //         rphLabel = "(Hourly Rate x " + (multiplier * 100) + "%)";
-        //         break;
-        // }
+                // switch (type) {
+                //     case "restday":
+                //         multiplier = 1.30;
+                //         rphLabel = "(Hourly Rate x " + (multiplier * 100) + "%)";
+                //         break;
+                //     case "regular_holiday":
+                //         multiplier = 1.30 * 2.00;
+                //         rphLabel = "(Hourly Rate x 200% x 130%)";
+                //         break;
+                //     case "regular_holiday_restday":
+                //         multiplier = parseFloat(2.60 * 1.30).toFixed(2);
+                //         rphLabel = "(Hourly Rate x 260% x 130%)";
+                //         break;
+                //     default:
+                //         multiplier = 1.25;
+                //         rphLabel = "(Hourly Rate x " + (multiplier * 100) + "%)";
+                //         break;
+                // }
 
-        // $("#hour_rate_percentage").val(multiplier);
-        // $("#rph_label").html(rphLabel);
-        recompute();
-    });
+                // $("#hour_rate_percentage").val(multiplier);
+                // $("#rph_label").html(rphLabel);
+                recompute();
+            });
 
-    // DAILY RATE ON KEYUP - COMPUTES OTHER FIELDS
-    $(document).on("keyup", "input[name=daily_rate]", function(e) {
-        // var dailyRate = parseFloat($(this).val()).toFixed(2);
+            // DAILY RATE ON KEYUP - COMPUTES OTHER FIELDS
+            $(document).on("keyup", "input[name=daily_rate]", function(e) {
+                // var dailyRate = parseFloat($(this).val()).toFixed(2);
 
-        // // HOUR PERCENTAGE DEPENDS ON "TYPE" YOU SELECTED
-        // var hourPercentage = parseFloat($("#hour_rate_percentage").val()).toFixed(2);
-        // var overtimeHours = $("#total_overtime").val();
+                // // HOUR PERCENTAGE DEPENDS ON "TYPE" YOU SELECTED
+                // var hourPercentage = parseFloat($("#hour_rate_percentage").val()).toFixed(2);
+                // var overtimeHours = $("#total_overtime").val();
 
-        // var hourPerDay = parseInt($("#hour_per_day").html());
+                // var hourPerDay = parseInt($("#hour_per_day").html());
 
-        // // RATE PER HOUR
-        // var ratePerHour = parseFloat(dailyRate / hourPerDay).toFixed(2);
-        // ratePerHour = (ratePerHour != "NaN") ? ratePerHour : "0.00";
+                // // RATE PER HOUR
+                // var ratePerHour = parseFloat(dailyRate / hourPerDay).toFixed(2);
+                // ratePerHour = (ratePerHour != "NaN") ? ratePerHour : "0.00";
 
-        // var overtimePay = parseFloat(parseFloat(ratePerHour) * hourPercentage).toFixed(2);
-        // overtimePay = (overtimePay != "NaN") ? overtimePay : "0.00";
+                // var overtimePay = parseFloat(parseFloat(ratePerHour) * hourPercentage).toFixed(2);
+                // overtimePay = (overtimePay != "NaN") ? overtimePay : "0.00";
 
-        // $("#rate_per_hour").html(ratePerHour);
-        // $("#overtime_pay").html(overtimePay);
+                // $("#rate_per_hour").html(ratePerHour);
+                // $("#overtime_pay").html(overtimePay);
 
-        // // if overtime hours field is not null or 0
-        // if (overtimeHours != "NaN" || overtimeHours != "" || overtimeHours != 0) {
-        //     $("input[name=total_overtime]").trigger("keyup");
-        // }
-        recompute();
-    });
+                // // if overtime hours field is not null or 0
+                // if (overtimeHours != "NaN" || overtimeHours != "" || overtimeHours != 0) {
+                //     $("input[name=total_overtime]").trigger("keyup");
+                // }
+                recompute();
+            });
 
-    $(document).on("keyup", "input[name=total_overtime]", function(e) {
-        // var overtimePay = parseFloat($("#overtime_pay").html()).toFixed(2);
-        // var totalOvertime = parseFloat($(this).val()).toFixed(2);
+            $(document).on("keyup", "input[name=total_overtime]", function(e) {
+                // var overtimePay = parseFloat($("#overtime_pay").html()).toFixed(2);
+                // var totalOvertime = parseFloat($(this).val()).toFixed(2);
 
-        // // TOTAL OVERTIME HOURS x OVERTIME PAY PER HOUR
-        // var totalOvertimePay = parseFloat(overtimePay * totalOvertime).toFixed(2);
-        // totalOvertimePay = (totalOvertimePay != "NaN") ? totalOvertimePay : "0.00"
+                // // TOTAL OVERTIME HOURS x OVERTIME PAY PER HOUR
+                // var totalOvertimePay = parseFloat(overtimePay * totalOvertime).toFixed(2);
+                // totalOvertimePay = (totalOvertimePay != "NaN") ? totalOvertimePay : "0.00"
 
-        // $("#total_overtime_pay").html(totalOvertimePay);
+                // $("#total_overtime_pay").html(totalOvertimePay);
 
-        // $("input[name=total_overtime_pay]").val(totalOvertimePay);
+                // $("input[name=total_overtime_pay]").val(totalOvertimePay);
 
-        recompute();
-    });
+                recompute();
+            });
 
-    start = $(document).find('.start_date_leave');
-    end = $(document).find('.end_date_leave');
-    the_end = end.datepicker({format: 'dd-mm-yyyy'});
+            start = $(document).find('.start_date_leave');
+            end = $(document).find('.end_date_leave');
+            the_end = end.datepicker({format: 'dd-mm-yyyy'});
 
-    $(document).on('changeDate', start, function (selected) {
-      var minDate = new Date(selected.date.valueOf());
-        the_end.data('datepicker').setStartDate(minDate);
-    });
+            $(document).on('changeDate', start, function (selected) {
+            var minDate = new Date(selected.date.valueOf());
+                the_end.data('datepicker').setStartDate(minDate);
+            });
+
+             
 
   });
 </script>
@@ -531,5 +533,10 @@ label.error{
 	  {
 		 $('#show_reject').attr('action',"{{ URL::to('admin/overtime_applications/"+id+"') }}" );
 	  }
+
+     
+    
+       
+    
 </script>
 @stop

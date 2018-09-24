@@ -34,6 +34,7 @@
                                         <th>Start Time</th>
                                         <th>End Time</th>
                                         <th>Status</th>
+                                        <th>Remarks</th>
                                         <th>Applied</th>
                                         <th>Total Hours</th>
                                         <th>Action</th>
@@ -96,15 +97,15 @@
             "bServerSide": true,
             "sAjaxSource": "{{ URL::route("front.overtime_applications") }}",
             "aaSorting": [[ 1, "asc" ]],
-            "aoColumns": [
-                { 'sClass': 'center', "bSortable": true },
-                { 'sClass': 'center', "bSortable": true },
-                { 'sClass': 'center', "bSortable": true },
-                { 'sClass': 'center', "bSortable": true },
-                { 'sClass': 'center', "bSortable": true },
-                { 'sClass': 'center', "bSortable": true },
-                { 'sClass': 'center', "bSortable": false }
-            ],
+            // "aoColumns": [
+            //     { 'sClass': 'center', "bSortable": true },
+            //     { 'sClass': 'center', "bSortable": true },
+            //     { 'sClass': 'center', "bSortable": true },
+            //     { 'sClass': 'center', "bSortable": true },
+            //     { 'sClass': 'center', "bSortable": true },
+            //     { 'sClass': 'center', "bSortable": true },
+            //     { 'sClass': 'center', "bSortable": false }
+            // ],
             "sPaginationType": "full_numbers",
             "language": {
            				 "lengthMenu": 		"Display _MENU_ records per page",
@@ -115,6 +116,7 @@
 						},
             "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
                 var row = $(nRow);
+                
                 row.attr("id", 'row'+aData['0']);
             }
         });

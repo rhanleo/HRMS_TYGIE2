@@ -42,11 +42,20 @@
             </div>
             <div class="col-md-9">
                 <?php $status = isset($overtime_application->application_status) ? $overtime_application->application_status : '' ?>
-                <select name="application_status" id="select-status">
+                <select name="application_status" id="select-status" onchange="getRemarks()">
                     <option value="pending">pending</option>
                     <option value="approved" @if ($status == 'approved') selected @endif)>approved</option>
                     <option value="rejected" @if ($status == 'rejected') selected @endif>rejected</option>
                 </select>
+            </div>
+            <div id="remarks_wrapper">
+                <div class="col-md-3">
+                    
+                </div>
+                <div class="col-md-9">
+                <label for=""><strong>Add Remarks</strong></label>
+                <textarea style="width:100%" name="remarks" id='remarks' ></textarea>
+                </div>
             </div>
         </div> {{-- end of .row --}}
         <div class="row margin-bottom-10">
@@ -222,4 +231,31 @@
 
 
 </div>
+{{ HTML::script("assets/global/plugins/jquery.min.js") }}
+<script>
+$('document').ready(function(){
+    getRemarks();
+})
+    var remarks = $("#remarks_wrapper");  
+       
+    function getRemarks(){
+        
+        var selectStats = $('#select-status').val();
+       
+        if(selectStats == 'rejected'){
+            remarks.show();
+            if($('#remarks').val() == ""){
+                $('#remarks').prop("required", true);
+               return false;
+              
+            }
+        }else if(selectStats == 'approved'){
+            $('#remarks').prop("required", false);
+            remarks.hide();
+           
+        }
+    }
+</script>
+
+
  {{-- end of .portlet-body --}}

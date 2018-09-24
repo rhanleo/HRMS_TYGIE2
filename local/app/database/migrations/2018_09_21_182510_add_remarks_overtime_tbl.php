@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTimeStampDtr extends Migration {
+class AddRemarksOvertimeTbl extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddTimeStampDtr extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('daily_time_record', function(Blueprint $table)
+		Schema::table('overtime_applications', function(Blueprint $table)
 		{
-			$table->timestamps()->after('status');
+			$table->string('remarks')->nullable()->after('reason');
 		});
 	}
 
@@ -25,9 +25,9 @@ class AddTimeStampDtr extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('daily_time_record', function(Blueprint $table)
+		Schema::table('overtime_applications', function(Blueprint $table)
 		{
-			$table->dropColumn('status');
+			$table->dropColumn('remarks');
 		});
 	}
 

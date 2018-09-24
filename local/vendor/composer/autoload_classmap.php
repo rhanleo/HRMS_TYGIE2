@@ -15,6 +15,7 @@ return array(
     'AddExpenseToPayrolls' => $baseDir . '/app/database/migrations/2015_06_08_051127_add_expense_to_payrolls.php',
     'AddFirstLastSuffixname' => $baseDir . '/app/database/migrations/2018_08_16_153553_add_first_last_suffixname.php',
     'AddJobTitleEmployeetbl' => $baseDir . '/app/database/migrations/2018_08_17_152546_add_job_title_employeetbl.php',
+    'AddRemarksOvertimeTbl' => $baseDir . '/app/database/migrations/2018_09_21_182510_add_remarks_overtime_tbl.php',
     'AddTimeStampDtr' => $baseDir . '/app/database/migrations/2018_09_17_163346_add_time_stamp_dtr.php',
     'Admin' => $baseDir . '/app/models/Admin.php',
     'AdminBaseController' => $baseDir . '/app/controllers/AdminBaseController.php',

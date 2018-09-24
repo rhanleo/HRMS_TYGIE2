@@ -653,12 +653,11 @@ class DashboardController extends \FrontBaseController {
         //     ->whereNotNull('application_status')
         //     ->orderBy('created_at','desc');
         $result = DB::table('overtime_applications')
-        			->select('id', 'start_date', 'end_date', 'application_status', 'created_at')
+        			->select('id', 'start_date', 'end_date', 'application_status', 'remarks', 'created_at' )
         			->where('employeeID', '=', $this->data['employeeID'])
         			->whereNotNull('application_status')
-        			->orderBy('created_at', 'desc');
-
-
+					->orderBy('created_at', 'desc');
+					
         return Datatables::of($result)
         	->edit_column('start_date',function($row){
 	        	return date('M d,Y h:i a', strtotime($row->start_date));
@@ -669,15 +668,27 @@ class DashboardController extends \FrontBaseController {
         	->edit_column('created_at',function($row){
 	        	return date('M d,Y h:i a', strtotime($row->created_at));
 			})
-			->edit_column('application_status',function($row){
+			
+			->edit_column('application_status', function($row){
+				
                 $color = [
                     'pending'   =>  'warning',
                     'approved'  =>  'success',
                     'rejected'  =>  'danger'
-                ];
-                return "<span class='label label-{$color[$row->application_status]}'>{$row->application_status}</span>";
+				];
+				// $remarks = $row->application_status == 'rejected' ? "<span class='text-danger'> Reason:<br/></span>" . $row->remarks : '';
+				
+                return "<p class='label label-{$color[$row->application_status]}'>{$row->application_status}</p>" ;
+			})
+			->edit_column('remarks', function($row){
+				
+                
+				$remarks = $row->application_status == 'rejected' ?  $row->remarks : '';
+				
+                return $remarks ;
             })
-	        ->add_column('total_hours',function($row){
+	        
+			->add_column('total_hours',function($row){
 				$total      = strtotime($row->end_date) - strtotime($row->start_date);
 				$total = $total > 0 ? $total : 0;
 				$hours      = floor($total / 60 / 60);

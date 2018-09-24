@@ -258,6 +258,7 @@ class ComposerStaticInit8f77428bb52c7ba6e61968f64f5861ee
         'AddExpenseToPayrolls' => __DIR__ . '/../..' . '/app/database/migrations/2015_06_08_051127_add_expense_to_payrolls.php',
         'AddFirstLastSuffixname' => __DIR__ . '/../..' . '/app/database/migrations/2018_08_16_153553_add_first_last_suffixname.php',
         'AddJobTitleEmployeetbl' => __DIR__ . '/../..' . '/app/database/migrations/2018_08_17_152546_add_job_title_employeetbl.php',
+        'AddRemarksOvertimeTbl' => __DIR__ . '/../..' . '/app/database/migrations/2018_09_21_182510_add_remarks_overtime_tbl.php',
         'AddTimeStampDtr' => __DIR__ . '/../..' . '/app/database/migrations/2018_09_17_163346_add_time_stamp_dtr.php',
         'Admin' => __DIR__ . '/../..' . '/app/models/Admin.php',
         'AdminBaseController' => __DIR__ . '/../..' . '/app/controllers/AdminBaseController.php',
