@@ -225,6 +225,12 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
 	Route::get('ajax_jobs_applications/',['as'=>'admin.ajax_jobs_applications','uses'=> 'JobApplicationsController@ajax_jobs_applications']);
 	Route::resource('job_applications', 'JobApplicationsController',['as' => 'admin']);
 
+    // Cash Advance
+	Route::get('cashadvance', ['as'=>'admin.cashadvance.index','uses'=> 'CashAdvanceController@index']);
+	Route::post('cashadvance/store', ['as'=>'admin.cashadvance.store','uses'=> 'CashAdvanceController@store']);
+	Route::get('cashadvance/edit/{id}', ['as'=>'admin.cashadvance.edit','uses'=> 'CashAdvanceController@edit']);
+	Route::patch('cashadvance/update/{id}', ['as'=>'admin.cashadvance.update','uses'=> 'CashAdvanceController@update']);
+	
 });
 
 // Lock Screen Routing

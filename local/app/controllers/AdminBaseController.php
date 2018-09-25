@@ -27,6 +27,7 @@ class AdminBaseController extends Controller {
 	    $this->data['loggedAdmin']  = Auth::admin()->get();
 		$this->data['pending_applications']   = LeaveApplication::where('application_status','=','pending')->get();
 		$this->data['overtime_applications']  = OvertimeApplication::where('application_status','=','pending')->get();
+		$this->data['cashadvance_applications']   = CashAdvance::where('status','=','pending')->get();
 		
 		$this->data['languages']   = Language::all();
 	    /** GET SLUG */

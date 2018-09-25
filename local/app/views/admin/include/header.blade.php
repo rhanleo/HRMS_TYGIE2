@@ -29,23 +29,23 @@
             <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                     <span class="label">Notifications:</span>
-                    @if(count($pending_applications)>0)
+                    @if(count($pending_applications)>0 || count($cashadvance_applications)>0)
                         <span class="badge badge-default">
-                            {{count($pending_applications)}}
+                            {{count($pending_applications) + count($cashadvance_applications)}}
                         </span>
                     @endif
                 </a>
                 <div class="dropdown-menu">
                     <ul>
                         <li class="external">
-                            <h3><span class="bold">{{count($pending_applications)}} pending</span> notifications</h3>
+                            <h3><span class="bold">{{count($pending_applications) + count($cashadvance_applications )}} pending</span> notifications</h3>
                         </li>
-                        @if( count( $pending_applications ) > 0 )
+                        @if( count( $pending_applications . $cashadvance_applications) > 0 )
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
                                     @foreach($pending_applications as $pending)
                                     <li>
-                                        <a style="padding: 10px 0;" data-toggle="modal" href="#static_leave_requests" onclick="show_application_notification({{ $pending->id }});return false;">
+                                        <a style="padding: 10px 0;" data-toggle="modal" href="{{url('admin/leave_applications')}}" onclick="show_application_notification({{ $pending->id }});return false;">
                                             <span class="time">{{date('d-M-Y',strtotime($pending->created_at))}}</span>
                                             <span class="details">
                                                 <span class="label label-sm label-icon label-success">
@@ -62,6 +62,22 @@
                                         </a>
                                     </li>
                                     @endforeach
+                                    @foreach($cashadvance_applications as $cash)
+                                    <li>
+                                        <a style="padding: 10px 0;" data-toggle="modal" href="{{route('admin.cashadvance.index')}}" onclick="show_application_notification({{ $cash->id }});return false;">
+                                            <span class="time">{{date('d-M-Y',strtotime($cash->created_at))}}</span>
+                                            <span class="details">
+                                                <span class="label label-sm label-icon label-success">
+                                                    <i class="fa fa-bell-o"></i>
+                                                </span>
+                                                <strong>{{$cash->getEmployeeDetails->firstName . ' ' . $cash->getEmployeeDetails->lastName}} </strong> has applied for Cash Advance
+
+                                                
+                                            </span>
+                                        </a>
+                                    </li>
+                                    @endforeach
+
                                 </ul>
                             </li>
                         @endif

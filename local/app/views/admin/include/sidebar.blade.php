@@ -423,18 +423,23 @@
                 <ul class="sub-menu">
                     <li class="{{ $payrollActive or ''}}">
                         <a href="{{route('admin.payrolls.index')}}">
-                            <i class="fa fa-usd"></i> Payroll List
+                           Payroll List
                         </a>
                     </li>
                     <li class="{{ $sssSettingsActive or '' }}">
                         <a href="{{ route( 'admin.sss_settings.index' ) }}">
-                            <i class="fa fa-clipboard"></i>
+                            
                             SSS
                         </a>
                     </li>
                     <li>
                         <a href="{{ route( 'admin.philhealth.index' ) }}">
-                            <i class="fa fa-clipboard"></i> PhilHealth
+                             PhilHealth
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route( 'admin.cashadvance.index' ) }}">
+                            Cash Advance
                         </a>
                     </li>
                 </ul>

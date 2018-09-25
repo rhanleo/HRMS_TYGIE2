@@ -240,6 +240,10 @@ class ApiController extends BaseController {
 				$table = 'daily_time_records';
 			}
 			
+			if ($table == 'cashadvance') {
+				$table = 'cash_advance';
+			}
+			
 			$record = DB::table($table)
 								->where('id', $id)
 								->first();

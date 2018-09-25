@@ -6,8 +6,11 @@ class CashAdvance extends \Eloquent {
     protected $table    =   'cash_advance';
     protected $guarded  = ['id'];
 
+    public static $rules = [
+		'amount'    =>  'required'
 
-    public function employeeDetails(){
+    ];
+    public function getEmployeeDetails(){
 
         return $this->belongsTo('Employee','employeeID','employeeID');
     }
