@@ -56,7 +56,12 @@ Route::group(array('before' => 'auth.employees'), function()
 
     Route::post('leave_store',['as'=>'front.leave_store','uses'=>'DashboardController@leave_store']);
     Route::post('overtime_store',['as'=>'front.overtime_store','uses'=>'DashboardController@overtime_store']);
-
+    // Cash Advance
+    Route::get('cashadvance',['as'=>'front.cashadvance.index','uses'=>'CashAdvanceFrontController@index']);
+    Route::post('cashadvance',['as'=>'front.cashadvance.store','uses'=>'CashAdvanceFrontController@store']);
+    Route::get('cashadvance/edit/{id}',['as'=>'front.cashadvance.edit','uses'=>'CashAdvanceFrontController@ajax_cashadvance']);
+    Route::patch('cashadvance/update/{id}',['as'=>'front.cashadvance.update','uses'=>'CashAdvanceFrontController@update']);
+    
     Route::resource('jobs','JobFrontController');
     Route::resource('dashboard','DashboardController');
 

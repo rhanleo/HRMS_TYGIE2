@@ -63,6 +63,7 @@ return array(
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'CashAdvance' => $baseDir . '/app/models/CashAdvance.php',
     'CashAdvanceController' => $baseDir . '/app/controllers/admin/CashAdvanceController.php',
+    'CashAdvanceFrontController' => $baseDir . '/app/controllers/front/CashAdvanceFrontController.php',
     'Cellmap' => $vendorDir . '/dompdf/dompdf/include/cellmap.cls.php',
     'ClassPreloader\\Application' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Application.php',
     'ClassPreloader\\ClassList' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/ClassList.php',

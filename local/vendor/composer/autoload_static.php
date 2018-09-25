@@ -306,6 +306,7 @@ class ComposerStaticInit8f77428bb52c7ba6e61968f64f5861ee
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'CashAdvance' => __DIR__ . '/../..' . '/app/models/CashAdvance.php',
         'CashAdvanceController' => __DIR__ . '/../..' . '/app/controllers/admin/CashAdvanceController.php',
+        'CashAdvanceFrontController' => __DIR__ . '/../..' . '/app/controllers/front/CashAdvanceFrontController.php',
         'Cellmap' => __DIR__ . '/..' . '/dompdf/dompdf/include/cellmap.cls.php',
         'ClassPreloader\\Application' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/ClassPreloader/Application.php',
         'ClassPreloader\\ClassList' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/ClassPreloader/ClassList.php',

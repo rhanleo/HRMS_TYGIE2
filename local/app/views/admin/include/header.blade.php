@@ -40,7 +40,7 @@
                         <li class="external">
                             <h3><span class="bold">{{count($pending_applications) + count($cashadvance_applications )}} pending</span> notifications</h3>
                         </li>
-                        @if( count( $pending_applications . $cashadvance_applications) > 0 )
+                        @if( count( $pending_applications) + count($cashadvance_applications) > 0 )
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
                                     @foreach($pending_applications as $pending)
