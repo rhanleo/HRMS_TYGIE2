@@ -15,8 +15,8 @@ class RentalFrontController extends \FrontBaseController {
 
 	public function index($id)
 	{
-		$this->data['schedule']      =      Schedule::where('employeeID','=',$id)->get();
-		return View::make('front.schedule.index',$this->data);
+		$this->data['rentals']      =      Rental::where('employeeID','=',$id)->get();
+		return View::make('front.rental.index',$this->data);
 	}
 
 	//	show Job  Page

@@ -33,7 +33,7 @@
                                     <tr>
                                         <th>{{'Employee ID'}}</th>
                                         <th>{{'Name'}}</th>
-                                        <th>{{'Date Covered'}}</th>
+                                        <th>{{'Billing Date'}}</th>
                                         <th>{{'Amount'}}</th>
                                         <th>{{'Status'}}</th>
                                         <th>{{'Remarks'}}</th>
@@ -45,7 +45,7 @@
                                     
                                         @foreach($rentals as $rental)
                                          <?php
-                                         $dateCovered =  date_format(date_create($rental['date_covered']),'F Y' );       
+                                         $dateCovered =  date_format(date_create($rental['date_covered']),'F d, Y' );       
                                          ?>
                                             <tr id="row{{ $rental['id'] }}">
                                                 <td>{{ $rental['employeeID'] }}</td>
