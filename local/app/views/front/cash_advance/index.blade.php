@@ -69,6 +69,7 @@
 									@foreach($cashAdvance as $cash)
 									 <?php
 									 $applied = date_format($cash['created_at'],'Y F d' );
+									 $approvedOn = date_format($cash['updated_at'],'Y F d' );
 										  
 											$admin = Admin::select('name','email')->where('id','=', $cash['approved_by'])->get()->first();
 											
@@ -98,7 +99,7 @@
 														<a class="btn btn-1"  data-toggle="modal" data-target=".edit_cashadvance" href="javascript:;" onclick="showEdit('{{$cash->id}}')"><i class="fa fa-edit fa-fw"></i></a>
 														<a class="btn btn-1" href="javascript:;" onclick="del({{$cash->id}},'{{ $cash->employeeID }}')"><i class="fa fa-trash fa-fw"></i></a>
 													@else
-													<span class=" text-success"><i class="fa fa-check fa-fw"> </i> Approved</span>
+													<span class=" text-success"><i class="fa fa-check fa-fw"> </i> Approved on {{$approvedOn}}</span>
 														
 													@endif
 												</div>

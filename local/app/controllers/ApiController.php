@@ -243,6 +243,9 @@ class ApiController extends BaseController {
 			if ($table == 'cashadvance') {
 				$table = 'cash_advance';
 			}
+			if ($table == 'rental') {
+				$table = 'rentals';
+			}
 			
 			$record = DB::table($table)
 								->where('id', $id)

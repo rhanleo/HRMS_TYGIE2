@@ -195,11 +195,16 @@ ul li {
                         <!-- Appraisal -->
                         <!-- Schedule -->
                         <li class="{{$jobActive or ''}}">
-                            <a href="{{ route('schedule.index',Auth::employees()->get()->employeeID)}}">
+                            <a href="{{ route('front.schedule.index',Auth::employees()->get()->employeeID)}}">
                                 {{'Schedule'}}
                             </a>
                         </li>
                         <!-- end Schedule -->
+                        <li class="{{$rentalActive or ''}}">
+                            <a href="{{ route('front.rental.index',Auth::employees()->get()->employeeID)}}">
+                                {{'Rental'}}
+                            </a>
+                        </li>
                         <!-- Job -->
                         <li class="{{$jobActive or ''}}">
                             <a href="{{ route('jobs.index')}}">

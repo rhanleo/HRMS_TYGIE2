@@ -67,10 +67,12 @@ Route::group(array('before' => 'auth.employees'), function()
 
 	Route::get('ajax_expenses/',['as'=>'front.ajax_expenses','uses'=> 'ExpenseFrontsController@ajax_expenses']);
     Route::resource('expenses', 'ExpenseFrontsController',['as' => 'front']);
-    
-    //Schedule
-    Route::get('schedule/{id}', ['as'=>'schedule.index','uses'=>'ScheduleFrontController@index'] );
 
+    //Schedule
+    Route::get('schedule/{id}', ['as'=>'front.schedule.index','uses'=>'ScheduleFrontController@index'] );
+    //Rental
+    Route::get('rental/{id}', ['as'=>'front.rental.index','uses'=>'RentalFrontController@index'] );
+    
 });
 
 
@@ -235,7 +237,13 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
 	Route::post('cashadvance/store', ['as'=>'admin.cashadvance.store','uses'=> 'CashAdvanceController@store']);
 	Route::get('cashadvance/edit/{id}', ['as'=>'admin.cashadvance.edit','uses'=> 'CashAdvanceController@edit']);
 	Route::patch('cashadvance/update/{id}', ['as'=>'admin.cashadvance.update','uses'=> 'CashAdvanceController@update']);
-	
+     
+    // Rentals
+    Route::get('rental',['as'=>'admin.rental.index','uses' => 'RentalController@index']);
+    Route::post('rental/store',['as'=>'admin.rental.store','uses' => 'RentalController@store']);
+    Route::get('rental/edit/{id}',['as'=>'admin.rental.edit','uses' => 'RentalController@edit']);
+    Route::patch('rental/update/{id}',['as'=>'admin.rental.update','uses' => 'RentalController@update']);
+    
 });
 
 // Lock Screen Routing

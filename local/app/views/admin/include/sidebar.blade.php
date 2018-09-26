@@ -360,6 +360,13 @@
                     <span class="selected"></span>
                 </a>
             </li>
+            <li class="{{ $rentalOpen or ''}}">
+                <a href="{{route('admin.rental.index')}}">
+                    <i class="fa fa-dollar fa-fw"></i>
+                    <span class="title">{{'Rental'}}</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
 
             <li class="{{ $holidayOpen or ''}}">
                 <a href="{{route('admin.holidays.index')}}">

@@ -81,29 +81,29 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 	protected $fillable = [];
 	protected $hidden  = ['password'];
 
-	public function getCashAdvance()
+	public function getRental()
     {
        // belongs('OtherClass','thisclasskey','otherclasskey')
+       return $this->hasMay('Rental','employeeID','employeeID');
+	}
+	public function getCashAdvance()
+    {
        return $this->hasMay('CashAdvance','employeeID','employeeID');
 	}
 	public function getBranch()
     {
-       // belongs('OtherClass','thisclasskey','otherclasskey')
        return $this->belongsTo('Branch','branch','id');
 	}
 	public function getDailyTimeRecord()
     {
-       // belongs('OtherClass','thisclasskey','otherclasskey')
        return $this->hasMay('DailyTimeRecord','employeeID','employeeID');
     }
 	public function getSchedule()
     {
-       // belongs('OtherClass','thisclasskey','otherclasskey')
        return $this->hasMany('Schedule','employeeID','employeeID');
     }
     public function getDesignation()
     {
-       // belongs('OtherClass','thisclasskey','otherclasskey')
        return $this->belongsTo('Designation','designation','id');
     }
 
