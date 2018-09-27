@@ -243,6 +243,11 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::post('rental/store',['as'=>'admin.rental.store','uses' => 'RentalController@store']);
     Route::get('rental/edit/{id}',['as'=>'admin.rental.edit','uses' => 'RentalController@edit']);
     Route::patch('rental/update/{id}',['as'=>'admin.rental.update','uses' => 'RentalController@update']);
+    // Request Others
+    Route::get('request',['as'=>'admin.request.index','uses' => 'RequestController@index']);
+    Route::post('request/store',['as'=>'admin.request.store','uses' => 'RequestController@store']);
+    Route::get('request/edit/{id}',['as'=>'admin.request.edit','uses' => 'RequestController@edit']);
+    Route::patch('request/update/{id}',['as'=>'admin.request.update','uses' => 'RequestController@update']);
     
 });
 

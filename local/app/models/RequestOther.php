@@ -7,7 +7,8 @@ class RequestOther extends \Eloquent {
     protected $guarded  = ['id'];
 
     public static $rules = [
-		'amount'    =>  'required'
+        'description'    =>  'required',
+        'quantity'    =>  'required'
 
     ];
     public function getEmployeeDetails(){

@@ -1658,6 +1658,8 @@ return array(
     'Rental' => $baseDir . '/app/models/Rental.php',
     'RentalController' => $baseDir . '/app/controllers/admin/RentalController.php',
     'RentalFrontController' => $baseDir . '/app/controllers/front/RentalFrontController.php',
+    'RequestController' => $baseDir . '/app/controllers/admin/RequestController.php',
+    'RequestOther' => $baseDir . '/app/models/RequestOther.php',
     'SSSController' => $baseDir . '/app/controllers/SSSController.php',
     'Salary' => $baseDir . '/app/models/Salary.php',
     'SalaryController' => $baseDir . '/app/controllers/admin/SalaryController.php',

@@ -1901,6 +1901,8 @@ class ComposerStaticInit8f77428bb52c7ba6e61968f64f5861ee
         'Rental' => __DIR__ . '/../..' . '/app/models/Rental.php',
         'RentalController' => __DIR__ . '/../..' . '/app/controllers/admin/RentalController.php',
         'RentalFrontController' => __DIR__ . '/../..' . '/app/controllers/front/RentalFrontController.php',
+        'RequestController' => __DIR__ . '/../..' . '/app/controllers/admin/RequestController.php',
+        'RequestOther' => __DIR__ . '/../..' . '/app/models/RequestOther.php',
         'SSSController' => __DIR__ . '/../..' . '/app/controllers/SSSController.php',
         'Salary' => __DIR__ . '/../..' . '/app/models/Salary.php',
         'SalaryController' => __DIR__ . '/../..' . '/app/controllers/admin/SalaryController.php',
