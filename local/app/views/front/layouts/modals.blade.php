@@ -247,7 +247,7 @@
                                 <div class="tab-pane fade active in" id="button-1">
                                     <div class="clearfix margin-bottom-4"></div>
 
-                                    {{Form::open( ['route'=>"front.cashadvance.update",'class'=>'form-horizontal sky-form', 'id' => 'ca-form', 'method'=>'PATCH'] )}}
+                                    {{Form::open( ['route'=>"front.cashadvance.update",'class'=>'form-horizontal sky-form', 'id' => 'ca-update-form', 'method'=>'PATCH'] )}}
                                         <div class="append-ot-time">
 
                                             <div class="row">      
@@ -259,7 +259,7 @@
                                                     
                                                     <label for="">Purpose</label>
                                                     <textarea class="form-control required" id="remarks" name="remarks"></textarea>
-                                                    <input name="employeeID" type="hidden" value"<?php echo Auth::employees()->get()->employeeID;?>">
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -276,7 +276,115 @@
             </div>
         </div>
     </div>
-{{-- END Edit CASH ADVANCE MODAL --}}
+{{-- END EDIT CASH ADVANCE MODAL --}}
+{{-- APPLY OTHER REQUEST MODAL --}}
+    <div class="modal fade apply_request in" tabindex="-1" role="dialog" aria-labelledby="myOvertimeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">Add Request</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="portlet-body form">
+                        <div class="tab-v1 margin-bottom-40">
+                            <div class="tab-content">
+                                <!--<div class="alert alert-info"><p>Note: Time format in 24hrs.</p></div>-->
+                                <div class="tab-pane fade active in" id="button-1">
+                                    <div class="clearfix margin-bottom-4"></div>
+
+                                    {{Form::open( ['route'=>"front.request.store",'class'=>'form-horizontal sky-form', 'id' => 'request-store-form', 'method'=>'POST'] )}}
+                                        <div class="append-ot-time">
+
+                                            <div class="row">      
+                                                <div class="col-md-12 col-xs-12">
+                                                    <label for="">Description</label>
+                                                    <textarea  class="form-control required" name="description" placeholder="USB Flash Drive, etc."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-12">
+                                                    <label for="purpose">Quantity</label>
+                                                    <input type="number" class="form-control required" name="quantity">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-xs-12">
+                                                    <label for="purpose">Remarks</label>
+                                                    <textarea class="form-control required" name="remarks"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                    <button type="submit" class="btn-u btn-u-sea form-control"><i class="fa fa-check"></i> Submit</button>
+                                    {{ Form::close() }}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{{-- END OTHER REQUEST MODAL --}}
+{{-- END EDIT OTHER REQUEST MODAL --}}
+<div class="modal fade edit_request in" tabindex="-1" role="dialog" aria-labelledby="myOvertimeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">Edit Request</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="portlet-body form">
+                        <div class="tab-v1 margin-bottom-40">
+                            <div class="tab-content">
+                                <!--<div class="alert alert-info"><p>Note: Time format in 24hrs.</p></div>-->
+                                <div class="tab-pane fade active in" id="button-1">
+                                    <div class="clearfix margin-bottom-4"></div>
+
+                                    {{Form::open( ['route'=>'front.request.update','class'=>'form-horizontal sky-form', 'id' => 'request-update-form', 'method'=>'PATCH'] )}}
+                                        <div class="append-ot-time">
+
+                                             <div class="row">      
+                                                <div class="col-md-12 col-xs-12">
+                                                    <label for="">Description</label>
+                                                    <textarea  id="description" class="form-control required" name="description" placeholder="USB Flash Drive, etc."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-12">
+                                                    <label for="purpose">Quantity</label>
+                                                    <input   id="quantity" type="number" class="form-control required" name="quantity">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-xs-12">
+                                                    <label for="purpose">Remarks</label>
+                                                    <textarea id="request_remarks" class="form-control" name="remarks"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                    <button type="submit" class="btn-u btn-u-sea form-control"><i class="fa fa-check"></i> Update</button>
+                                    {{ Form::close() }}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{{-- END EDIT OTHER REQUEST MODAL --}}
 
 {{--------------------------Change Password  MODALS-----------------------------}}
             <div class="modal fade change_password_modal in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

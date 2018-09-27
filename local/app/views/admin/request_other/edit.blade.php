@@ -40,7 +40,7 @@
             <option value="rejected" {{$r}}>Rejected</option>
         </select>
     </div> <br/>
-    <input class="form-control form-control-inline" name="approved_by" id="approved_by" type="text" value="<?php echo Auth::admin()->get()->id; ?>" />
+    <input class="form-control form-control-inline" name="approved_by" id="approved_by" type="hidden" value="<?php echo Auth::admin()->get()->id; ?>" />
 @endforeach
 </div>
 {{-- This is ajax called inside the index page modal  --}}

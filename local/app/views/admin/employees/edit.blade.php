@@ -106,7 +106,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="marital_status">Marital Status</label>
-                                                <?php $marital_status = array('single' => 'Single', 'married' => 'Married') ?>
+                                                <?php $marital_status = array('single' => 'Single', 'married' => 'Married', 'widowed'=>'Widowed') ?>
                                                 <select name="marital_status" id="" class="form-control">
                                                     @foreach($marital_status as $key => $val)
                                                         <option value="{{ $key }}" {{ ($employee->marital_status == $key ? 'selected' : '') }}>{{ $val }}</option>
@@ -404,6 +404,7 @@
                                                     $employment_status = array(
                                                             'regular' => 'Regular',
                                                             'freelancer' => 'Freelancer',
+                                                            'probationary' => 'Probationary',
                                                         )
                                                 ?>
                                                 {{ Form::select('employment_status', $employment_status, $employee->employment_status ,['class' => 'form-control select2me','id'=>'employment_status']) }}

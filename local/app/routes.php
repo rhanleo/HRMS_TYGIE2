@@ -72,6 +72,11 @@ Route::group(array('before' => 'auth.employees'), function()
     Route::get('schedule/{id}', ['as'=>'front.schedule.index','uses'=>'ScheduleFrontController@index'] );
     //Rental
     Route::get('rental/{id}', ['as'=>'front.rental.index','uses'=>'RentalFrontController@index'] );
+    // Request Others
+    Route::get('request',['as'=>'front.request.index','uses'=>'RequestFrontController@index']);
+    Route::post('request',['as'=>'front.request.store','uses'=>'RequestFrontController@store']);
+    Route::get('request/edit/{id}',['as'=>'front.request.edit','uses'=>'RequestFrontController@ajax_cashadvance']);
+    Route::patch('request/update/{id}',['as'=>'front.request.update','uses'=>'RequestFrontController@update']);
     
 });
 

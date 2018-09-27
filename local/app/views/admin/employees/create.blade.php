@@ -109,7 +109,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="marital_status">Marital Status</label>
-                                                {{ Form::select('marital_status', array('single' => 'Single', 'married' => 'Married'), Input::old('marital_status'),array('class'=>'form-control')) }}
+                                                {{ Form::select('marital_status', array('single' => 'Single', 'married' => 'Married', 'widowed' => 'Widowed'), Input::old('marital_status'),array('class'=>'form-control')) }}
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="dependent">Dependent</label>
@@ -338,6 +338,7 @@
                                                 <?php
                                                     $employment_status = array(
                                                             'regular' => 'Regular',
+                                                            'probationary' => 'Probationary',
                                                             'freelancer' => 'Freelancer',
                                                         )
                                                 ?>

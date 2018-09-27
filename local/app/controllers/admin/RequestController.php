@@ -74,18 +74,18 @@ class RequestController extends \AdminBaseController {
 	 */
 	public function update($id)
 	{
-		$ca = CashAdvance::findOrFail($id);
+		$request = RequestOther::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), CashAdvance::$rules);
+		$validator = Validator::make($data = Input::all(), RequestOther::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		$ca->update($data);
+		$request->update($data);
 
-		return Redirect::route('admin.cashadvance.index')->with('success',"<strong>Success</strong> Updated Successfully");
+		return Redirect::route('admin.request.index')->with('success',"<strong>Success</strong> Updated Successfully");
 	}
 
 	/**
@@ -97,7 +97,7 @@ class RequestController extends \AdminBaseController {
 	public function destroy($id)
 	{
 		if (Request::ajax()) {
-			CashAdvance::destroy($id);
+			RequestOther::destroy($id);
 			$output['success'] = 'deleted';
 
 			return Response::json($output, 200);

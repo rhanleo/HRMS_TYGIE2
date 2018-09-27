@@ -102,6 +102,13 @@ ul li {
     -ms-flex-align: center;
     align-items: center;
 }
+.modal-header{
+    background: rgb(176, 41, 45);
+}
+.modal-header h4 {
+    color: #fff;
+    font-weight: 600;
+}
 	</style>
 </head>
 
@@ -176,6 +183,17 @@ ul li {
                                     </ul>
                                 </li>
                                 <!-- end Cash Advance!!! -->
+                                <!--  Other!!! -->
+                                <li class="dropdown-submenu {{$requestActive or ''}}">
+                                    <a href="" href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"  >
+                                        Others
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="" data-toggle="modal" data-target=".apply_request">Add Other Request</a></li>
+                                        <li><a href="{{route('front.request.index')}}"> My Other Request</a></li>
+                                    </ul>
+                                </li>
+                                <!-- end Other!!! -->
                             </ul>
                         </li>
 

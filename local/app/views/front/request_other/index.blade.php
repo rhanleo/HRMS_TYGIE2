@@ -20,7 +20,7 @@
                 <!--Profile Body-->
                 <div class="profile-body">
 
-					<h2>{{'Cash Advance'}} </h2><hr>
+					<h2>{{'Other Request'}} </h2><hr>
 					
 					@if(Session::get('success'))
 						<div class="row">
@@ -37,13 +37,13 @@
 				  		<div class="portlet-title">
                             <div class="title-left">
                                 <div class="icon"><i class="fa fa-briefcase fa-fw"></i></div>
-                                <span>{{'Cash Advance'}}</span>
+                                <span>{{'Request'}}</span>
                                 <div class="tools"></div>
                             </div>
                             <div class="btn-portlet-right">
-                            <a data-toggle="modal" href=".apply_cashadvance" title="Apply for Cash Advance">
+                            <a data-toggle="modal" href=".apply_request" title="Apply for Cash Advance">
 								<span class="icon"><i class="fa fa-plus fa-fw"></i></span>
-								<span>{{'APPLY CASH ADVANCE'}}</span>
+								<span>{{'Add Request'}}</span>
 							</a>
                             
                             </div>
@@ -53,51 +53,51 @@
 						<table class="table table-striped table-bordered table-hover" id="sample_employees">
 							<thead>
 							<tr>
-								<th>{{'Employee ID'}}</th>
 								<th>{{'Name'}}</th>
 								<th>{{'Applied On'}}</th>
-								<th>{{'Amount'}}</th>
+								<th>{{'Description'}}</th>
+								<th>{{'Quantity'}}</th>
 								<th>{{'Status'}}</th>
 								<th>{{'Remarks'}}</th>
-								<th>{{'Reviewed By'}}</th>
+								<th>{{'Approved By'}}</th>
 								<th style="width: 110px;">{{trans('core.action')}}</th>
 							</tr>
 							</thead>
 							<tbody>
-							@if(count($cashAdvance)>0)
+							@if(count($requests)>0)
                                     
-									@foreach($cashAdvance as $cash)
+									@foreach($requests as $request)
 									 <?php
-									 $applied = date_format($cash['created_at'],'Y F d' );
-									 $approvedOn = date_format($cash['updated_at'],'Y F d' );
+									 $applied = date_format($request['created_at'],'Y M d' );
+									 $approvedOn = date_format($request['updated_at'],'Y M d' );
 										  
-											$admin = Admin::select('name','email')->where('id','=', $cash['approved_by'])->get()->first();
+											$admin = Admin::select('name','email')->where('id','=', $request['approved_by'])->get()->first();
 											
 									 ?>
-										<tr id="row{{ $cash['id'] }}">
-											<td>{{ $cash['employeeID'] }}</td>
+										<tr id="row{{ $request['id'] }}">
 											<td>
-											{{ $cash->getEmployeeDetails->firstName .' '}}
-											{{ $cash->getEmployeeDetails->lastName }}
+											{{ $request->getEmployeeDetails->firstName .' '}}
+											{{ $request->getEmployeeDetails->lastName }}
 											</td>
 											<td>{{$applied}}</td>
-											<td>{{ $cash['amount'] }}</td>
+											<td>{{$request['description'] }}</td>
+											<td>{{ $request['quantity'] }}</td>
 											<td>
-												@if($cash['status'] == 'rejected')
-												<span class='label label-danger'>{{ $cash['status'] }}</span>
-												@elseif($cash['status'] == 'approved')
-												<span class='label label-success'>{{ $cash['status'] }}</span>
-												@elseif($cash['status'] == 'pending')
-												<span class='label label-warning'>{{ $cash['status'] }}</span>
+												@if($request['status'] == 'rejected')
+												<span class='label label-danger'>{{ $request['status'] }}</span>
+												@elseif($request['status'] == 'approved')
+												<span class='label label-success'>{{ $request['status'] }}</span>
+												@elseif($request['status'] == 'pending')
+												<span class='label label-warning'>{{ $request['status'] }}</span>
 												@endif
 											</td>
-											<td>{{ $cash['remarks']?:'--'  }}</td>
+											<td>{{ $request['remarks']?:'--'  }}</td>
 											<td>{{ $admin['name']?:'--' }}</td>
 											<td class=" " style="width: 110px;">
 												<div class="btn-actions">
-												   @if($cash['status'] != 'approved')
-														<a class="btn btn-1"  data-toggle="modal" data-target=".edit_cashadvance" href="javascript:;" onclick="showEdit('{{$cash->id}}')"><i class="fa fa-edit fa-fw"></i></a>
-														<a class="btn btn-1" href="javascript:;" onclick="del({{$cash->id}},'{{ $cash->employeeID }}')"><i class="fa fa-trash fa-fw"></i></a>
+												   @if($request['status'] != 'approved')
+														<a class="btn btn-1"  data-toggle="modal" data-target=".edit_request" href="javascript:;" onclick="showEdit('{{$request->id}}')"><i class="fa fa-edit fa-fw"></i></a>
+														<a class="btn btn-1" href="javascript:;" onclick="del({{$request->id}},'{{ $request->employeeID }}')"><i class="fa fa-trash fa-fw"></i></a>
 													@else
 													<span class=" text-success"><i class="fa fa-check fa-fw"> </i> Approved on {{$approvedOn}}</span>
 														
@@ -214,12 +214,12 @@
 
 			function showEdit(id)
 			{
-
-                    var url = "{{ route('front.cashadvance.update',':id') }}";
+				
+                    var url = "{{ route('front.request.update',':id') }}";
                     url = url.replace(':id',id);
-                    $('#ca-update-form').attr('action',url );
-
-					var get_url = "{{ route('front.cashadvance.edit',':id') }}";
+                   console.log($('#request-update-form').attr('action',url));
+					
+					var get_url = "{{ route('front.request.edit',':id') }}";
 					get_url = get_url.replace(':id',id);
 
                     $.ajax({
@@ -232,9 +232,10 @@
                             }).done(function(response)
                               {
 								
-                                  console.log(response[0]['amount']);
-                                        $("#amount").val( response[0]['amount']);
-										$("#remarks").val(response[0]['remarks']);
+                                  console.log(response[0]['remarks']);
+                                        $("#quantity").val( response[0]['quantity']);
+										$("#description").val( response[0]['description']);
+										$("#request_remarks").val(response[0]['remarks']);
                                        
                              });
 

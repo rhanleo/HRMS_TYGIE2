@@ -85,7 +85,7 @@ class PayrollsController extends \AdminBaseController {
 
 	public function create()
 	{
-		$this->data['employees'] = Employee::selectRaw('CONCAT(fullName, " (EmpID:", employeeID,")") as full_name, employeeID')
+		$this->data['employees'] = Employee::selectRaw('CONCAT(firstName, " ", lastName, " (EmpID:", employeeID,")") as full_name, employeeID')
 		                                   ->where('status','=','active')
 		                                   ->lists('full_name','employeeID');
 

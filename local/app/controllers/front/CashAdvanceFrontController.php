@@ -19,17 +19,6 @@ class CashAdvanceFrontController extends \FrontBaseController {
 		return View::make('front.cash_advance.index',$this->data);
 	}
 
-	//	show Job  Page
-	public function edit($id)
-	{
-		$this->data['jobActive'] =    'active';
-		$this->data['jobs']      =      Job::where('status','=','active')->get();
-		$this->data['job_detail']       =      Job::find($id);
-		
-		return View::make('front.jobs.show',$this->data);
-	}
-
-	//	show Job  Page
 	public function store()
 	{
 		
