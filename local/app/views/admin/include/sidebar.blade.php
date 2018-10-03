@@ -367,7 +367,13 @@
                     <span class="selected"></span>
                 </a>
             </li>
-
+            <li class="{{ $requestOpen or ''}}">
+                <a href="{{route('admin.request.index')}}">
+                    <i class="fa fa-list-alt fa-fw"></i>
+                    <span class="title">{{'Request'}}</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
             <li class="{{ $holidayOpen or ''}}">
                 <a href="{{route('admin.holidays.index')}}">
                     <i class="fa fa-send fa-fw"></i>

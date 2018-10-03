@@ -5,7 +5,7 @@
                 <label for="fullName"><strong>Name</strong></label>
             </div>
             <div class="col-md-9">
-                {{$overtime_application->fullName}}
+                {{$overtime_application->firstName . ' ' . $overtime_application->lastName}}
             </div>
         </div> {{-- end of .row --}}
         <div class="row margin-bottom-10">

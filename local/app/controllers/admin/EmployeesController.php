@@ -250,8 +250,13 @@ class EmployeesController extends \AdminBaseController {
 
 
 			}
-				
-			
+			$input['localAddress'] = $input['prov_house_street_no'] 
+									.' '. $input['prov_municiapl_city'] 
+									.' '. $input['prov_province'];
+			$input['permanentAddress'] = $input['per_house_street_no'] 
+										.' '. $input['per_municiapl_city']
+										.' '. $input['per_province'];
+
 			Employee::create([
 				'employeeID'    => $input['employeeID'],
 				'designation'   => $input['designation'],

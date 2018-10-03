@@ -4,6 +4,9 @@
     {{HTML::style('assets/global/plugins/bootstrap-datepicker/css/datepicker3.css')}}
 @stop
 @section('mainarea')
+<style>
+    #s2id_department, #s2id_designation,#s2id_employment_status,#s2id_branch{display: none;}
+</style>
     <div class="content-section">
         <div class="container-fluid">
             <div class="row">

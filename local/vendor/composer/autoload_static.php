@@ -554,6 +554,7 @@ class ComposerStaticInit8f77428bb52c7ba6e61968f64f5861ee
         'Font_WOFF' => __DIR__ . '/..' . '/phenx/php-font-lib/classes/Font_WOFF.php',
         'Font_WOFF_Header' => __DIR__ . '/..' . '/phenx/php-font-lib/classes/Font_WOFF_Header.php',
         'Font_WOFF_Table_Directory_Entry' => __DIR__ . '/..' . '/phenx/php-font-lib/classes/Font_WOFF_Table_Directory_Entry.php',
+        'ForRegularController' => __DIR__ . '/../..' . '/app/controllers/admin/ForRegularController.php',
         'Frame' => __DIR__ . '/..' . '/dompdf/dompdf/include/frame.cls.php',
         'FrameList' => __DIR__ . '/..' . '/dompdf/dompdf/include/frame.cls.php',
         'FrameListIterator' => __DIR__ . '/..' . '/dompdf/dompdf/include/frame.cls.php',

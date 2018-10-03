@@ -121,12 +121,24 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="locaAddress">{{'Provincial Address'}}</label>
-                                                <textarea class="form-control" name="localAddress">{{Input::old('localAddress')}}</textarea>
+                                                <label for="locaAddress">{{'Provincial Address'}}</label><br/>
+                                                <span for="locaAddress">{{'House no., street, village'}}</span>
+                                                <input type="text" name="prov_house_street_no" placeholder=" House no., street, village" value="{{Input::old('prov_house_street_no')}}">
+                                                <span for="locaAddress">{{' Brgy., Municipal/city'}}</span>
+                                                <input type="text" name="prov_municiapl_city" placeholder=" Brgy., Municipal/city" value="{{Input::old('prov_municiapl_city')}}">
+                                                <span for="locaAddress">{{'Province'}}</span>
+                                                <input type="text" name="prov_province" placeholder="Province" value="{{Input::old('prov_province')}}">
+                                                
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="permanentAddress">{{trans('core.permanentAddress')}}</label>
-                                                <textarea class="form-control" name="permanentAddress">{{Input::old('permanentAddress')}}</textarea>
+                                                <label for="permanentAddress">{{trans('core.permanentAddress')}}</label><br/>
+                                                <span for="locaAddress">{{'House no., street, village'}}</span>
+                                                <input type="text" name="per_house_street_no" placeholder=" House no., street, village" value="{{Input::old('per_house_street_no')}}">
+                                                <span for="locaAddress">{{' Brgy., Municipal/city'}}</span>
+                                                <input type="text" name="per_municiapl_city" placeholder=" Brgy., Municipal/city" value="{{Input::old('per_municiapl_city')}}">
+                                                <span for="locaAddress">{{'Province'}}</span>
+                                                <input type="text" name="per_province" placeholder="Province" value="{{Input::old('per_province')}}">
+                                                
                                             </div>
                                         </div>
                                     </div> {{-- end of .form-group --}}
@@ -135,7 +147,7 @@
                                         <div class="title">{{trans('core.accountLogin')}}</div>
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-6"> 
                                                     <label for="email">{{trans('core.email')}}<span class="required">* </span></label>
                                                     <input type="text" name="email" class="form-control" value="{{ Input::old('email') }}" />
                                                 </div>
@@ -446,7 +458,7 @@ function dept(){
             
             modelDesig.empty();
             // console.log(data);
-            modelDesig.append("<option> Select </option>");
+            // modelDesig.append("<option> Select </option>");
            
             branch.hide();
             $.each(data, function(index, element) {             

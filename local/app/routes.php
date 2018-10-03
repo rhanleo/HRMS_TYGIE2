@@ -253,7 +253,9 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::post('request/store',['as'=>'admin.request.store','uses' => 'RequestController@store']);
     Route::get('request/edit/{id}',['as'=>'admin.request.edit','uses' => 'RequestController@edit']);
     Route::patch('request/update/{id}',['as'=>'admin.request.update','uses' => 'RequestController@update']);
-    
+    //  For regular
+    Route::get('for_regular_details/{id}',['as'=>'admin.regular.index','uses' => 'ForRegularController@index']);
+   
 });
 
 // Lock Screen Routing

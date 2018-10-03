@@ -131,7 +131,7 @@ class OvertimeApplications extends \AdminBaseController {
 		 //   ->orderBy('attendance.applied_on','desc');
 
 		$result = DB::table('overtime_applications')
-					->select('overtime_applications.id', 'employees.fullName','overtime_applications.start_date','overtime_applications.end_date','overtime_applications.reason','overtime_applications.created_at','overtime_applications.application_status')
+					->select('overtime_applications.id', 'employees.firstName', 'employees.lastName', 'overtime_applications.start_date','overtime_applications.end_date','overtime_applications.reason','overtime_applications.created_at','overtime_applications.application_status')
 					->join('employees', 'employees.employeeID', '=', 'overtime_applications.employeeID')
 					->whereNotNull('overtime_applications.application_status')
 					->orderBy('overtime_applications.created_at', 'desc');

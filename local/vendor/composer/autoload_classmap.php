@@ -311,6 +311,7 @@ return array(
     'Font_WOFF' => $vendorDir . '/phenx/php-font-lib/classes/Font_WOFF.php',
     'Font_WOFF_Header' => $vendorDir . '/phenx/php-font-lib/classes/Font_WOFF_Header.php',
     'Font_WOFF_Table_Directory_Entry' => $vendorDir . '/phenx/php-font-lib/classes/Font_WOFF_Table_Directory_Entry.php',
+    'ForRegularController' => $baseDir . '/app/controllers/admin/ForRegularController.php',
     'Frame' => $vendorDir . '/dompdf/dompdf/include/frame.cls.php',
     'FrameList' => $vendorDir . '/dompdf/dompdf/include/frame.cls.php',
     'FrameListIterator' => $vendorDir . '/dompdf/dompdf/include/frame.cls.php',

@@ -4,6 +4,9 @@
 	{{HTML::style("assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css")}}
 @stop
 @section('mainarea')
+<style>
+    #s2id_department, #s2id_designation,#s2id_employment_status,#s2id_branch{display: none;}
+</style>
     <div class="content-section">
         <div class="container-fluid">
             <div class="row">

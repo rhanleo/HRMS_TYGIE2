@@ -49,7 +49,8 @@ label.error{
 								<thead>
                                     <tr>
                                         <th>{{trans('core.id')}}</th>
-                                        <th>{{trans('core.name')}}</th>
+                                        <th>{{'First Name'}}</th>
+                                        <th>{{'Last Name'}}</th>
                                         <th>{{trans('core.dates')}}</th>
 
                                   
@@ -165,7 +166,7 @@ label.error{
                 <select class="form-control required" name="employee_id">
                 <option selected="selected" value="">Select Employee</option>
                 @foreach($employees as $employee)
-                <option value="{{$employee->employeeID}}">{{$employee->fullName}} - ({{$employee->employeeID}})</option>
+                <option value="{{$employee->employeeID}}">{{$employee->firstName . ' ' . $employee->lastName }} - ({{$employee->employeeID}})</option>
                 @endforeach
                 </select>
                 </div>
@@ -397,7 +398,7 @@ label.error{
                 { 'sClass': 'center', "bSortable": true  },
                 { 'sClass' : 'center',  "bSortable": true },
                 { 'sClass': 'center', "bSortable": true },
-                // { 'sClass': 'center', "bSortable": true },
+                { 'sClass': 'center', "bSortable": true },
                 // { 'sClass': 'center', "bSortable": true },
                 { 'sClass': 'center', "bSortable": true },
                 { 'sClass': 'center', "bSortable": true },

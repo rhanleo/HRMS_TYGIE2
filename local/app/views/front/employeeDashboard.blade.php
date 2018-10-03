@@ -107,19 +107,19 @@
                 													<span class="primary-link">{{Lang::get('core.department')}}</span>
                 												</td>
                 												<td>
-                												    @if( property_exists( $employee, 'getDesignation') )
-                													    {{$employee->getDesignation->department->deptName}}
-                													@endif
+                												    
+                													    {{$employee->getDesignation->designation}}
+                													
                 												</td>
                 											</tr>
                 											<tr>
                 												<td>
-                													<span class="primary-link">{{Lang::get('core.designation')}}</span>
+                													<span class="primary-link">{{'Position'}}</span>
                 												</td>
                 												<td>
-                												    @if( property_exists( $employee, 'getDesignation') )
-                													    {{$employee->getDesignation->designation}}
-                													@endif
+                												   
+                													    {{$employee->jobTitle}}
+                												
                 												</td>
                 											</tr>
                                                             <tr>

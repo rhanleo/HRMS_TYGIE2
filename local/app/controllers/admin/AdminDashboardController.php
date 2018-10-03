@@ -13,23 +13,46 @@ class AdminDashboardController extends AdminBaseController
 
 // Dashboard view page   controller
 	public function index() {
-		
+	
 		//  date('Y-m-d', strtotime(' + 5 days')) plus day on current date
-		$probationary = Employee::select('firstName', 'lastName', 'joiningDate','profileImage')
+		$probationary = Employee::select('firstName', 'lastName', 'employeeID','joiningDate','profileImage')
 		->where('status','=','active')
 		->orderBy('joiningDate','asc')
 		->get();
-		
-		foreach($probationary as $pro){
-			$effectiveDate = date('Y-m-d', strtotime("+90 days", strtotime($pro['joiningDate'])));
-			if($effectiveDate == date('Y-m-d')){
-				$this->data['probationary'] = $pro;
-				
-			} else {
-				$this->data['probationary'] = [];
+		$forProbi = [];
+		foreach($probationary as $key => $pro){
+			$effectiveDatePro  = date('Y-m-d', strtotime("+3 months", strtotime($pro['joiningDate'])));
+		// echo $effectiveDatePro;
+			if($effectiveDatePro == date('Y-m-d') || 
+			$effectiveDatePro == date('Y-m-d', strtotime("+1 day")) ||
+			$effectiveDatePro == date('Y-m-d', strtotime("+2 days")) ||
+			$effectiveDatePro == date('Y-m-d', strtotime("+3 days")) ){
+				$forProbi[$key] = $pro;
 			}
+
 		}
+		$this->data['probationary'] = $forProbi;
+
+		$regular = Employee::select('firstName', 'lastName', 'employeeID','joiningDate','profileImage')
+		->where('status','=','active')
+		->orderBy('joiningDate','asc')
+		->get();
+		$forReg = [];
+		foreach($regular as $key => $reg){
 		
+			$effectiveDateReg  = date('Y-m-d', strtotime("+6 months", strtotime($reg['joiningDate'])));
+			
+			if($effectiveDateReg == date('Y-m-d') || 
+			$effectiveDateReg == date('Y-m-d', strtotime("+1 day")) ||
+			$effectiveDateReg == date('Y-m-d', strtotime("+2 days")) ||
+			$effectiveDateReg == date('Y-m-d', strtotime("+3 days")) ){
+				$forReg[$key] = $reg;
+			}
+					
+	
+		}
+		$this->data['forRegular'] = $forReg;
+				
 
 		$this->data['holidays'] =   Holiday::all();
 		$attendance   = Attendance::where(function($query)

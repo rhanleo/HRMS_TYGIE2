@@ -39,8 +39,7 @@
                                         <th class="text-center">{{trans('core.eID')}}</th>
                                         <th class="text-center">{{trans('core.image')}}</th>
                                             <th style="text-align: center">{{trans('core.name')}}</th>
-                                        <th class="text-center">{{trans('core.desigDept')}}</th>
-                                        <th class="text-center">{{'Job Title'}}</th>
+                                        <th class="text-center">{{'Dept/Position/Branch'}}</th>
                                         <th class="text-center">{{trans('core.atWork')}}</th>
                                         <th class="text-center">Leave Credits</th>
                                         <th class="text-center">{{trans('core.status')}}</th>
@@ -63,14 +62,14 @@
                                         
                                         <td>
                                             
-                                            <p>Department: <strong>{{ $employee->getDesignation->department->deptName or ''}}</strong></p>
-                                            <p>Designation: <strong>{{ $employee->getDesignation->designation or ''}}</strong></p>
+                                            <p>Department: <strong>{{ $employee->getDesignation->designation or ''}}</strong></p>
+                                            <p>Position: <strong>{{ $employee->jobTitle or ''}}</strong></p>
                                             @if(count($employee->getBranch['branch']) > 0 )
                                             <p>Branch <strong>{{$employee->getBranch['branch']}}</strong></p>
                                             @endif
                                            
                                         </td>
-                                        <td>{{ $employee->jobTitle }}</td>
+                                        
                                         <td class="text-center">{{ $employee->workDuration($employee->employeeID) }}</td>
                                         <td class="text-center">
                                             <?php $leavetypes = DB::table('leavetypes')->get(); ?>

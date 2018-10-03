@@ -31,38 +31,80 @@
                         <div class="portlet-title has-pad">
                             <div class="title-left">
                                 <div class="icon"><img src="{{ URL::asset( 'assets/global/img/icons/customer.png' ) }}" /></div>
-                                <span>{{'Probationary'}}</span>
+                                <span>{{'For Probationary '}}</span> 
+                                @if(count($probationary)>0)
+                                <span class="badge badge-danger" style="margin-left:10px;"> {{count($probationary)}} </span>
+                                @endif
                             </div>
                         </div>
                         <div class="portlet-body">
-                            <div style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+                            <div  data-always-visible="1" data-rail-visible="0">
                                 <ul class="feeds">
                                  @if(count($probationary)>0)
-                                   
+                                   @foreach($probationary as $probi)
+                                      
                                         <li>
                                             
-                                            <div class="img-container">
-                                                @if( $probationary->profileImage )
+                                        <div class="img-container">
                                                   
-                                                    <div class="img-user" style="background-image: url( {{ url( 'profileImages/' . $probationary->profileImage ) }} );"></div>
-                                                @else
+                                                  @if($probi->profileImage )
+                                                     
+                                                     <div class="img-user" style="background-image: url( {{ url( 'profileImages/' . $probi->profileImage ) }} );"></div>
+                                                 @else
+                                                     
+                                                     <div class="img-default" style="background-image: url( {{ URL::asset( 'assets/global/img/profile-img/default.png' ) }} );"></div>
+                                                 @endif
+                                               </div>
+                                               <h3 class="name">{{$probi->firstName . ' ' .$probi->lastName }}</h3>
+                                               <p style="color: red;">Having 3 Months on</p>
+                                               <h3 class="dob">
+                                               
+                                                   {{ date('d M Y', strtotime("+3 months", strtotime($probi->joiningDate))) }}
+                                                   
+                                                   
+                                               </h3>
+                                               <p>{{ 'Employed on'}}</p>
+                                               <h3 class="dob">{{ date( 'd M Y',strtotime( $probi->joiningDate ) ) }}</h3>
+                                               
+                                               
+                                               <?php 
+                                                       
+                                                           
+                                                               $end = date('Y-m-d',strtotime("+3 months", strtotime($probi->joiningDate)));
+                                                               $str = date('Y-m-d') ;
+                                                               $s = date_create($str);
+                                                               $e = date_create($end);
+                                                               $res= date_diff($s,$e);
+                                                               $result = $res->format("%a");
+                                                               // echo $str .'/' .$end .'/'.$result;
+                                                               
                                                     
-                                                    <div class="img-default" style="background-image: url( {{ URL::asset( 'assets/global/img/profile-img/default.png' ) }} );"></div>
-                                                @endif
-                                            </div>
-                                            <h3 class="name">{{ $probationary->firstName . ' ' .$probationary->lastName }}</h3>
-                                            <p style="color: red;">Having 3 Months on</p>
-                                            <h3 class="dob">
-                                                <?php
-                                                echo date('d M Y', strtotime("+93 days", strtotime($probationary['joiningDate'])))
-                                                ?> 
-                                            </h3>
-                                            <p>{{ 'Employed on'}}</p>
-                                            <h3 class="dob">{{ date( 'd M Y',strtotime( $probationary->joiningDate ) ) }}</h3>
-                                            
-
+                                                           switch($result){
+                                                               case 0:
+                                                               echo '<p style="color: green;">Today </p>';
+                                                               break;
+                                                               case 1:
+                                                               echo '<p style="color: red;">1 day to </p>';
+                                                               break;
+                                                               case 2:
+                                                               echo '<p style="color: red;">2 days to go </p>';
+                                                               break;
+                                                               case 3:
+                                                               echo '<p style="color: red;">3 days to go </p>';
+                                                               break;
+                                                               default:
+                                                               echo "<p style='color: red;'>$result days to go </p>";
+                                                               
+                                                               
+                                                           }
+   
+                                                   ?>
+                                                <a href="{{route('admin.regular.index', $probi->employeeID)}}">
+                                                <span class="label label-success">View Details</span>
+                                                </a>
                                         </li>
-                                  
+                                       
+                                    @endforeach
                                     @else
                                         <li class="no-dob">
                                             {{'No Probationary for this day'}}
@@ -72,15 +114,108 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="portlet box regualar-portlet">
+                        <div class="portlet-title has-pad">
+                            <div class="title-left">
+                                <div class="icon"><img src="{{ URL::asset( 'assets/global/img/icons/customer.png' ) }}" /></div>
+                                <span>{{'For Regular'}}</span>
+                                @if(count($forRegular)>0)
+                                <span class="badge badge-danger" style="margin-left:10px;"> {{count($forRegular)}} </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div data-always-visible="1" data-rail-visible="0">
+                                <ul class="feeds">
+                    
+                                 @if(count($forRegular)>0)
+                                   @foreach($forRegular as $reg)
+                                        <li>
+                                            
+                                               <div class="img-container">
+                                                  
+                                               @if($reg->profileImage )
+                                                  
+                                                  <div class="img-user" style="background-image: url( {{ url( 'profileImages/' . $reg->profileImage ) }} );"></div>
+                                              @else
+                                                  
+                                                  <div class="img-default" style="background-image: url( {{ URL::asset( 'assets/global/img/profile-img/default.png' ) }} );"></div>
+                                              @endif
+                                            </div>
+                                            <h3 class="name">{{$reg->firstName . ' ' .$reg->lastName }}</h3>
+                                            <p style="color: red;">Having 6 Months on</p>
+                                            <h3 class="dob">
+                                            
+                                                {{ date('d M Y', strtotime("+6 months", strtotime($reg->joiningDate))) }}
+                                                
+                                                
+                                            </h3>
+                                            <p>{{ 'Employed on'}}</p>
+                                            <h3 class="dob">{{ date( 'd M Y',strtotime( $reg->joiningDate ) ) }}</h3>
+                                            
+                                            
+                                            <?php 
+                                                    
+                                                        
+                                                            $end = date('Y-m-d',strtotime("+6 months", strtotime($reg->joiningDate)));
+                                                            $str = date('Y-m-d') ;
+                                                            $s = date_create($str);
+                                                            $e = date_create($end);
+                                                            $res= date_diff($s,$e);
+                                                            $result = $res->format("%a");
+                                                            // echo $str .'/' .$end .'/'.$result;
+                                                            
+                                                 
+                                                        switch($result){
+                                                            case 0:
+                                                            echo '<p style="color: green;">Today </p>';
+                                                            break;
+                                                            case 1:
+                                                            echo '<p style="color: red;">1 day to </p>';
+                                                            break;
+                                                            case 2:
+                                                            echo '<p style="color: red;">2 days to go </p>';
+                                                            break;
+                                                            case 3:
+                                                            echo '<p style="color: red;">3 days to go </p>';
+                                                            break;
+                                                            default:
+                                                            echo "<p style='color: red;'>$result days to go </p>";
+                                                            
+                                                            
+                                                        }
+
+                                                ?>
+                                                <a href="{{route('admin.regular.index', $reg->employeeID)}}">
+                                                <span class="label label-success">View Details</span>
+                                                </a>
+                                        </li>
+                                       
+                                        @endforeach
+                                    @else
+                                        <li class="no-dob">
+                                            {{'No Regular for this day'}}
+                                        </li>
+                                    @endif
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="portlet box birthday-portlet">
                         <div class="portlet-title has-pad">
                             <div class="title-left">
                                 <div class="icon"><img src="{{ URL::asset( 'assets/global/img/icons/balloons.png' ) }}" /></div>
                                 <span>{{date('F')}} {{Lang::get('core.birthdays')}}</span>
+                                @if(count($current_month_birthdays)>0)
+                                <span class="badge badge-danger" style="margin-left:10px;"> {{count($current_month_birthdays)}} </span>
+                                @endif
                             </div>
                         </div>
                         <div class="portlet-body">
-                            <div style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+                            <div  data-always-visible="1" data-rail-visible="0">
                                 <ul class="feeds">
                                  @if(count($current_month_birthdays)>0)
                                     @foreach($current_month_birthdays as $birthday)

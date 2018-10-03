@@ -6,7 +6,7 @@ class RequestController extends \AdminBaseController {
     public function __construct()
     {
         parent::__construct();
-        $this->data['Request'] ='active open';
+        $this->data['requestOpen'] ='active open';
         $this->data['pageTitle']  =  'Request';
     }
 
