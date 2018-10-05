@@ -33,7 +33,9 @@ class AttendancesController extends \AdminBaseController {
  */
 	public function create() {
             $date = (Input::get('date')!='')?Input::get('date'):date('Y-m-d');
-		    $date   =   date('Y-m-d',strtotime($date));
+           
+            $date   =   date('Y-m-d',strtotime($date));
+            $this->data['date'] = $date;
             $attendance_count           = Attendance::where('date','=',$date)->count();
             $employee_count             = Employee::where('status','=','active')->count();
 
@@ -43,10 +45,11 @@ class AttendancesController extends \AdminBaseController {
             } else {
                 Session::forget('success');
             }
+           
             return Redirect::route('admin.attendances.edit',$date );
-	}
-
-
+    }
+    
+   
 
 
 	/**
@@ -65,9 +68,9 @@ class AttendancesController extends \AdminBaseController {
                                                       ->orwhere('status','=','present');
                                             })->get();
         $this->data['holidays']     = Holiday::all();
-        $this->data['employeeslist'] = Employee::lists('fullName','employeeID');
-
-
+        $this->data['employeeslist'] = Employee::select('employeeID', DB::raw("CONCAT(firstName, ' ', lastName) as fullName"))
+        ->lists('fullName', 'employeeID');
+      
 		return View::make('admin.attendances.show', $this->data);
 	}
 
@@ -75,12 +78,13 @@ class AttendancesController extends \AdminBaseController {
 	 * Show the form for editing the specified attendance.
 	 */
 	public function edit( $date ) {
+       
         $attendanceArray = array();
         $this->data['attendance']   = Attendance::where('date','=',$date)->get()->toArray();
-        //print_r($this->data['attendance']);die;
+        
 
         $this->data['todays_holidays'] = Holiday::where('date','=',$date)->get()->first();
-
+        
         foreach($this->data['attendance'] as $attend)
         {
             $attendanceArray[$attend['employeeID']] = $attend;
@@ -103,6 +107,7 @@ class AttendancesController extends \AdminBaseController {
 	 */
 	public function update( $date )
     {
+         // dd( $date);
 		$date   =   date('Y-m-d',strtotime($date));
 		$validator = Validator::make($input = Input::all(), Attendance::$rules);
 

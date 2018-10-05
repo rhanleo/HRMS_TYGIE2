@@ -81,6 +81,49 @@
                             </div>
                         </div>
                     </div>
+                    <div class="portlet box award-portlet">
+                        <div class="portlet-title has-pad">
+                            <div class="title-left">
+                                <div class="icon"><img src="{{ URL::asset( 'assets/global/img/icons/customer.png' ) }}" /></div>
+                                <span>{{'Award'}}</span> 
+                            
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div  data-always-visible="1" data-rail-visible="0">
+                            <table class="table table-striped table-bordered table-hover attendance-list" id="sample_1">
+                                <thead>
+                                    <tr>
+                                    <h3>Award Details</h3>
+                                    </tr>
+                                    <tr>
+                                        <th>{{'Award Name'}}</th>
+                                        <th>{{'Gift'}}</th>
+                                        <th>{{'Cash Amount'}}</th>
+                                        <th>{{'Date Awarded'}}</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(count($awards)>  0)
+                                        @foreach($awards as $award)
+                                        <tr>
+                                            <td> {{$award->awardName}}</td>
+                                            <td> {{$award->gift}} </td>
+                                            <td> {{$award->cashPrice}} </td>
+                                            <td> 
+                                            {{$award->forMonth . ' ' . $award->forYear}} 
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    @endif
+ 
+                                </tbody>
+                            </table>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {{-- Right Sider --}}
                 <div class="col-xs-12 col-md-6">

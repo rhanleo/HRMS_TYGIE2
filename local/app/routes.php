@@ -171,6 +171,7 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
 
     //  Routing for the attendance
     Route::get('attendances/report/{attendances}', ['as'=>'admin.attendance.report','uses'=>'AttendancesController@report']);
+    Route::get('attendances/{date}/edit', ['as'=>'admin.attendance.edit','uses'=>'AttendancesController@edit']);
     Route::resource('attendances', 'AttendancesController',['as' => 'admin']);
     Route::get('attendances/timesheet/{id}/{month}/{year}',['as'=>'admin.attendance.timesheet','uses'=>'AttendancesController@gentimesheet']);
     //    Routing or the leavetypes

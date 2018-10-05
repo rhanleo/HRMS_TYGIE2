@@ -28,7 +28,7 @@
                             {{Form::close()}}
                         </div>
                     </div>
-                    {{-- {{Form::open(['route'=>["admin.attendances.create"],'method'=>'GET'])}}
+                    {{Form::open(['route'=>["admin.attendances.create"],'method'=>'GET'])}}
                         <div class="col-md-3 form-group">
                             <div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
                                 <input type="text" class="form-control" name="date" placeholder="select date" readonly >
@@ -38,12 +38,14 @@
                             </div>
                         </div>
                         <div class="col-md-2 form-group"> <button  class=" btn blue" type="submit"> </button></div>
-                    {{Form::close()}} --}}
+                    {{Form::close()}}
                 </div>
                 <div class="col-md-9">
                     <div class="portlet box">
                         <div class="portlet-title has-pad">
+                        
                             <div class="title-left">
+                            
                                 @if(isset($todays_holidays->date))
                                     {{trans('core.holiday')}} , {{date('d M Y',strtotime($todays_holidays->date))}}
                                  @else
@@ -91,7 +93,7 @@
                                                     @foreach( $employees as $employee )
                                                         <tr>
                                                             <td>{{$employee->employeeID}}</td>
-                                                            <td>{{$employee->fullName}}</td>
+                                                            <td>{{$employee->firstName . ' ' . $employee->lastName}}</td>
                                                             <td>
                                                                 <input type="checkbox"  id="checkbox{{$employee->employeeID}}" onchange="showHide('{{$employee->employeeID}}');return false;" class="make-switch" name="checkbox[{{$employee->employeeID}}]" checked data-on-color="success" data-on-text="P" data-off-text="A" data-off-color="danger">
                                                                 <input type="hidden"  name="employees[]" value="{{$employee->employeeID}}">
@@ -162,8 +164,8 @@
 					
 					<!-- END EXAMPLE TABLE PORTLET-->
 					
-				</div>
 			</div>
+	</div>
 			<!-- END PAGE CONTENT-->
 
 

@@ -366,7 +366,7 @@ var Calendar = function() {
                             @if($attend[0]!='all present')
                                 @foreach($attend as $em)
                                  {
-                                    title: "{{Str::words($em,1,'')}}",
+                                    title: "{{$em}}",
                                     start:'{{$index}}',
                                         color: '#e50000'
 

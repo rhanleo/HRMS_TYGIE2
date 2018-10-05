@@ -15,7 +15,7 @@
                         <div class="portlet-title has-pad">
                             <div class="title-left">
                                 <span class="icon"><i class="fa fa-list fa-fw"></i></span>
-                                <span>{{ $employee->fullName }}</span>
+                                <span>{{ $employee->firstName . ' ' .  $employee->lastName}}</span>
                             </div>
                         </div> {{-- end of .portlet-title --}}
                         <div class="portlet-body" >

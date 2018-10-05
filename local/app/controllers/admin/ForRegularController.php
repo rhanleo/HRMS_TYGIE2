@@ -71,6 +71,7 @@ class ForRegularController extends AdminBaseController
 									->where('application_status','=','approved')
 									->sum('total_overtime');
 		
+		$award = Award::where('employeeID','=', $id)->get();
 		
 		$this->data['annualLeave'] = $alArray;
 		$this->data['sickLeave'] = $slArray;
@@ -79,7 +80,7 @@ class ForRegularController extends AdminBaseController
 		$this->data['overtimeApp'] = $overtimeApp;
 		$this->data['otTotal'] = $otTotal;
 		$this->data['employee'] = $employeeArray;
-
+		$this->data['awards'] = $award;
 	
 		return View::make('admin.for_regular.dashboard',$this->data);
 

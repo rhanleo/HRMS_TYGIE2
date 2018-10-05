@@ -65,10 +65,14 @@ class AdminDashboardController extends AdminBaseController
 
 		$at =   array();
 		$final = array();
+		$fullName;
 		foreach($attendance as $attend)
 		{
+			$fullName = array($attend->employeeDetails->firstName, $attend->employeeDetails->lastName);
+			$fN = implode(' ', $fullName);
+
 			$at[$attend->date]['status'][]  =   $attend->status;
-			$at[$attend->date]['employee'][]  =   $attend->employeeDetails->fullName;
+			$at[$attend->date]['employee'][]  =   $fN;
 		}
 
 		foreach($at as $index=>$att){
