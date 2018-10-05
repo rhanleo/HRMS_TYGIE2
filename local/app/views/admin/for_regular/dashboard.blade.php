@@ -6,6 +6,17 @@
         {{HTML::style("assets/global/plugins/fullcalendar/fullcalendar.min.css")}}
 @stop
 @section('mainarea')
+<style>
+.total-summary{
+    background: #9d8382;
+    color:#520202;
+    padding:5px;
+}
+.total-summary h4{
+    padding-left: 15px;
+    font-weight: 600;
+}
+</style>
     <div class="content-section">
         <div class="container-fluid">
             <div class="row" >
@@ -31,50 +42,33 @@
             {{-- Left sider --}}
                 <div class="col-xs-12 col-md-6">
                     
-                    <div class="portlet box leave-portlet">
-                        <div class="portlet-title has-pad">
-                            <div class="title-left">
-                                <div class="icon"><img src="{{ URL::asset( 'assets/global/img/icons/customer.png' ) }}" /></div>
-                                <span>{{'Leave'}}</span> 
-                            
-                            </div>
-                        </div>
-                        <div class="portlet-body">
+                    <div class="portlet box leave-portlet" >
+                        
+                        <div class="portlet-body" >
                             <div  data-always-visible="1" data-rail-visible="0">
-                            <table class="table table-striped table-bordered table-hover attendance-list" id="sample_1">
+                            <table class="table table-striped table-bordered table-hover attendance-list" id="leave">
                                 <thead>
-                                    <tr>
-                                    <h3>Leave Details</h3>
-                                    </tr>
+                                    
                                     <tr>
                                         <th>{{'Type'}}</th>
-                                        <th>{{'Leave Credits'}}</th>
-                                        <th>{{'Used'}}</th>
-                                        <th>{{'Remaining'}}</th>
+                                        <th>{{'No. day(s)'}}</th>
+                                        <th>{{'Date Covered'}}</th>
+                                        <th>{{'Status'}}</th>
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if($sickLeaveApp != null || $sickLeaveApp != 0)
+                                    @if(count($leaveApplications) > 0)
+                                    @foreach($leaveApplications as $leave)
                                         <tr>
-                                            <td> {{'Sick_leave'}}</td>
-                                            <td> {{$sickLeave->leave_credit}} </td>
-                                            <td> {{($sickLeaveApp)?$sickLeaveApp->days:0}} </td>
-                                            <td> {{($sickLeaveApp)?$sickLeave->leave_credit - $sickLeaveApp->days:$sickLeave->leave_credit}} </td>
+                                            <td> {{$leave->leaveType}}</td>
+                                            <td> {{$leave->days}} </td>
+                                            <td> {{date('d M Y', strtotime($leave->start_date))}} {{($leave->end_date)?date('- d M Y', strtotime($leave->end_date)):""}} </td>
+                                            <td> {{$leave->application_status}} </td>
                                         </tr>
+                                        @endforeach
                                         @endif
-                                        
-                                        @if($annualLeaveApp != null || $annualLeaveApp != 0)
-                                        <tr>
-                                            <td> {{'Annual_leave'}}</td>
-                                            <td> {{$annualLeave->leave_credit}} </td>
-                                            <td> {{($annualLeaveApp)?$annualLeaveApp->days:0}} </td>
-                                            <td>
-                                            {{($annualLeaveApp)?$annualLeave->leave_credit - $annualLeaveApp->days:$annualLeave->leave_credit}} 
-                                            </td>
-                                        </tr>
-                                        @endif
-                                    
+
                                 </tbody>
                             </table>
 
@@ -82,20 +76,12 @@
                         </div>
                     </div>
                     <div class="portlet box award-portlet">
-                        <div class="portlet-title has-pad">
-                            <div class="title-left">
-                                <div class="icon"><img src="{{ URL::asset( 'assets/global/img/icons/customer.png' ) }}" /></div>
-                                <span>{{'Award'}}</span> 
-                            
-                            </div>
-                        </div>
+                        
                         <div class="portlet-body">
                             <div  data-always-visible="1" data-rail-visible="0">
-                            <table class="table table-striped table-bordered table-hover attendance-list" id="sample_1">
+                            <table class="table table-striped table-bordered table-hover award-list" id="award">
                                 <thead>
-                                    <tr>
-                                    <h3>Award Details</h3>
-                                    </tr>
+                                   
                                     <tr>
                                         <th>{{'Award Name'}}</th>
                                         <th>{{'Gift'}}</th>
@@ -128,27 +114,16 @@
                 {{-- Right Sider --}}
                 <div class="col-xs-12 col-md-6">
                     <div class="portlet box overtime-portlet">
-                        <div class="portlet-title has-pad">
-                            <div class="title-left">
-                                <div class="icon"><img src="{{ URL::asset( 'assets/global/img/icons/customer.png' ) }}" /></div>
-                                <span>{{'Overtime'}}</span> 
-                            
-                            </div>
-                        </div>
+                        
                         <div class="portlet-body">
                             <div  data-always-visible="1" data-rail-visible="0">
-                            <table class="table table-striped table-bordered table-hover" id="sample_2">
+                            <table class="table table-striped table-bordered table-hover" id="overtime">
                                 <thead>
-                                    <tr>
-                                    <h3>Overtime Details</h3>
-                                    </tr>
+                                   
                                     <tr>
                                         <th>{{'Type'}}</th>
                                         <th>{{'Reason'}}</th>
-                                        <th>{{'Hours'}}  
-                                        <strong style="text-align:left;margin-left: 15%;color:#7ecec6;">
-                                        Total : {{($otTotal)?$otTotal:0}}
-                                        </strong>
+                                        <th>{{'Hours'}}
                                         </th>
                                         
                                     </tr>
@@ -160,6 +135,38 @@
                                                 <td> {{$otApp->type}}</td>
                                                 <td> {{$otApp->reason}} </td>
                                                 <td> {{$otApp->total_overtime}} </td>
+                                            </tr>
+                                            @endforeach
+                                        @endif    
+                                </tbody>
+                            </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portlet box attendance-portlet">
+                        
+                        <div class="portlet-body">
+                            <div  data-always-visible="1" data-rail-visible="0">
+                            <table class="table table-striped table-bordered table-hover" id="attendance">
+                                <thead>
+                                   
+                                    <tr>
+                                        <th>{{'Date'}}</th>
+                                        <th>{{'Status'}}</th>
+                                        <th>{{'Reason'}}  
+                                        
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(count($attendances) > 0)
+                                        @foreach($attendances as $attend)
+                                            <tr  id="row{{ $otApp->employeeID }}">
+                                                <td> {{date('d F Y', strtotime($attend->date))}}</td>
+                                                <td> {{$attend->status}} </td>
+                                                <td> {{$attend->reason}} </td>
                                             </tr>
                                             @endforeach
                                         @endif    
@@ -198,9 +205,8 @@
 <!-- END PAGE LEVEL PLUGINS -->
 <script>
 
-
             // begin first table
-        $('#sample_1, #sample_2').dataTable({
+        $('#leave, #award, #overtime, #attendance').dataTable({
 
             {{$datatabble_lang}}
 
@@ -245,7 +251,46 @@
                 ] // set first column as a default sort by asc
             });
             
+            window.onload = function(){
+                totalAttendance();
+                totalOvertime();
+                totalAward();
+                totalLeave();
+            }
+           
+            
+            
+            function totalAttendance(){
+                var totalAttendance = '<div class="col-md-12 total-summary" >'
+                + '<h4>Attendance Summary </h4>'
+                + '<div class="col-md-6"> Total Absent: <strong> {{count($totalAbsent)}} {{(count($totalAbsent) > 1)?"days":"day"}}</strong> </div> '
+                + '<div class="col-md-6"> Total Present: <strong> {{count($totalPresent)}} {{(count($totalPresent) > 1)?"days":"day"}}</strong> </div>'
+                + '</div>';
+                $('#attendance_wrapper').prepend(totalAttendance);
+             }
+             function totalOvertime(){
+                var totalOvertime = '<div class="col-md-12 total-summary" >'
+                + '<h4>Overtime Summary </h4>'
+                + '<div class="col-md-6"> Total Overtime: <strong> {{($otTotal)?$otTotal:0}} {{($otTotal > 1)?"hrs":"hr"}}</strong> </div> '
+                + '</div>';
+                $('#overtime_wrapper').prepend(totalOvertime);
+             }
 
+             function totalAward(){
+                var totalAward = '<div class="col-md-12 total-summary" >'
+                + '<h4>Award Summary </h4>'
+                + '<div class="col-md-6"> Total: <strong> {{count($awards)}} {{(count($awards) > 1)?"awards":"award"}}</strong> </div> '
+                + '</div>';
+                $('#award_wrapper').prepend(totalAward);
+             }
+             function totalLeave(){
+                var totalLeave = '<div class="col-md-12 total-summary" >'
+                + '<h4>Leave Application Summary </h4>'
+                + '<div class="col-md-6"> Sick leave: <strong> {{($sickLeaveApp)?$sickLeaveApp:0}} / {{$annualLeave->leave_credit}}</strong> </div> '
+                + '<div class="col-md-6"> Annual leave: <strong> {{($annualLeaveApp)?$annualLeaveApp:0}} / {{$sickLeave->leave_credit}}</strong> </div> '
+                + '</div>';
+                $('#leave_wrapper').prepend(totalLeave);
+             }
 	</script>
 	
 

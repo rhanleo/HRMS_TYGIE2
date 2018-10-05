@@ -25,11 +25,13 @@ class ForRegularController extends AdminBaseController
 		$sickLeaveApp = LeaveApplication::where('application_status','=','approved')
 									->where('employeeID','=', $id)
 									->where('leaveType','=','sick_leave')
-									->get();
+									->sum('days');
+		
 		$annualLeaveApp = LeaveApplication::where('leaveType','=','annual_leave')
 									->where('employeeID','=', $id)
 									->where('application_status','=','approved')
-									->get();
+									->sum('days');
+		$leaveApplication = LeaveApplication::where('employeeID','=', $id)->get();
 		
 					
 		$sickLeave  = DB::table('leave_credits')->where('leaveType','=','sick_leave')
@@ -48,22 +50,7 @@ class ForRegularController extends AdminBaseController
 			$alArray = $al;
 		}
 
-		$slaArray = [];
-		if($sickLeaveApp != null){
-			
-			foreach($sickLeaveApp as $sla){
-				$slaArray = $sla;
-			}
-		}
-		$alaArray = [];
-		if($annualLeave != null){
-			
-			foreach($annualLeaveApp as $ala){
-				$alaArray = $ala;
-			}
-		}
 
-		
 		$overtimeApp = OvertimeApplication::where('employeeID','=', $id)
 									->where('application_status','=','approved')
 									->get();
@@ -73,15 +60,39 @@ class ForRegularController extends AdminBaseController
 		
 		$award = Award::where('employeeID','=', $id)->get();
 		
+		$attendance   = Attendance::where('employeeID','=', $id)
+									->where('application_status','=',null)
+									  ->get();
+									  
+		$totalAbsent = [];
+		$totalPresent = [];
+		if(count($attendance) > 0){
+			
+			foreach($attendance as $attend){
+				if($attend->status == 'absent'){
+					$totalAbsent[] = $attend->status;
+				}
+				if($attend->status == 'present'){
+					$totalPresent[] = $attend->status;
+				}
+				
+			}
+
+		}
+		
+		// dd(count($leaveApplication));
+		$this->data['leaveApplications'] = $leaveApplication;		
 		$this->data['annualLeave'] = $alArray;
 		$this->data['sickLeave'] = $slArray;
-		$this->data['sickLeaveApp'] = $slaArray;
-		$this->data['annualLeaveApp'] = $alaArray;
+		$this->data['sickLeaveApp'] = $sickLeaveApp;
+		$this->data['annualLeaveApp'] = $annualLeaveApp;
 		$this->data['overtimeApp'] = $overtimeApp;
 		$this->data['otTotal'] = $otTotal;
 		$this->data['employee'] = $employeeArray;
 		$this->data['awards'] = $award;
-	
+		$this->data['attendances'] = $attendance;
+		$this->data['totalAbsent'] = $totalAbsent;
+		$this->data['totalPresent'] = $totalPresent;
 		return View::make('admin.for_regular.dashboard',$this->data);
 
 	}
