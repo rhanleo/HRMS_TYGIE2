@@ -163,7 +163,7 @@
                                 <tbody>
                                     @if(count($attendances) > 0)
                                         @foreach($attendances as $attend)
-                                            <tr  id="row{{ $otApp->employeeID }}">
+                                            <tr  id="row{{ $attend->employeeID }}">
                                                 <td> {{date('d F Y', strtotime($attend->date))}}</td>
                                                 <td> {{$attend->status}} </td>
                                                 <td> {{$attend->reason}} </td>

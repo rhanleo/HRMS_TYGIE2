@@ -30,18 +30,12 @@
                                     <span>{{Lang::get('core.btnAddEmployee')}}</span>
                                 </a>
                                 @endif
-                                <?php
-                                    foreach($employees as $employee){
-                                        $id = $employee->designation;
-                                    
-                                ?>
-                                <a  href="{{route('admin.employees.exportDept', $id) }}">
+                               
+                                <a  href="{{route('admin.employees.exportDept', $desigID) }}">
                                     <span class="icon"><i class="fa fa-file-excel-o fa-fw"></i></span>
                                     <span>{{trans('core.export')}}</span>
                                 </a>
-                                <?php
-                                  } 
-                                ?>
+                               
                             </div> {{-- end of .btn-portlet-right --}}
                         </div> {{-- end of .portlet-title --}}
                         <div class="portlet-body">
@@ -100,7 +94,7 @@
                                         <td class="" style="width: 112px;">                                            
                                             <div class="btn-actions">
                                                 <a class="btn btn-1" href="{{ route('admin.employees.edit',$employee->employeeID)  }}"><i class="fa fa-edit fa-fw"></i></a>
-                                                <a class="btn btn-1" href="javascript:;" onclick="del('{{$employee->id}}','{{ addslashes($employee->fullName) }}')"><i class="fa fa-trash fa-fw"></i></a>
+                                                <a class="btn btn-1" href="javascript:;" onclick="del('{{$employee->id}}','{{ $employee->firstName }}')"><i class="fa fa-trash fa-fw"></i></a>
                                             </div>
 
                                         </td>

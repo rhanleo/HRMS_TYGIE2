@@ -32,6 +32,7 @@ class AttendancesController extends \AdminBaseController {
  * This method is called when we mark the attendance and redirects to edit page.
  */
 	public function create() {
+       
             $date = (Input::get('date')!='')?Input::get('date'):date('Y-m-d');
            
             $date   =   date('Y-m-d',strtotime($date));

@@ -55,6 +55,8 @@ class AdminDashboardController extends AdminBaseController
 				
 
 		$this->data['holidays'] =   Holiday::all();
+		$this->data['MyCalendars'] =   MyCalendar::all();
+		
 		$attendance   = Attendance::where(function($query)
                                     {
                                         $query->where('application_status','=','approved')

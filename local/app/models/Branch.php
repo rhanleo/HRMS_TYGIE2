@@ -24,4 +24,8 @@ class Branch extends \Eloquent {
     {
         return $this->belongsTo('Designation','designationID','id');
     }
+    protected function getEmployeeDetails()
+    {
+        return $this->belongsTo('Employee','id','branch');
+    }
 }

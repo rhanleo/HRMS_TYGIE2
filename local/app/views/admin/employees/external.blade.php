@@ -60,7 +60,7 @@
                                         {{ $employee->suffix }}
                                         </td>
                                         <td>{{ $employee->jobTitle }}</td>
-                                        <td>{{ $employee->getBranch->branch }}</td>
+                                        <td>{{ $employee->getBranchID($employee->branch)}}</td>
                                         <td class="text-center">{{ $employee->workDuration($employee->employeeID) }}</td>
                                         <td class="text-center">
                                             <?php $leavetypes = DB::table('leavetypes')->get(); ?>
@@ -89,7 +89,8 @@
                                         <td class="" style="width: 112px;">                                            
                                             <div class="btn-actions">
                                                 <a class="btn btn-1" href="{{ route('admin.employees.edit',$employee->employeeID)  }}"><i class="fa fa-edit fa-fw"></i></a>
-                                                <a class="btn btn-1" href="javascript:;" onclick="del('{{$employee->id}}','{{ addslashes($employee->fullName) }}')"><i class="fa fa-trash fa-fw"></i></a>
+                                                
+                                                <a class="btn btn-1" href="javascript:;" onclick="del('{{$employee->id}}','{{ addslashes($employee->firstName) }}')"><i class="fa fa-trash fa-fw"></i></a>
                                             </div>
 
                                         </td>

@@ -22,6 +22,12 @@ class OvertimeApplications extends \AdminBaseController {
 		$this->data['employees']       =    Employee::all();
 		$this->data['leavetypes']       =    Leavetype::all();
         $this->data['leaveTypeWithoutHalfDay']   =   Attendance::leaveTypesEmployees('half day');
+		// $this->data['overtime_application']    =   DB::table('overtime_applications')->select("*")->get();
+		// $OTapplication = [];
+		// foreach($this->data['overtime_application'] as $OTapp ){
+		// 	$OTapplication[] = $OTapp->total_overtime;
+		// }
+		// $this->data['OTapps'] = $OTapplication;
 		
 		return View::make('admin.overtime_applications.index', $this->data);
 	}
@@ -131,7 +137,9 @@ class OvertimeApplications extends \AdminBaseController {
 		 //   ->orderBy('attendance.applied_on','desc');
 
 		$result = DB::table('overtime_applications')
-					->select('overtime_applications.id', 'employees.firstName', 'employees.lastName', 'overtime_applications.start_date','overtime_applications.end_date','overtime_applications.reason','overtime_applications.created_at','overtime_applications.application_status')
+					->select('overtime_applications.id', 'employees.firstName', 'employees.lastName', 'overtime_applications.start_date',
+					'overtime_applications.total_overtime','overtime_applications.end_date','overtime_applications.reason','overtime_applications.created_at',
+					'overtime_applications.application_status')
 					->join('employees', 'employees.employeeID', '=', 'overtime_applications.employeeID')
 					->whereNotNull('overtime_applications.application_status')
 					->orderBy('overtime_applications.created_at', 'desc');
@@ -145,6 +153,9 @@ class OvertimeApplications extends \AdminBaseController {
             })
             ->edit_column('created_at',function($row){
                 return date('d-M-Y', strtotime($row->created_at));
+			})
+			->edit_column('total_overtime',function($row){
+                return $row->total_overtime;
             })
             ->edit_column('reason',function($row){
 	            return   strip_tags(Str::limit($row->reason,50));

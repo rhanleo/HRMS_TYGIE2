@@ -296,7 +296,12 @@ label.error{
       var minDate = new Date(selected.date.valueOf());
         the_end.data('datepicker').setStartDate(minDate);
     });
+
+
+
   });
+
+ 
 </script>
 
 <script>

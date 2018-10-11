@@ -172,7 +172,13 @@ class Employee extends Eloquent implements UserInterface, RemindableInterface {
 		return $difference;
 
 	}
+	public function getBranchID($branchID)
+	{
+		$branch = Branch::select('branch')->where('id','=',$branchID)->first();
 
+		return $branch['branch'];
+
+	}
 
 	/**
 	 * Get the last absent days

@@ -256,6 +256,9 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
     Route::patch('request/update/{id}',['as'=>'admin.request.update','uses' => 'RequestController@update']);
     //  For regular
     Route::get('for_regular_details/{id}',['as'=>'admin.regular.index','uses' => 'ForRegularController@index']);
+   //  My Calendar
+   Route::get('mycalendar',['as'=>'admin.mycalendar.index','uses' => 'MyCalendarController@index']);
+   Route::post('mycalendar/store',['as'=>'admin.mycalendar.store','uses' => 'MyCalendarController@store']);
    
 });
 

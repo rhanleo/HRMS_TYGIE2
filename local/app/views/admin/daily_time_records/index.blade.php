@@ -265,6 +265,7 @@
 			 '<br><div class="note note-warning">' +
 			  "{{'Are you sure to delete this record ? '}}{{$pageTitle}}"+
               '</div>');
+              
 			$("#delete").click(function(){
                 $.ajax({
                     type: "POST",
@@ -278,7 +279,7 @@
                         $('#row'+id).fadeOut(500);
                         showToastrMessage(' {{Lang::get('messages.successDelete')}} ', '{{Lang::get('messages.success')}}', 'success'); 
                         setTimeout(function() {
-                            window.location.replace('{{ route('admin.'.$pageTitle.'.index') }}')
+                            window.location.replace('{{ route('admin.dailytimerecord.index') }}')
                         }, 1000);           
                     }
                         });

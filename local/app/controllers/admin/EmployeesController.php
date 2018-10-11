@@ -38,10 +38,13 @@ class EmployeesController extends \AdminBaseController {
 	public function internal($id){
 		$this->data['employees']     =   Employee::where('designation', '=' ,$id)->get();
 		$this->data['designations']  =   Designation::where('id', '=' ,$id)->get();
+		$desigID;
 		foreach($this->data['designations'] as $desig){
 			$this->data['pageTitle']       =    $desig['designation'];
+			$desigID = $desig['id'];
 		}
-	
+		
+		$this->data['desigID'] =   $desigID;
 		$this->data['employeesActive'] =   'active';
 		return View::make('admin.employees.departments', $this->data);
 	}
@@ -49,6 +52,7 @@ class EmployeesController extends \AdminBaseController {
 	public function external($id){
 		$this->data['employees']     =   Employee::where('designation', '=' ,$id)->get();
 		$this->data['designations']  =   Designation::where('id', '=' ,$id)->get();
+		
 		foreach($this->data['designations'] as $desig){
 			$this->data['pageTitle']       =    $desig['designation'];
 		}
@@ -114,6 +118,7 @@ class EmployeesController extends \AdminBaseController {
 					'middleName'    => ucwords($val['middle_name']),
 					'suffix'      	=> ucwords($val['suffix']),
 					'fatherName'    => ucwords(strtolower($val['father_name'])),
+					'jobTitle'		=> $val['job_title'],
 					'gender'        => $val['gender'],
 					'email'         => $val['email'],
 					'password'      => Hash::make($val['password']),
@@ -121,11 +126,11 @@ class EmployeesController extends \AdminBaseController {
 					'marital_status' => ($val['marital_status'])?:'Single',
 					'dependent' 	=> ($val['dependent'])?:0,
 					'employment_status' => ($val['employment_status'])?:'Regular',
-					'mobileNumber'  => $val['mobile_number'],
-					'joiningDate'   => $val['joining_date'],
-					'localAddress'  => ($val['local_address'])?:'No input',
+					'mobileNumber'  => ($val['mobile_number'])?$val['mobile_number']:'0000-0000000',
+					'joiningDate'   => ($val['joining_date'])?$val['joining_date']:date('Y-m-d'),
+					'localAddress'  => ($val['local_address'])?$val['local_address']:'No input',
 					'joiningDate'   =>  date('Y-m-d',strtotime($val['joining_date'])),
-					'permanentAddress' => ($val['permanent_address'])?:'No input',				
+					'permanentAddress' => ($val['permanent_address'])?$val['permanent_address']:'No input',				
 				]);
 	
 	
@@ -145,7 +150,10 @@ class EmployeesController extends \AdminBaseController {
 					]);
 	
 				}
-	
+				if($val['employment_status'] == 'Regular' || $val['employment_status'] == 'Probationary'){
+					$val['annual_leave'] = 12;
+					$val['sick_leave'] = 12;
+				}
 				/** INSERT LEAVE CREDITS */
 				if ($val['sick_leave'] != '' )
 				{

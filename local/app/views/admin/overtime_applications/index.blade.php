@@ -52,12 +52,13 @@ label.error{
                                         <th>{{'First Name'}}</th>
                                         <th>{{'Last Name'}}</th>
                                         <th>{{trans('core.dates')}}</th>
-
+                                        <th>{{'Total hrs'}}</th>
                                   
                                         <th>{{trans('core.reason')}}</th>
                                         <th>{{trans('core.appliedOn')}}</th>
                                         <th>{{trans('core.status')}}</th>
                                         <th>{{trans('core.action')}}</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,12 +66,13 @@ label.error{
 										<td> {{-- ID from Contoller ajaxload --}} </td>
 										<td> {{-- Name from Contoller ajaxload --}} </td>
 										<td> {{-- Date from Contoller ajaxload --}} </td>
-
+                                        <td> {{-- Date from Contoller ajaxload --}} </td>
 								
 										<td> {{-- Reason from Contoller ajaxload --}} </td>
 										<td> {{-- Applied on from Contoller ajaxload --}} </td>
 										<td> {{-- Status from Contoller ajaxload --}} </td>
-										<td> {{-- Action from Contoller ajaxload --}} </td>
+                                        <td> {{-- Action from Contoller ajaxload --}} </td>
+                                       
                                     </tr>
 								</tbody>
 							</table>
@@ -399,7 +401,7 @@ label.error{
                 { 'sClass' : 'center',  "bSortable": true },
                 { 'sClass': 'center', "bSortable": true },
                 { 'sClass': 'center', "bSortable": true },
-                // { 'sClass': 'center', "bSortable": true },
+                { 'sClass': 'center', "bSortable": true },
                 { 'sClass': 'center', "bSortable": true },
                 { 'sClass': 'center', "bSortable": true },
                 { 'sClass': 'center', "bSortable": true },
@@ -412,6 +414,7 @@ label.error{
             "sPaginationType": "full_numbers",
             "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
                 var row = $(nRow);
+                // console.log(iDisplayIndex);
                 row.attr("id", 'row'+aData['0']);
             }
 

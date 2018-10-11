@@ -20,12 +20,7 @@
                             </div>
                         </div>
                         <div class="portlet-body">
-                            {{Form::open(['route'=>["admin.attendances.create"],'method'=>'GET'])}}
-                                <div id="mark-attendance"></div>
-                                <div class="btn-panel">
-                                    <button type='submit' class="btn btn-1">{{trans('core.btnSubmit')}}</button>
-                                </div>
-                            {{Form::close()}}
+                           
                         </div>
                     </div>
                     {{Form::open(['route'=>["admin.attendances.create"],'method'=>'GET'])}}
@@ -37,7 +32,9 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-md-2 form-group"> <button  class=" btn blue" type="submit"> </button></div>
+                        <div class="btn-panel">
+                            <button type='submit' class="btn btn-1">{{trans('core.btnSubmit')}}</button>
+                        </div>
                     {{Form::close()}}
                 </div>
                 <div class="col-md-9">
