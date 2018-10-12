@@ -5,19 +5,34 @@ class MyCalendarController extends \AdminBaseController {
 	public function __construct()
     {
         parent::__construct();
-        $this->data['MyCalendarController']    =   'active open';
-        $this->data['pageTitle']               =   'MyCalendarController';
+        $this->data['MyCalendar']    =   'active open';
+        $this->data['pageTitle']               =   'MyCalendar';
     }
 
 
 	public function index()
 	{
-		$this->data['myCalendars']   = MyCalendar::all();
-dd();
-		
+		$this->data['mycalendars']   = MyCalendar::all();
+
+		$this->data['employees'] = Employee::selectRaw('CONCAT(firstName, " ", lastName, " (EmpID:", employeeID,")") as full_name, employeeID')
+	                                        ->where('status','=','active')
+	                                        ->lists('full_name','employeeID');
 		return View::make('admin.mycalendar.index', $this->data);
 	}
 
+		/**
+	 * Show the form for editing the specified award.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+
+        $this->data['mycalendars']    = MyCalendar::where('id','=',$id)->get();
+      
+		return View::make('admin.mycalendar.edit', $this->data);
+	}
 	public function store(){
 		$input = Input::all();
         $title = (isset($input['title'])) ? $input['title'] : null; 
@@ -40,59 +55,11 @@ dd();
 
 	public function update($id)
 	{
-        $this->data['data']              =   Input::all();
-		$this->data['updated_by']        =   Auth::admin()->get()->email;
-
-		$leave_application = LeaveApplication::findOrFail($id);
-
-		$this->data['data']['application_status'] = ($this->data['data']['application_status'] =='Approve')?'approved':'rejected';
-        $leave_application->update($this->data['data']);
-
-		$start = strtotime($leave_application->start_date);
-
-
-		if($leave_application->application_status == 'approved'){
-			$i=0;
-		while($start<strtotime($leave_application->end_date)) {
-
-				$date = strtotime("+".$i." day", $start);
-				$attendance = Attendance::firstOrCreate([
-					'date' => date('Y-m-d',$date),
-					'employeeID' =>$leave_application->employeeID,
-				]);
-
-				$attendance->leaveType = $leave_application->leaveType;
-				$attendance->halfDayType = $leave_application->halfDayType;
-				$attendance->reason = $leave_application->reason;
-				$attendance->status = 'absent';
-				$attendance->applied_on = $leave_application->applied_on;
-				$attendance->updated_by = $this->data['updated_by'];
-				$attendance->application_status = 'approved';
-				$attendance->save();
-				$start = $date;
-				$i=1;
-			}
-		}
-
-        $this->data['leave_applications']   = $leave_application;
-        $employee   =   Employee::where('employeeID','=',$leave_application->employeeID)->first();
-        $this->data['email']   =   $employee->email;
-
-        if($this->data['setting']->leave_notification==1)
-        {
-            if ($this->data['data']['application_status'] != 'pending') {
-                Mail::send('emails.admin.leave_request', $this->data, function ($message) {
-
-                    $message->from($this->data['setting']->email, $this->data['setting']->name);
-                    $message->to($this->data['email'])
-                        ->subject('Leave Request - ' . date('d-M-Y', strtotime($this->data['leave_applications']->start_date)) .(isset($this->data['leave_applications']->end_date)?' to '.date('d-M-Y',strtotime($this->data['leave_applications']->end_date)):''). ' - ' . $this->data['data']['application_status']);
-                });
-            }
-        }
-
-
+		$myCalendar = MyCalendar::findOrFail($id);
+		$data = Input::all();
+		$myCalendar->update($data);
         Session::flash('success',"<strong>Success! </strong> Updated successfully");
-		return Redirect::route('admin.leave_applications.index');
+		return Redirect::route('admin.mycalendar.index');
 	}
 
 

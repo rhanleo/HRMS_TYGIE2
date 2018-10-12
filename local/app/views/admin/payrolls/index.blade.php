@@ -55,7 +55,8 @@
 							<?php
 								$payroll_table_col = array(
 										'ID',
-										'Name',
+										'First Name',
+										'Last Name',
 										'Employee ID',
 										'Period',
 										'Month',

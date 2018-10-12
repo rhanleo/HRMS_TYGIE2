@@ -25,7 +25,8 @@ class PayrollsController extends \AdminBaseController {
 		$settings = DB::table('settings')->first();
 		$select_arr = array(
 						'payrolls.id',
-						'fullName',
+						'firstName',
+						'lastName',
 						'payrolls.employeeID',
 						'payrolls.period',
 						'month',

@@ -42,7 +42,7 @@
 							<tbody>
 							@if(count($schedule) > 0)
 							@foreach($schedule as $sched)
-							<tr>
+							<tr id="row{{$sched['id']}}">
 								<td>
 									<?php 
 										$dateFrom = date_create($sched['dateFrom']);
@@ -96,6 +96,33 @@
 
 
 <!-- END PAGE LEVEL PLUGINS -->
+<script>
+// Datatable
+$('#sample_employees').dataTable({
 
+{{$datatabble_lang}}
+
+	"bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
+
+	
+	"lengthMenu": [
+		[5, 15, 20, -1],
+		[5, 15, 20, "All"] // change per page values here
+	],
+	set the initial value
+	"pageLength": 5,
+	"sPaginationType": "full_numbers",
+	"columnDefs": [{  // set default column settings
+		'orderable': false,
+		'targets': [0]
+	}, {
+		"searchable": false,
+		"targets": [0]
+	}],
+	"order": [
+		[1, "asc"]
+	] // set first column as a default sort by asc
+});
+</script>
 
 @stop

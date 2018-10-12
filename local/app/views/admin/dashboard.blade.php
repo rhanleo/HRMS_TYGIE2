@@ -273,6 +273,11 @@
                                 <span>{{'My Calendar'}}</span>
                             </div>
                             <div class="btn-portlet-right">
+                            <a title="View" class="btn green" href="{{route('admin.mycalendar.index')}}">
+                                <span ><i class="fa fa-eye fa-fw"></i>  </span>
+                                <span> View note</span>
+                            </a> {{"|"}}
+ 
                                 <a class="btn green" data-toggle="modal" href="#static_add">
                                     <span class="icon"><i class="fa fa-plus fa-fw"></i></span>
                                     <span>Add note</span>

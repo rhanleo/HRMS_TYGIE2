@@ -36,6 +36,17 @@ if (count($overtime_applications) > 0) {
       </div> {{-- end of .portlet-title --}}
 
       <div class="portlet-body">
+
+        <div class="form-group" id="daily_salary">
+          <label class="control-label col-md-2">Daily Salary</label>
+          <div class="col-md-4 margin-bottom-10">
+            <input type="text" class="form-control" onkeyup="myDaily()" id="daily" name="daily" placeholder="daily rate" value="" >
+          </div>
+          <div class="col-md-4 margin-bottom-10">
+            <input type="text" class="form-control" onkeyup="myDaily()" id="number_day" name="number_day" placeholder="number of days" value="" >
+          </div>
+        </div>
+
         <div class="form-group">
           <label class="control-label col-md-2">Basic Salary ( {{$setting->currency_symbol}} )</label>
           <div class="col-md-8 margin-bottom-10">
@@ -239,3 +250,18 @@ if (count($overtime_applications) > 0) {
   <div class="col-md-12 text-center margin-bottom-30">
     <button type="button" class="btn green" onclick="submitData();return false;" style="width: 150px;">Submit</button><hr>
   </div>
+
+  <script type="text/javascript">
+  
+ 
+  function myDaily(){
+    var basic, result, daily, number_day;
+        number_day = document.getElementById('number_day');
+        daily = document.getElementById('daily');
+        basic = document.getElementById('basic');
+        result = daily.value * number_day.value;
+        basic.value= result;
+    }
+  
+ 
+  </script>

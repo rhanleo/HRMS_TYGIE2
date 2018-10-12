@@ -259,6 +259,8 @@ Route::group(array('prefix' => 'admin','before' => 'auth.admin|lock'), function(
    //  My Calendar
    Route::get('mycalendar',['as'=>'admin.mycalendar.index','uses' => 'MyCalendarController@index']);
    Route::post('mycalendar/store',['as'=>'admin.mycalendar.store','uses' => 'MyCalendarController@store']);
+   Route::get('mycalendar/edit/{id}',['as'=>'admin.mycalendar.edit','uses' => 'MyCalendarController@edit']);
+   Route::patch('mycalendar/update/{id}',['as'=>'admin.mycalendar.update','uses' => 'MyCalendarController@update']);
    
 });
 

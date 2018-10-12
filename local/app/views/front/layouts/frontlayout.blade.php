@@ -806,7 +806,7 @@ ul li {
                     [5, 15, 20, -1],
                     [5, 15, 20, "All"] // change per page values here
                 ],
-                // set the initial value
+                set the initial value
                 "pageLength": 5,
                 "sPaginationType": "full_numbers",
                 "columnDefs": [{  // set default column settings

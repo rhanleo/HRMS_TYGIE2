@@ -75,7 +75,7 @@
 											<div class="col-md-9">
 												<ul>
 													<li><h4>EmployeeID: {{$payroll->employeeDetails->employeeID}}</h4></li>
-													<li><h4>Name:  {{$payroll->employeeDetails->fullName}}</h4></li>
+													<li><h4>Name:  {{$payroll->employeeDetails->firstName .' '.$payroll->employeeDetails->lastName }}</h4></li>
 													<li><h4>Month: {{date('F', strtotime($payroll->month . '01'));}}</h4></li>
 													<li><h4>Year:  {{$payroll->year}}</h4></li>
 												</ul>

@@ -62,7 +62,7 @@ if (count($overtime_applications) > 0) {
                   <div class="form-group">
                     <ul>
                       <li><p><strong>EmployeeID:</strong> {{$payroll->employeeDetails->employeeID}}</p></li>
-                      <li><p><strong>Name:</strong>  {{$payroll->employeeDetails->fullName}}</p></li>
+                      <li><p><strong>Name:</strong>  {{$payroll->employeeDetails->firstName . ' ' . $payroll->employeeDetails->lastName. ' ' . $payroll->employeeDetails->suffix}}</p></li>
                       <li><p><strong>Payroll for period:</strong> 
                         <?php
                           if ($payroll->period != 0) {

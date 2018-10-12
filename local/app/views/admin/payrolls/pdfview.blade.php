@@ -123,12 +123,12 @@
               </tr>
               <tr>
                 <td><strong>Employee ID:</strong> {{$payroll->employeeID}}</td>
-                <td><strong>Name:</strong> {{$payroll->employeeDetails->fullName}}</td>
+                <td><strong>Name:</strong> {{$payroll->employeeDetails->firstName . ' ' .$payroll->employeeDetails->lastName .' '.$payroll->employeeDetails->suffix  }}</td>
                 <td><strong>Payslip No:</strong> {{$payroll->id}}</td>
               </tr>
               <tr>
-                <td><strong>Department:</strong>  {{ $payroll->employeeDetails->getDesignation->department->deptName}}</td>
-                <td><strong>Designation:</strong> {{ $payroll->employeeDetails->getDesignation->designation}}</td>
+                <td><strong>Department:</strong>  {{ $payroll->employeeDetails->getDesignation->designation }}</td>
+                <td><strong>Job Title:</strong> {{ $payroll->employeeDetails->jobTitle}}</td>
                 <td><strong>Joining Date:</strong> {{date('d-M,Y',strtotime($payroll->employeeDetails->joiningDate))}}</td>
               </tr>
             
